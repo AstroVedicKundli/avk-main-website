@@ -5,6 +5,7 @@ import CoursesSection from "@/components/home/CoursesSection";
 import NewsSection from "@/components/home/NewsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import VideosSection from "@/components/home/VideosSection";
+import YatraSection from "@/components/home/YatraSection";
 import FAQSection from "@/components/home/FAQSection";
 
 export default function Home() {
@@ -74,6 +75,9 @@ export default function Home() {
 
         {/* Videos Section */}
         <VideosSection />
+
+        {/* Yatra Section */}
+        <YatraSection />
 
         {/* FAQ Section */}
         <FAQSection />
