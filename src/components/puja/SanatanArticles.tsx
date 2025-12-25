@@ -18,8 +18,7 @@ const articles: ArticleCard[] = [
     title: "Aarti",
     description:
       "Find complete lyrics of all the famous Aartis and easily worship your beloved God.",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=600&h=500&fit=crop&q=80",
+    image: "/puja/aarti.png",
     link: "/aarti",
     bgColor: "#FF9800",
   },
@@ -28,8 +27,7 @@ const articles: ArticleCard[] = [
     title: "Chalisa",
     description:
       "You will get complete Chalisa of all the deities. Read Chalisa during the Pooja of your beloved deities and seek their grace.",
-    image:
-      "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&h=500&fit=crop&q=80",
+    image: "/puja/chalisa.png",
     link: "/chalisa",
     bgColor: "#8B7355",
   },
@@ -38,8 +36,7 @@ const articles: ArticleCard[] = [
     title: "Mantra",
     description:
       "Here you will find all the powerful mantras for peace of mind. Chant these mantras and remove all the obstacles from life.",
-    image:
-      "https://images.unsplash.com/photo-1600618528240-fb9fc964b853?w=600&h=500&fit=crop&q=80",
+    image: "puja/mantra.png",
     link: "/mantra",
     bgColor: "#00BCD4",
   },
@@ -104,5 +101,3 @@ export default function SanatanArticles() {
     </div>
   );
 }
-
-

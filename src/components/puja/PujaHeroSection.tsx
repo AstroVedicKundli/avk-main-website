@@ -23,7 +23,7 @@ const slides: Slide[] = [
       "Easily schedule special pujas at renowned temples. Experience divine blessings without any hassle!",
     ctaText: "Find Temples",
     ctaLink: "/temples",
-    templeImage: "/puja/temple-gopuram.png",
+    templeImage: "/puja/temple-1.png",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ const slides: Slide[] = [
       "Get customized puja services performed by experienced pandits based on your birth chart and spiritual needs.",
     ctaText: "Book Now",
     ctaLink: "/puja/book",
-    templeImage: "/puja/temple-gopuram.png",
+    templeImage: "/puja/ganesh-ji.png",
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ const slides: Slide[] = [
       "Receive sacred prasad and blessed items directly at your doorstep after every puja ceremony.",
     ctaText: "Learn More",
     ctaLink: "/puja/prasad",
-    templeImage: "/puja/temple-gopuram.png",
+    templeImage: "/puja/puja-1.png",
   },
 ];
 
@@ -145,7 +145,7 @@ export default function PujaHeroSection() {
   return (
     <section className="relative w-full">
       {/* Main Hero Content with Beige Background */}
-      <div className="relative min-h-[550px] md:min-h-[650px] bg-[#FCF3E4] pt-28 md:pt-32 pb-32 md:pb-40">
+      <div className="relative min-h-[600px] md:min-h-[700px] bg-[#FCF3E4] pt-28 md:pt-32 pb-32 md:pb-40">
         {/* Navigation Arrows */}
         <button
           onClick={() => handleNavClick("prev")}
@@ -257,7 +257,7 @@ export default function PujaHeroSection() {
             </div>
 
             {/* Right Content - Temple Image */}
-            <div className="relative h-[300px] md:h-[400px] lg:h-[450px]">
+            <div className="relative h-[400px] md:h-[500px] lg:h-[550px]">
               {slides.map((slide, index) => (
                 <div
                   key={slide.id}
@@ -269,7 +269,7 @@ export default function PujaHeroSection() {
                     src={slide.templeImage}
                     alt="Temple"
                     fill
-                    className="object-contain object-center"
+                    className="object-contain object-center drop-shadow-2xl"
                     priority={index === 0}
                     unoptimized
                   />

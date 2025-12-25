@@ -50,7 +50,7 @@ export default function VedicAshirvaad() {
           <div className="relative">
             <div className="relative h-[400px] md:h-[450px] rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?w=800&h=600&fit=crop&q=80"
+                src="/puja/ved.jpg"
                 alt="Vedic Ashirvaad Puja"
                 fill
                 className="object-cover"
@@ -74,7 +74,7 @@ export default function VedicAshirvaad() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&h=300&fit=crop&q=80"
+              src="/puja/durga-puja.jpg"
               alt="Spirituality Background"
               fill
               className="object-cover opacity-40"

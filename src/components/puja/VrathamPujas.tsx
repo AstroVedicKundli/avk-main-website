@@ -17,8 +17,7 @@ const pujas: Puja[] = [
     title: "Sri Sathyanarayana Vratham",
     description:
       'Lord Satyanarayana is the "highest being who is an embodiment of truth". Satyanarayana puja is performed to Lord Vishnu which bestows us with good health and wealth. During the puja,...',
-    image:
-      "https://images.unsplash.com/photo-1545389336-cf090694435e?w=600&h=400&fit=crop&q=80",
+    image: "/puja/sathyanarayana.png",
     slug: "sathyanarayana-vratham",
   },
   {
@@ -26,8 +25,7 @@ const pujas: Puja[] = [
     title: "Sri Varalaxmi Vratham",
     description:
       "Every year Varalakshmi Vratham is observed in the Sravana month. It is celebrated on Friday preceding the full moon day. Those who cannot perform it on that day, can do it o...",
-    image:
-      "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=600&h=400&fit=crop&q=80",
+    image: "/puja/varalaxmi.png",
     slug: "varalaxmi-vratham",
   },
   {
@@ -35,8 +33,7 @@ const pujas: Puja[] = [
     title: "Sri Kedareshwara Swamy Vratham",
     description:
       "The Kedareswara Vratha Puja implicates the importance of women being equal to men. This was performed by Parvathi Devi to become a part of Lord Shiva. This process was called as Ardhanareeswara...",
-    image:
-      "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=600&h=400&fit=crop&q=80",
+    image: "/puja/kedareshwara.png",
     slug: "kedareshwara-vratham",
   },
 ];
