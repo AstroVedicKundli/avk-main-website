@@ -18,12 +18,6 @@ export default function Home() {
         {/* About Section */}
         <AboutSection />
 
-        {/* News Section */}
-        <NewsSection />
-
-        {/* Testimonials Section */}
-        <TestimonialsSection />
-
         {/* Stats Section */}
         <StatsSection />
 
@@ -32,6 +26,12 @@ export default function Home() {
 
         {/* Yatra Section */}
         <YatraSection />
+
+        {/* Testimonials Section */}
+        <TestimonialsSection />
+
+        {/* News Section */}
+        <NewsSection />
 
         {/* FAQ Section */}
         <FAQSection />

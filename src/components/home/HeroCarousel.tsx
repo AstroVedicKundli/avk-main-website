@@ -1,131 +1,143 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-interface Slide {
-  id: number;
-  image: string;
-  title: string;
-  ctaText: string;
-  ctaLink: string;
-}
-
-const slides: Slide[] = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop&q=80",
-    title: "Discover Your Cosmic Path",
-    ctaText: "Get Started",
-    ctaLink: "/kundli",
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1920&h=1080&fit=crop&q=80",
-    title: "Ancient Wisdom for Modern Life",
-    ctaText: "Learn More",
-    ctaLink: "/services",
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1920&h=1080&fit=crop&q=80",
-    title: "Transform Your Journey",
-    ctaText: "Explore Now",
-    ctaLink: "/horoscope",
-  },
-];
-
 export default function HeroCarousel() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  }, []);
-
-  const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  }, []);
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-    setIsAutoPlaying(false);
+  const slide = {
+    image: "/banner-home.png",
+    preTitle: "TALK DIRECTLY WITH",
+    title: "MANISH AGGARWAL",
+    subtitle: "Celebrity Astrologer & Ritual Expert",
+    services: [
+      "Vedic Astrology & Numerology",
+      "Pooja Path & Anushtan",
+      "Career & Business Prosperity",
+      "Marriage & Relationship Harmony",
+      "Personalized Life Problem Solutions",
+    ],
+    ctaText: "Book Your Consultation Now",
+    ctaLink: "/kundli",
   };
 
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      nextSlide();
-    }, 5000); // Change slide every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, nextSlide]);
-
   return (
-    <section className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
-      {/* Slides */}
-      <div className="relative w-full h-full">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-          >
-            {/* Background Image */}
+    <>
+      <section className="relative w-full h-[75vh] md:h-[65vh] overflow-hidden bg-[#fcf3e4] pt-8">
+        <div className="relative w-full h-full">
+          {/* Background Image - Hidden on mobile, shown on desktop */}
+          <div className="hidden md:block absolute inset-0">
             <Image
               src={slide.image}
               alt={slide.title}
               fill
-              priority={index === 0}
-              className="object-cover"
+              priority
+              className="object-contain object-bottom"
               sizes="100vw"
               unoptimized
             />
+          </div>
 
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black/40 z-10"></div>
+          {/* Content - Left Aligned */}
+          <div className="relative z-20 h-full flex items-center md:items-center">
+            <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
+              <div className="max-w-3xl pt-0 md:pt-16">
+                {/* Pre-title */}
+                <p className="text-[#b91c2e] text-sm md:text-base lg:text-lg font-bold mb-3 tracking-wider uppercase">
+                  # {slide.preTitle}
+                </p>
 
-            {/* Content - Left Aligned */}
-            <div className="relative z-20 h-full flex items-center">
-              <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
-                <div className="max-w-2xl">
-                  {/* Title */}
-                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                    {slide.title}
-                  </h1>
+                {/* Main Title */}
+                <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-[#1a1a2e] mb-3 leading-tight">
+                  {slide.title}
+                </h1>
 
-                  {/* CTA Button */}
-                  <Link
-                    href={slide.ctaLink}
-                    className="inline-block px-8 py-4 bg-[#FF7B60] text-white text-base md:text-lg font-bold rounded-lg shadow-xl hover:bg-[#ff6a4d] transition-all transform hover:scale-105"
-                  >
-                    {slide.ctaText}
-                  </Link>
+                {/* Subtitle */}
+                <p className="text-[#4a4a4a] text-base md:text-xl lg:text-2xl font-semibold mb-6 md:mb-8">
+                  {slide.subtitle}
+                </p>
+
+                {/* Services List */}
+                <div className="space-y-2 mb-6 md:mb-8">
+                  {slide.services.map((service, idx) => (
+                    <div key={idx} className="flex items-start">
+                      <span className="text-[#b91c2e] text-lg font-bold mr-3 flex-shrink-0">
+                        •
+                      </span>
+                      <span className="text-[#2a2a2a] text-sm md:text-base font-semibold uppercase tracking-wide">
+                        {service}
+                      </span>
+                    </div>
+                  ))}
                 </div>
+
+                {/* CTA Button */}
+                <Link
+                  href={slide.ctaLink}
+                  className="inline-block px-8 py-4 md:px-10 md:py-5 bg-[#b91c2e] text-white text-base md:text-lg lg:text-xl font-bold uppercase rounded-lg shadow-xl hover:bg-[#9a1525] transition-all transform hover:scale-105"
+                >
+                  {slide.ctaText}
+                </Link>
               </div>
             </div>
           </div>
-        ))}
-      </div>
 
-      {/* Navigation Dots - Bottom Left */}
-      <div className="absolute bottom-8 left-6 md:left-12 lg:left-16 z-30 flex gap-3">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`transition-all rounded-full ${
-              index === currentSlide
-                ? "w-10 h-3 bg-white"
-                : "w-3 h-3 bg-white/50 hover:bg-white/80"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+          {/* Background Image - Shown on mobile at bottom */}
+          <div className="md:hidden relative w-full h-64 mt-6">
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              priority
+              className="object-contain object-center"
+              sizes="100vw"
+              unoptimized
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Moving Strip */}
+      <div className="relative w-full bg-[#7d1a28] py-4 overflow-hidden">
+        <style jsx>{`
+          @keyframes scroll {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(-50%);
+            }
+          }
+          .animate-scroll {
+            animation: scroll 30s linear infinite;
+          }
+        `}</style>
+
+        <div className="flex animate-scroll whitespace-nowrap">
+          {/* Repeat the content twice for seamless loop */}
+          {[1, 2].map((i) => (
+            <div key={i} className="flex items-center px-8">
+              <span className="text-white text-lg md:text-xl font-semibold">
+                Book your Consultation — Slots are limited. Reserve yours now!!
+              </span>
+              <Link
+                href="/kundli"
+                className="mx-8 px-6 py-2 bg-white text-[#7d1a28] text-base md:text-lg font-bold rounded-lg hover:bg-gray-100 transition-all whitespace-nowrap"
+              >
+                Book Now
+              </Link>
+              <span className="text-white text-lg md:text-xl font-semibold">
+                Book your Consultation — Slots are limited. Reserve yours now!!
+              </span>
+              <Link
+                href="/kundli"
+                className="mx-8 px-6 py-2 bg-white text-[#7d1a28] text-base md:text-lg font-bold rounded-lg hover:bg-gray-100 transition-all whitespace-nowrap"
+              >
+                Book Now
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </>
   );
 }
