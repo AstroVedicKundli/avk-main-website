@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function StockMarket2026Page() {
@@ -79,40 +80,46 @@ export default function StockMarket2026Page() {
         </nav>
 
         {/* Hero Banner */}
-        <div className="relative overflow-hidden rounded-3xl mb-16">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#333355] via-[#2a2a45] to-[#1f1f35]"></div>
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-[#FF7B60] rounded-full filter blur-3xl"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#FF7B60] rounded-full filter blur-3xl"></div>
-          </div>
-          <div className="relative px-8 py-16 md:py-24 lg:py-32">
+        <div className="rounded-3xl overflow-hidden mb-16 bg-white">
+          {/* Full image banner without cropping */}
+          <Image
+            src="/predictions/stock/stock_banner.jpg"
+            alt="Astrological stock market banner"
+            width={1600}
+            height={600}
+            priority
+            className="w-full h-auto"
+          />
+
+          {/* Text content below the image so it doesn't cover the banner */}
+          <div className="px-8 py-10 md:py-12 lg:py-14">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-block mb-6">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-semibold border border-white/20">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#333355]/5 text-[#333355] text-sm font-semibold border border-[#333355]/20">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
                   </svg>
                   Vedic Astrology Insights
                 </span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#333355] mb-6">
                 Stock Market Predictions 2026
               </h1>
-              <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8">
+              <p className="text-lg md:text-xl text-[#333355]/80 max-w-2xl mx-auto mb-8">
                 Navigate the markets with planetary wisdom. Comprehensive analysis of planetary movements and their impact on stock market trends throughout 2026.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                  <div className="text-2xl font-bold text-white">12 Months</div>
-                  <div className="text-sm text-white/70">Detailed Analysis</div>
+                <div className="bg-[#333355]/5 rounded-xl px-6 py-3 border border-[#333355]/20">
+                  <div className="text-2xl font-bold text-[#333355]">12 Months</div>
+                  <div className="text-sm text-[#333355]/70">Detailed Analysis</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                  <div className="text-2xl font-bold text-white">6 Planets</div>
-                  <div className="text-sm text-white/70">Transit Calendar</div>
+                <div className="bg-[#333355]/5 rounded-xl px-6 py-3 border border-[#333355]/20">
+                  <div className="text-2xl font-bold text-[#333355]">6 Planets</div>
+                  <div className="text-sm text-[#333355]/70">Transit Calendar</div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                  <div className="text-2xl font-bold text-white">Key Dates</div>
-                  <div className="text-sm text-white/70">Investment Timing</div>
+                <div className="bg-[#333355]/5 rounded-xl px-6 py-3 border border-[#333355]/20">
+                  <div className="text-2xl font-bold text-[#333355]">Key Dates</div>
+                  <div className="text-sm text-[#333355]/70">Investment Timing</div>
                 </div>
               </div>
             </div>
