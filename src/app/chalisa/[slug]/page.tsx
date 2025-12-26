@@ -17,8 +17,7 @@ interface ChalisaDetail {
 const chalisaData: Record<string, ChalisaDetail> = {
   "hanuman-chalisa": {
     title: "Hanuman Chalisa",
-    bannerImage:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/chalisa/slug/Hanuman_Chalisa.webp",
     description:
       "Read Hanuman Chalisa in English with Doha & Chaupai. Discover its meaning & power. Boost positivity, read now for peace and blessings.",
     dohaTitle: "Hanuman Chalisa Doha in English",
@@ -40,8 +39,7 @@ const chalisaData: Record<string, ChalisaDetail> = {
   },
   "mahalakshmi-chalisa": {
     title: "Mahalakshmi Chalisa",
-    bannerImage:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/chalisa/slug/Mahalakshmi_Chalisa.webp",
     description:
       "Read Mahalakshmi Chalisa in English with Doha & Chaupai. Invoke the blessings of Goddess Lakshmi for wealth and prosperity.",
     dohaTitle: "Mahalakshmi Chalisa Doha in English",
@@ -58,8 +56,7 @@ const chalisaData: Record<string, ChalisaDetail> = {
   },
   "shiv-chalisa": {
     title: "Shiv Chalisa",
-    bannerImage:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/chalisa/slug/Shiv_Chalisa.webp",
     description:
       "Read Shiv Chalisa in English with Doha & Chaupai. Seek the blessings of Lord Shiva for spiritual growth and inner peace.",
     dohaTitle: "Shiv Chalisa Doha in English",
@@ -76,8 +73,7 @@ const chalisaData: Record<string, ChalisaDetail> = {
   },
   "durga-chalisa": {
     title: "Durga Chalisa",
-    bannerImage:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/chalisa/slug/Durga_Chalisa.webp",
     description:
       "Read Durga Chalisa in English with Doha & Chaupai. Invoke the divine power of Maa Durga for protection and strength.",
     dohaTitle: "Durga Chalisa Doha in English",
@@ -88,6 +84,216 @@ const chalisaData: Record<string, ChalisaDetail> = {
       "Tumko Nisdin Dhyavat Hari, Brahma Shivji.",
       "Rishi Muni Pandit Dhyavat, Narad Sharad Shesh.",
       "Doot Sat Sugriva Ke Aaye, Mukh Nikasee Bat.",
+    ],
+  },
+  "kaali-chalisa": {
+    title: "Kaali Chalisa",
+    bannerImage: "/puja/chalisa/slug/Kaali_Chalisa.webp",
+    description:
+      "Read Kaali Chalisa in English with Doha & Chaupai. Invoke the fierce yet protective energy of Maa Kaali for courage and liberation from fear.",
+    dohaTitle: "Kaali Chalisa Doha in English",
+    dohaLyrics: [
+      "Jai Jai Jai Kaali Maa, Dukh Daridra Haro. Shatru Sankat Mite Sab, Kripa Drishti Dharo.",
+    ],
+    chaupaiTitle: "Kaali Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Bhavani Jai Mahakaali, Shubh Karni Bhav Saagar Taari.",
+      "Trikaal Vandit Tumko Maata, Raksha Karo Tum Bhakt Vratata.",
+    ],
+  },
+  "radha-chalisa": {
+    title: "Radha Chalisa",
+    bannerImage: "/puja/chalisa/slug/Radha_Chalisa.webp",
+    description:
+      "Read Radha Chalisa in English with Doha & Chaupai. Experience the divine love and devotion of Shri Radha Rani.",
+    dohaTitle: "Radha Chalisa Doha in English",
+    dohaLyrics: [
+      "Radhe Radhe Jap Le Nar, Sab Klesh Door Hoye. Prem Bhakti Ki Shakti Se, Jeevan Sukhmay Hoye.",
+    ],
+    chaupaiTitle: "Radha Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Radha Vrindavan Dhaari, Prem Roop Tum Bhav Nistari.",
+      "Shyam Sang Tum Prem Milayi, Bhakt Hriday Mein Jyoti Jagayi.",
+    ],
+  },
+  "parwati-chalisa": {
+    title: "Parwati Chalisa",
+    bannerImage: "/puja/chalisa/slug/Parwati_Chalisa.webp",
+    description:
+      "Read Parwati Chalisa in English with Doha & Chaupai. Seek the blessings of Maa Parwati for harmony, strength, and family well-being.",
+    dohaTitle: "Parwati Chalisa Doha in English",
+    dohaLyrics: [
+      "Gauri Shankar Ki Kripa Se, Jeevan Ho Ujjwal. Parwati Maa Vardan De, Kariye Bhakti Nirmal.",
+    ],
+    chaupaiTitle: "Parwati Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Parwati Jag Janani, Shakti Roop Mahamangal Dhani.",
+      "Tum Bin Shiv Adhura Maata, Kar Do Kripa Sab Par Dayata.",
+    ],
+  },
+  "santoshi-chalisa": {
+    title: "Santoshi Chalisa",
+    bannerImage: "/puja/chalisa/slug/Santoshi_Chalisa.webp",
+    description:
+      "Read Santoshi Chalisa in English with Doha & Chaupai. Pray to Maa Santoshi for contentment, peace, and fulfillment of wishes.",
+    dohaTitle: "Santoshi Chalisa Doha in English",
+    dohaLyrics: [
+      "Santoshi Maa Ki Bhakti Se, Man Ko Shanti Mile. Bhakt Janon Ke Ghar Mein, Sadaa Sukh Samriddhi Khile.",
+    ],
+    chaupaiTitle: "Santoshi Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Santoshi Maa Dayalu, Bhakt Vatsal Bhav Nirmal Vaali.",
+      "Prabhu Kripa Se Klesh Mitaao, Bhakt Ka Jeevan Sukhmaya Banao.",
+    ],
+  },
+  "tulsi-chalisa": {
+    title: "Tulsi Chalisa",
+    bannerImage: "/puja/chalisa/slug/Tulsi_Chalisa.webp",
+    description:
+      "Read Tulsi Chalisa in English with Doha & Chaupai. Honor the sacred Tulsi plant, symbol of purity, devotion, and protection.",
+    dohaTitle: "Tulsi Chalisa Doha in English",
+    dohaLyrics: [
+      "Tulsi Dal Se Hari Prasanna, Paap Sab Ho Jaay. Bhakt Hriday Mein Prem Badhe, Jeevan Safal Banaay.",
+    ],
+    chaupaiTitle: "Tulsi Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Tulsi Vrindawani, Hari Priya Tum Shubh Gun Khani.",
+      "Jo Tumko Shraddha Se Seve, Hari Kripa Se Paap Sab Dheve.",
+    ],
+  },
+  "chamunda-chalisa": {
+    title: "Chamunda Chalisa",
+    bannerImage: "/puja/chalisa/slug/Chamunda_Chalisa.webp",
+    description:
+      "Read Chamunda Chalisa in English with Doha & Chaupai. Invoke Maa Chamunda to destroy negativity and grant fearless living.",
+    dohaTitle: "Chamunda Chalisa Doha in English",
+    dohaLyrics: [
+      "Chamunda Maa Ki Shakti Se, Shatru Bhay Sab Jaay. Bhakt Nirbhay Ho Jeevan Mein, Har Din Sukh Paay.",
+    ],
+    chaupaiTitle: "Chamunda Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Chamunda Bhav Bhay Haarini, Raktabeej Vinashini Karuni.",
+      "Bhakton Ka Tum Raksha Karo, Dukh Daridra Sab Door Karo.",
+    ],
+  },
+  "ram-chalisa": {
+    title: "Ram Chalisa",
+    bannerImage: "/puja/chalisa/slug/Ram_Chalisa.webp",
+    description:
+      "Read Ram Chalisa in English with Doha & Chaupai. Remember the virtues of Shri Ram for dharma, courage, and compassion.",
+    dohaTitle: "Ram Chalisa Doha in English",
+    dohaLyrics: [
+      "Shri Ram Naam Jo Gaave, Man Vanchhit Phal Paay. Bhav Saagar Se Taar De, Dukh Sab Door Hataay.",
+    ],
+    chaupaiTitle: "Ram Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Raghuveer Siya Ram Dayaalu, Patit Pawan Bhav Bhay Taalu.",
+      "Ram Kripa Se Jeevan Saare, Sukh Shanti Aur Prem Ujiyare.",
+    ],
+  },
+  "navgrah-chalisa": {
+    title: "Navgrah Chalisa",
+    bannerImage: "/puja/chalisa/slug/Shree_Navgrah_Chalisa.webp",
+    description:
+      "Read Navgrah Chalisa in English with Doha & Chaupai. Seek harmony from all nine planets and reduce negative influences.",
+    dohaTitle: "Navgrah Chalisa Doha in English",
+    dohaLyrics: [
+      "Navgrah Devta Kripa Kar De, Dosh Sab Door Hoye. Shubh Fal De Kar Dayaa, Jeevan Mangal Hoye.",
+    ],
+    chaupaiTitle: "Navgrah Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Surya Chandra Mangal Budh Shani, Brihaspati Shukra Rahu Ketu Dhani.",
+      "Sab Ke Shubh Prabhav Se Maata, Jeevan Mein Ho Prem Aur Jyota.",
+    ],
+  },
+  "saraswati-chalisa": {
+    title: "Saraswati Chalisa",
+    bannerImage: "/puja/chalisa/slug/Saraswati_Chalisa.webp",
+    description:
+      "Read Saraswati Chalisa in English with Doha & Chaupai. Pray to Maa Saraswati for wisdom, learning, and clarity of speech.",
+    dohaTitle: "Saraswati Chalisa Doha in English",
+    dohaLyrics: [
+      "Veena Vaadini Vaani De, Buddhi Bal De Maata. Vidya Vardhaaye Nitya Tu, Door Kar Durgati Taata.",
+    ],
+    chaupaiTitle: "Saraswati Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Saraswati Vidhyadayini, Hans Vahini Gyaan Pradaini.",
+      "Jo Tumko Man Se Dhyayega, Agyaan Andhera Mit Jaayega.",
+    ],
+  },
+  "vishnu-chalisa": {
+    title: "Vishnu Chalisa",
+    bannerImage: "/puja/chalisa/slug/Vishnu_Chalisa.webp",
+    description:
+      "Read Vishnu Chalisa in English with Doha & Chaupai. Connect with Lord Vishnu, preserver of the universe and giver of stability.",
+    dohaTitle: "Vishnu Chalisa Doha in English",
+    dohaLyrics: [
+      "Om Namo Narayanaya, Prem Se Jo Gave. Vishnu Kripa Se Jeevan Mein, Anand Anant Paave.",
+    ],
+    chaupaiTitle: "Vishnu Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Vishnu Jagat Palaak, Shesh Shaiya Par Sukh Vilaasak.",
+      "Dashavatar Ke Roop Niraale, Bhakt Bachaawe Bhav Dukh Taale.",
+    ],
+  },
+  "surya-dev-chalisa": {
+    title: "Surya Dev Chalisa",
+    bannerImage: "/puja/chalisa/slug/Surya_Dev_Chalisa.webp",
+    description:
+      "Read Surya Dev Chalisa in English with Doha & Chaupai. Worship the Sun God for vitality, confidence, and success.",
+    dohaTitle: "Surya Dev Chalisa Doha in English",
+    dohaLyrics: [
+      "Om Suryaya Namaha, Tej Tumhara Prakash. Andhkaar Sab Door Ho, Jeevan Ho Ujjval Vikaash.",
+    ],
+    chaupaiTitle: "Surya Dev Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Surya Narayan Devta, Jag Ko De Prabhu Alokata.",
+      "Rog Shok Sab Door Bhagao, Tejmay Jeevan Shanti Liao.",
+    ],
+  },
+  "sheetla-chalisa": {
+    title: "Sheetla Chalisa",
+    bannerImage: "/puja/chalisa/slug/Sheetla_Chalisa.webp",
+    description:
+      "Read Sheetla Chalisa in English with Doha & Chaupai. Pray to Maa Sheetla for protection from diseases and good health.",
+    dohaTitle: "Sheetla Chalisa Doha in English",
+    dohaLyrics: [
+      "Sheetla Maa Kripa Kar De, Rog Sab Door Hoye. Swasth Sharir Aur Shant Mann, Har Din Anand Hoye.",
+    ],
+    chaupaiTitle: "Sheetla Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Sheetla Maa Dayalu, Rog Nashini Bhav Bhay Taalu.",
+      "Jo Tumko Nitya Smaran Kare, Dukh Dard Sab Door Bhare.",
+    ],
+  },
+  "sai-baba-chalisa": {
+    title: "Sai Baba Chalisa",
+    bannerImage: "/puja/chalisa/slug/Sai_Baba_Chalisa.webp",
+    description:
+      "Read Sai Baba Chalisa in English with Doha & Chaupai. Remember Sai Baba's teachings of faith, patience, and universal love.",
+    dohaTitle: "Sai Baba Chalisa Doha in English",
+    dohaLyrics: [
+      "Sai Naam Jo Gaave Nitya, Uska Dukh Sab Jaay. Shraddha Saburi Rakh Ke Jo, Man Ki Murad Paay.",
+    ],
+    chaupaiTitle: "Sai Baba Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Sai Nath Dayaalu, Dwarkamai Ke Vaasik Vaali.",
+      "Garib Niwaaz Tum Ho Baba, Sab Par Kripa Barsao Aaja.",
+    ],
+  },
+  "bhairav-chalisa": {
+    title: "Bhairav Chalisa",
+    bannerImage: "/puja/chalisa/slug/Bhairav_Chalisa.webp",
+    description:
+      "Read Bhairav Chalisa in English with Doha & Chaupai. Invoke Kaal Bhairav for protection, courage, and removal of obstacles.",
+    dohaTitle: "Bhairav Chalisa Doha in English",
+    dohaLyrics: [
+      "Jai Kaal Bhairav Nath, Raksha Karo Din Raat. Shatru Bhay Sab Door Ho, Bhakt Rahe Sadaa Saath.",
+    ],
+    chaupaiTitle: "Bhairav Chalisa Chaupai in English",
+    chaupaiLyrics: [
+      "Jai Jai Bhairav Kashi Vaasi, Kapal Dhari Bhav Bhay Naashi.",
+      "Tumsa Rakshak Koi Na Dooja, Sharan Pade Bhakt Karo Sajja.",
     ],
   },
 };
