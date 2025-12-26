@@ -12,6 +12,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Kundli", href: "/kundli" },
     { name: "Horoscope", href: "/horoscope" },
+    { name: "Matchmaking", href: "/matchmaking" },
     { name: "Services", href: "/services" },
     { name: "Yatra", href: "/yatra" },
     { name: "Puja", href: "/puja" },
@@ -105,7 +106,7 @@ export default function Header() {
               href="/kundli"
               className="rounded-full bg-[#333355] px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#2a2a45] transition-all"
             >
-              Login/Identificarse
+              Contact Us
             </Link>
           </div>
 
@@ -205,7 +206,7 @@ export default function Header() {
                     : "none",
                 }}
               >
-                Login/Identificarse
+                Contact Us
               </Link>
             </div>
           </div>
