@@ -7,12 +7,11 @@ export default function NewsSection() {
       id: 1,
       date: "Nov 10, 2024",
       author: "By Admin",
-      category: "Astrology",
-      title: "Complete Step by Step guide to rangoli art using flowers",
+      category: "Business",
+      title: "Honoured with the Prestigious Global Business Award",
       excerpt:
-        "Learn how to read and interpret your birth chart with our comprehensive guide to Vedic astrology and ancient wisdom.",
-      image:
-        "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&h=600&fit=crop",
+        "Manish Aggarwal is recognised for exceptional excellence, credibility, and leadership in astrology, with a strong and growing influence on a global platform.",
+      image: "/gba.png",
       link: "/news/birth-chart-guide",
       featured: true,
     },
@@ -20,12 +19,11 @@ export default function NewsSection() {
       id: 2,
       date: "Nov 08, 2024",
       author: "By Admin",
-      category: "Vastu",
-      title: "12 Vastu Colors Everyone Should Use in Their Kitchen",
+      category: "Podcast",
+      title: "Manish Aggarwal on Sidharth Kannan’s Renowned Podcast",
       excerpt:
-        "Discover how Vastu colors can enhance positive energy in your kitchen space.",
-      image:
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=300&fit=crop",
+        "An insightful conversation exploring astrology, life, and spiritual wisdom with one of India’s most celebrated podcast hosts, Sidharth Kannan.",
+      image: "/sid_knn.png",
       link: "/news/vastu-colors",
       featured: false,
     },
@@ -37,8 +35,7 @@ export default function NewsSection() {
       title: "Why has Puja been an important part of Hindu religion",
       excerpt:
         "Understanding the significance and spiritual importance of Puja rituals.",
-      image:
-        "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&h=800&fit=crop",
+      image: "/puja/ved.jpg",
       link: "/news/puja-importance",
       featured: false,
     },
@@ -50,8 +47,7 @@ export default function NewsSection() {
       title: "Sunday Choghadiya: Muhurat timings for today auspicious work",
       excerpt:
         "Find the most auspicious timings for your important activities today.",
-      image:
-        "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=300&fit=crop",
+      image: "/puja/chalisa.png",
       link: "/news/choghadiya",
       featured: false,
     },

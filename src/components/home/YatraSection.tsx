@@ -8,114 +8,38 @@ export default function YatraSection() {
     {
       id: 1,
       name: "Vaishno Devi",
-      image:
-        "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=800&fit=crop",
+      image: "/yatra/vaishno-devi.png",
       link: "/yatra/vaishno-devi",
     },
     {
       id: 2,
-      name: "Tirupati",
-      image:
-        "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&h=800&fit=crop",
-      link: "/yatra/tirupati",
-    },
-    {
-      id: 3,
-      name: "Ujjain Darshan",
-      image:
-        "https://images.unsplash.com/photo-1609920658906-8223bd289001?w=600&h=800&fit=crop",
-      link: "/yatra/ujjain",
-    },
-    {
-      id: 4,
-      name: "Varanasi",
-      image:
-        "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=600&h=800&fit=crop",
-      link: "/yatra/varanasi",
-    },
-    {
-      id: 5,
-      name: "Amarnath",
-      image:
-        "https://images.unsplash.com/photo-1548013146-72479768bada?w=600&h=800&fit=crop",
-      link: "/yatra/amarnath",
-    },
-    {
-      id: 6,
       name: "Kedarnath",
-      image:
-        "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&h=800&fit=crop",
+      image: "/yatra/kedarnath.png",
       link: "/yatra/kedarnath",
     },
     {
-      id: 7,
-      name: "Golden Temple",
-      image:
-        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&h=800&fit=crop",
-      link: "/yatra/golden-temple",
-    },
-    {
-      id: 8,
-      name: "Badrinath",
-      image:
-        "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&h=800&fit=crop",
-      link: "/yatra/badrinath",
-    },
-    {
-      id: 9,
-      name: "Somnath",
-      image:
-        "https://images.unsplash.com/photo-1587474260584-136574528ed5?w=600&h=800&fit=crop",
-      link: "/yatra/somnath",
-    },
-    {
-      id: 10,
-      name: "Dwarka",
-      image:
-        "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?w=600&h=800&fit=crop",
-      link: "/yatra/dwarka",
-    },
-    {
-      id: 11,
-      name: "Rishikesh",
-      image:
-        "https://images.unsplash.com/photo-1558431382-27e303142255?w=600&h=800&fit=crop",
-      link: "/yatra/rishikesh",
-    },
-    {
-      id: 12,
+      id: 3,
       name: "Haridwar",
-      image:
-        "https://images.unsplash.com/photo-1591280063444-d3c514eb6e13?w=600&h=800&fit=crop",
+      image: "/yatra/haridwar.png",
       link: "/yatra/haridwar",
     },
     {
-      id: 13,
-      name: "Shirdi",
-      image:
-        "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&h=800&fit=crop",
-      link: "/yatra/shirdi",
-    },
-    {
-      id: 14,
+      id: 4,
       name: "Puri Jagannath",
-      image:
-        "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=600&h=800&fit=crop",
+      image: "/yatra/jagannath-puri.png",
       link: "/yatra/puri",
     },
     {
-      id: 15,
-      name: "Mathura Vrindavan",
-      image:
-        "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&h=800&fit=crop&q=80",
-      link: "/yatra/mathura",
+      id: 5,
+      name: "Ayodhya",
+      image: "/yatra/ayodhya.png",
+      link: "/yatra/ayodhya",
     },
     {
-      id: 16,
-      name: "Ayodhya",
-      image:
-        "https://images.unsplash.com/photo-1586276393635-5ecd8a851acc?w=600&h=800&fit=crop",
-      link: "/yatra/ayodhya",
+      id: 6,
+      name: "Vrindavan",
+      image: "/yatra/vrindavan.png",
+      link: "/yatra/vrindavan",
     },
   ];
 
@@ -135,7 +59,7 @@ export default function YatraSection() {
       } else if (window.innerWidth < 1024) {
         setCardsPerView(2); // Tablet: 2 cards
       } else {
-        setCardsPerView(4); // Desktop: 4 cards
+        setCardsPerView(3); // Desktop: 3 cards (better for 6 total items)
       }
     };
 
@@ -149,23 +73,35 @@ export default function YatraSection() {
     return () => window.removeEventListener("resize", updateCardsPerView);
   }, []);
 
-  const totalSlides = destinations.length - cardsPerView + 1;
-  const maxIndex = totalSlides - 1;
+  // Calculate max slides properly - ensure we don't go negative
+  const totalSlides = Math.max(1, destinations.length - cardsPerView + 1);
+  const maxIndex = Math.max(0, totalSlides - 1);
+
+  // Reset currentIndex if it exceeds maxIndex
+  useEffect(() => {
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(0);
+    }
+  }, [maxIndex, currentIndex]);
 
   const nextSlide = () => {
-    if (currentIndex < maxIndex) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setCurrentIndex(0);
+    if (maxIndex > 0) {
+      if (currentIndex < maxIndex) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        setCurrentIndex(0);
+      }
     }
     setDragOffset(0);
   };
 
   const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else {
-      setCurrentIndex(maxIndex);
+    if (maxIndex > 0) {
+      if (currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1);
+      } else {
+        setCurrentIndex(maxIndex);
+      }
     }
     setDragOffset(0);
   };
@@ -270,10 +206,10 @@ export default function YatraSection() {
             {/* Hide on mobile, show on tablet and up */}
             <div className="text-right hidden md:block">
               <span className="text-xl md:text-2xl lg:text-3xl font-bold text-[#333355]">
-                +50
+                50+
               </span>
               <p className="text-xs md:text-sm text-[#333355]/70 whitespace-nowrap">
-                Attractive destinations
+                Sacred destinations
               </p>
             </div>
 

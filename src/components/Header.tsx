@@ -13,7 +13,6 @@ export default function Header() {
     { name: "Kundli", href: "/kundli" },
     { name: "Horoscope", href: "/horoscope" },
     { name: "Matchmaking", href: "/matchmaking" },
-    { name: "Consult Now", href: "/consult-now" },
     { name: "Services", href: "/services" },
     { name: "Yatra", href: "/yatra" },
     { name: "Puja", href: "/puja" },
@@ -104,10 +103,10 @@ export default function Header() {
           {/* CTA Button */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
-              href="/kundli"
+              href="/consult-now"
               className="rounded-full bg-[#333355] px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#2a2a45] transition-all"
             >
-              Contact Us
+              Consult Now
             </Link>
           </div>
 
@@ -196,7 +195,7 @@ export default function Header() {
 
             <div className="pt-4">
               <Link
-                href="/kundli"
+                href="/consult-now"
                 className="block w-full rounded-full px-4 py-3 text-center text-base font-bold text-white bg-[#333355] hover:bg-[#2a2a45] transition-all shadow-md"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
@@ -207,7 +206,7 @@ export default function Header() {
                     : "none",
                 }}
               >
-                Contact Us
+                Consult Now
               </Link>
             </div>
           </div>
