@@ -17,8 +17,7 @@ const mantras: MantraItem[] = [
     id: "1",
     title: "Chhath Puja Mantra",
     label: "Chhath Puja Mantra",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Chhath_Mantra.webp",
     updatedAt: "October 23, 2025",
     slug: "chhath-puja-mantra",
   },
@@ -26,8 +25,7 @@ const mantras: MantraItem[] = [
     id: "2",
     title: "Laxmi Mantra",
     label: "Laxmi Mantra",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Laxmi_Mantra.webp",
     updatedAt: "October 18, 2025",
     slug: "laxmi-mantra",
   },
@@ -35,8 +33,7 @@ const mantras: MantraItem[] = [
     id: "3",
     title: "Govardhan Mantra",
     label: "Govardhan Mantra",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Govardhan_Mantra.webp",
     updatedAt: "October 15, 2025",
     slug: "govardhan-mantra",
   },
@@ -44,8 +41,7 @@ const mantras: MantraItem[] = [
     id: "4",
     title: "Ganesha Mantras",
     label: "Ganesha Mantras",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Ganesha_Mantra.webp",
     updatedAt: "August 27, 2025",
     slug: "ganesha-mantras",
   },
@@ -53,8 +49,7 @@ const mantras: MantraItem[] = [
     id: "5",
     title: "Radha Mantra",
     label: "Radha Mantra",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Radha_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "radha-mantra",
   },
@@ -62,8 +57,7 @@ const mantras: MantraItem[] = [
     id: "6",
     title: "Narayan Mantra",
     label: "Narayan Mantra",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Narayan_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "narayan-mantra",
   },
@@ -71,8 +65,7 @@ const mantras: MantraItem[] = [
     id: "7",
     title: "Kali Mantra",
     label: "Kali Mantra",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Kali_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "kali-mantra",
   },
@@ -80,8 +73,7 @@ const mantras: MantraItem[] = [
     id: "8",
     title: "Agni Mantra",
     label: "Agni Mantra",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Agni_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "agni-mantra",
   },
@@ -89,8 +81,7 @@ const mantras: MantraItem[] = [
     id: "9",
     title: "Maha Rudrabhishek Mantras",
     label: "Maha Rudrabhishek Mantras",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Maha_Rudrabhishek_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "maha-rudrabhishek-mantras",
   },
@@ -98,8 +89,7 @@ const mantras: MantraItem[] = [
     id: "10",
     title: "Shakti Mantra",
     label: "Shakti Mantra",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Shakti_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "shakti-mantra",
   },
@@ -107,8 +97,7 @@ const mantras: MantraItem[] = [
     id: "11",
     title: "Hanuman Moola Mantra",
     label: "Hanuman Moola Mantra",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Hanuman_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "hanuman-moola-mantra",
   },
@@ -116,8 +105,7 @@ const mantras: MantraItem[] = [
     id: "12",
     title: "Krishna Mantra",
     label: "Krishna Mantra",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Krishna_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "krishna-mantra",
   },
@@ -125,8 +113,7 @@ const mantras: MantraItem[] = [
     id: "13",
     title: "Rudra Mantra",
     label: "Rudra Mantra",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Rudra_Mantra.webp",
     updatedAt: "May 21, 2025",
     slug: "rudra-mantra",
   },
@@ -134,8 +121,7 @@ const mantras: MantraItem[] = [
     id: "14",
     title: "Brihaspati Grah Mantra",
     label: "Brihaspati Grah Mantra",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Brihaspati_Mantra.webp",
     updatedAt: "May 14, 2025",
     slug: "brihaspati-grah-mantra",
   },
@@ -143,8 +129,7 @@ const mantras: MantraItem[] = [
     id: "15",
     title: "Dhanvantari Mantra",
     label: "Dhanvantari Mantra",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Dhanvantari_Mantra.webp",
     updatedAt: "May 14, 2025",
     slug: "dhanvantari-mantra",
   },
@@ -152,8 +137,7 @@ const mantras: MantraItem[] = [
     id: "16",
     title: "Sita Mantra",
     label: "Sita Mantra",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Sita_Mantra.webp",
     updatedAt: "May 14, 2025",
     slug: "sita-mantra",
   },
@@ -161,8 +145,7 @@ const mantras: MantraItem[] = [
     id: "17",
     title: "Ram Mantra",
     label: "Ram Mantra",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Ram_Mantra.webp",
     updatedAt: "May 14, 2025",
     slug: "ram-mantra",
   },
@@ -170,8 +153,7 @@ const mantras: MantraItem[] = [
     id: "18",
     title: "Tulsi Mantra",
     label: "Tulsi Mantra",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Tulsi_Mantra.webp",
     updatedAt: "May 14, 2025",
     slug: "tulsi-mantra",
   },
@@ -179,8 +161,7 @@ const mantras: MantraItem[] = [
     id: "19",
     title: "Annapurna Mantra",
     label: "Annapurna Mantra",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Annapurna_Mantra.webp",
     updatedAt: "May 13, 2025",
     slug: "annapurna-mantra",
   },
@@ -188,8 +169,7 @@ const mantras: MantraItem[] = [
     id: "20",
     title: "Navagraha Mantras",
     label: "Navagraha Mantras",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Navagraha_Mantra.webp",
     updatedAt: "May 13, 2025",
     slug: "navagraha-mantras",
   },
@@ -197,8 +177,7 @@ const mantras: MantraItem[] = [
     id: "21",
     title: "Mantras of the 12 Zodiac...",
     label: "Mantras of the 12 Zodiac",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/mantra/Zodiac_Mantra.webp",
     updatedAt: "May 13, 2025",
     slug: "zodiac-mantras",
   },

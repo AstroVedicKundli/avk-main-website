@@ -17,8 +17,7 @@ const chalisas: ChalisaItem[] = [
     id: "1",
     title: "Hanuman Chalisa",
     label: "Hanuman Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Hanuman_Chalisa.webp",
     updatedAt: "November 17, 2025",
     slug: "hanuman-chalisa",
   },
@@ -26,8 +25,7 @@ const chalisas: ChalisaItem[] = [
     id: "2",
     title: "Mahalakshmi Chalisa",
     label: "Mahalakshmi Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Mahalakshmi_Chalisa.webp",
     updatedAt: "October 18, 2025",
     slug: "mahalakshmi-chalisa",
   },
@@ -35,8 +33,7 @@ const chalisas: ChalisaItem[] = [
     id: "3",
     title: "Kaali Chalisa",
     label: "Kaali Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Kaali_Chalisa.webp",
     updatedAt: "July 9, 2025",
     slug: "kaali-chalisa",
   },
@@ -44,8 +41,7 @@ const chalisas: ChalisaItem[] = [
     id: "4",
     title: "Radha Chalisa",
     label: "Radha Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Radha_Chalisa.webp",
     updatedAt: "July 9, 2025",
     slug: "radha-chalisa",
   },
@@ -53,8 +49,7 @@ const chalisas: ChalisaItem[] = [
     id: "5",
     title: "Chant Parwati Chalisa to...",
     label: "Parwati Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Parwati_Chalisa.webp",
     updatedAt: "July 9, 2025",
     slug: "parwati-chalisa",
   },
@@ -62,8 +57,7 @@ const chalisas: ChalisaItem[] = [
     id: "6",
     title: "Santoshi Chalisa",
     label: "Santoshi Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Santoshi_Chalisa.webp",
     updatedAt: "July 9, 2025",
     slug: "santoshi-chalisa",
   },
@@ -71,8 +65,7 @@ const chalisas: ChalisaItem[] = [
     id: "7",
     title: "Tulsi Chalisa",
     label: "Tulsi Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Tulsi_Chalisa.webp",
     updatedAt: "July 9, 2025",
     slug: "tulsi-chalisa",
   },
@@ -80,8 +73,7 @@ const chalisas: ChalisaItem[] = [
     id: "8",
     title: "Chamunda Chalisa",
     label: "Chamunda Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Chamunda_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "chamunda-chalisa",
   },
@@ -89,8 +81,7 @@ const chalisas: ChalisaItem[] = [
     id: "9",
     title: "Ram Chalisa",
     label: "Ram Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Ram_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "ram-chalisa",
   },
@@ -98,8 +89,7 @@ const chalisas: ChalisaItem[] = [
     id: "10",
     title: "Durga Chalisa",
     label: "Durga Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Durga_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "durga-chalisa",
   },
@@ -107,8 +97,7 @@ const chalisas: ChalisaItem[] = [
     id: "11",
     title: "Navgrah Chalisa",
     label: "Navgrah Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Shree_Navgrah_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "navgrah-chalisa",
   },
@@ -116,8 +105,7 @@ const chalisas: ChalisaItem[] = [
     id: "12",
     title: "Saraswati Chalisa",
     label: "Saraswati Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Saraswati_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "saraswati-chalisa",
   },
@@ -125,8 +113,7 @@ const chalisas: ChalisaItem[] = [
     id: "13",
     title: "Vishnu Chalisa",
     label: "Vishnu Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Vishnu_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "vishnu-chalisa",
   },
@@ -134,8 +121,7 @@ const chalisas: ChalisaItem[] = [
     id: "14",
     title: "Surya Dev Chalisa",
     label: "Surya Dev Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Surya_Dev_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "surya-dev-chalisa",
   },
@@ -143,8 +129,7 @@ const chalisas: ChalisaItem[] = [
     id: "15",
     title: "Sheetla Chalisa",
     label: "Sheetla Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Sheetla_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "sheetla-chalisa",
   },
@@ -152,8 +137,7 @@ const chalisas: ChalisaItem[] = [
     id: "16",
     title: "Sai Baba Chalisa",
     label: "Sai Baba Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Sai_Baba_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "sai-baba-chalisa",
   },
@@ -161,8 +145,7 @@ const chalisas: ChalisaItem[] = [
     id: "17",
     title: "Shiv Chalisa",
     label: "Shiv Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Shiv_Chalisa.webp",
     updatedAt: "July 8, 2025",
     slug: "shiv-chalisa",
   },
@@ -170,19 +153,9 @@ const chalisas: ChalisaItem[] = [
     id: "18",
     title: "Bhairav Chalisa",
     label: "Bhairav Chalisa",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/chalisa/Bhairav_Chalisa.webp",
     updatedAt: "April 9, 2025",
     slug: "bhairav-chalisa",
-  },
-  {
-    id: "19",
-    title: "Hanuman Chalisa Story",
-    label: "Story of Hanuman",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
-    updatedAt: "December 9, 2024",
-    slug: "hanuman-chalisa-story",
   },
 ];
 

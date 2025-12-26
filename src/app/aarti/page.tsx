@@ -17,8 +17,7 @@ const aartis: AartiItem[] = [
     id: "1",
     title: "Dhanteras Aarti",
     label: "Dhanteras Aarti",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Dhanteras_Aarti.webp",
     updatedAt: "October 18, 2025",
     slug: "dhanteras-aarti",
   },
@@ -26,8 +25,7 @@ const aartis: AartiItem[] = [
     id: "2",
     title: "Ganesh Aarti",
     label: "Ganesh Aarti",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Ganesh_Aarti.webp",
     updatedAt: "October 18, 2025",
     slug: "ganesh-aarti",
   },
@@ -35,8 +33,7 @@ const aartis: AartiItem[] = [
     id: "3",
     title: "Govardhan Maharaj Aarti",
     label: "Govardhan Maharaj Aarti",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Govardhan_Aarti.webp",
     updatedAt: "October 15, 2025",
     slug: "govardhan-maharaj-aarti",
   },
@@ -44,8 +41,7 @@ const aartis: AartiItem[] = [
     id: "4",
     title: "Balaji Aarti",
     label: "Balaji Aarti",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Balaji_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "balaji-aarti",
   },
@@ -53,8 +49,7 @@ const aartis: AartiItem[] = [
     id: "5",
     title: "Dharmaraj Aarti",
     label: "Dharmaraj Aarti",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Dharmaraj_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "dharmaraj-aarti",
   },
@@ -62,8 +57,7 @@ const aartis: AartiItem[] = [
     id: "6",
     title: "Lalita Aarti",
     label: "Lalita Aarti",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Lalita_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "lalita-aarti",
   },
@@ -71,8 +65,7 @@ const aartis: AartiItem[] = [
     id: "7",
     title: "Ramayan Aarti",
     label: "Ramayan Aarti",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Ramayan_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "ramayan-aarti",
   },
@@ -80,8 +73,7 @@ const aartis: AartiItem[] = [
     id: "8",
     title: "Sankata Aarti",
     label: "Sankata Aarti",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Sankata_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "sankata-aarti",
   },
@@ -89,8 +81,7 @@ const aartis: AartiItem[] = [
     id: "9",
     title: "Ekadashi Aarti",
     label: "Ekadashi Aarti",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Ekadashi_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "ekadashi-aarti",
   },
@@ -98,8 +89,7 @@ const aartis: AartiItem[] = [
     id: "10",
     title: "Gorakhnath Aarti",
     label: "Gorakhnath Aarti",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Gorakhnath_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "gorakhnath-aarti",
   },
@@ -107,8 +97,7 @@ const aartis: AartiItem[] = [
     id: "11",
     title: "Siddhivinayak Aarti",
     label: "Siddhivinayak Aarti",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Siddhivinayak_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "siddhivinayak-aarti",
   },
@@ -116,8 +105,7 @@ const aartis: AartiItem[] = [
     id: "12",
     title: "Vishwakarma Aarti",
     label: "Vishwakarma Aarti",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Vishwakarma_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "vishwakarma-aarti",
   },
@@ -125,8 +113,7 @@ const aartis: AartiItem[] = [
     id: "13",
     title: "Ahoi Aarti in English",
     label: "Ahoi Aarti",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Ahoi_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "ahoi-aarti",
   },
@@ -134,8 +121,7 @@ const aartis: AartiItem[] = [
     id: "14",
     title: "Bharat Mata Aarti",
     label: "Bharat Mata Aarti",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Bharat_Mata_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "bharat-mata-aarti",
   },
@@ -143,8 +129,7 @@ const aartis: AartiItem[] = [
     id: "15",
     title: "Kartikeya Aarti",
     label: "Kartikeya Aarti",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Kartikeya_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "kartikeya-aarti",
   },
@@ -152,8 +137,7 @@ const aartis: AartiItem[] = [
     id: "16",
     title: "Bhagavad Gita Aarti",
     label: "Bhagavad Gita Aarti",
-    image:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Bhagavad_Gita_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "bhagavad-gita-aarti",
   },
@@ -161,8 +145,7 @@ const aartis: AartiItem[] = [
     id: "17",
     title: "Dattachi Aarti",
     label: "Dattachi Aarti",
-    image:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Dattachi_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "dattachi-aarti",
   },
@@ -170,8 +153,7 @@ const aartis: AartiItem[] = [
     id: "18",
     title: "Annapurna Aarti",
     label: "Annapurna Aarti",
-    image:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=200&h=200&fit=crop&q=80",
+    image: "/puja/aarti/Annapurna_Aarti.webp",
     updatedAt: "July 15, 2025",
     slug: "annapurna-aarti",
   },
@@ -225,7 +207,7 @@ export default function AartiPage() {
                 className="flex items-center gap-4 bg-white rounded-lg p-3 hover:shadow-md transition-all border border-gray-100"
               >
                 {/* Image with Label */}
-                <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-[#FF9800]">
+                <div className="relative w-28 h-28 flex-shrink-0 rounded-lg overflow-hidden bg-[#FF9800]">
                   <Image
                     src={aarti.image}
                     alt={aarti.title}

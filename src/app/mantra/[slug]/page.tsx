@@ -17,8 +17,7 @@ interface MantraDetail {
 const mantraData: Record<string, MantraDetail> = {
   "laxmi-mantra": {
     title: "Laxmi Mantra",
-    bannerImage:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/mantra/slug/Laxmi_Mantra.webp",
     description:
       "Explore the most sacred Laxmi Mata Mantra. This devotional chant invokes the blessings of Goddess Lakshmi for financial growth, success, and overall well-being.",
     mantraTitle: "Lakshmi Moola Mantra",
@@ -36,8 +35,7 @@ const mantraData: Record<string, MantraDetail> = {
   },
   "ganesh-mantra": {
     title: "Ganesha Mantras",
-    bannerImage:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/mantra/slug/Ganesha_Mantra.webp",
     description:
       "Chant the powerful Ganesha Mantra to remove obstacles from your path. Lord Ganesha is the remover of obstacles and the god of beginnings.",
     mantraTitle: "Ganesh Moola Mantra",
@@ -54,8 +52,7 @@ const mantraData: Record<string, MantraDetail> = {
   },
   "hanuman-moola-mantra": {
     title: "Hanuman Moola Mantra",
-    bannerImage:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/mantra/slug/Hanuman_Mantra.webp",
     description:
       "The Hanuman Moola Mantra invokes the strength and devotion of Lord Hanuman. Chant this mantra for courage, protection, and to overcome fears.",
     mantraTitle: "Hanuman Moola Mantra",
@@ -90,8 +87,7 @@ const mantraData: Record<string, MantraDetail> = {
   },
   "krishna-mantra": {
     title: "Krishna Mantra",
-    bannerImage:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/mantra/slug/Krishna_Mantra.webp",
     description:
       "The Krishna Mantra fills your heart with divine love and joy. Lord Krishna's mantras bring happiness, peace, and spiritual enlightenment.",
     mantraTitle: "Krishna Moola Mantra",
@@ -104,6 +100,295 @@ const mantraData: Record<string, MantraDetail> = {
       "Enhances devotion to the divine",
       "Removes mental stress and anxiety",
       "Brings spiritual enlightenment",
+    ],
+  },
+  "ganesha-mantras": {
+    // Alias slug for list page, reusing Ganesh mantra content
+    title: "Ganesha Mantras",
+    bannerImage: "/puja/mantra/slug/Ganesha_Mantra.webp",
+    description:
+      "Chant these sacred Ganesha mantras to seek the blessings of Lord Ganesha for new beginnings, removal of obstacles, and success in every step of life.",
+    mantraTitle: "Ganesha Mantra",
+    mantraText: "Om Gam Ganapataye Namaha",
+    meaning:
+      "We bow to Lord Ganesha, the remover of obstacles and the lord of wisdom. Regular chanting brings clarity, confidence, and support in all important actions.",
+    benefits: [
+      "Removes obstacles before important tasks",
+      "Brings confidence and clarity of mind",
+      "Supports success in studies and career",
+      "Creates auspicious energy at home and work",
+    ],
+  },
+  "chhath-puja-mantra": {
+    title: "Chhath Puja Mantra",
+    bannerImage: "/puja/mantra/slug/Chhath_Mantra.webp",
+    description:
+      "Chhath Puja mantras are dedicated to Surya Dev and Chhathi Maiya. They are chanted to express gratitude for life, health, and prosperity.",
+    mantraTitle: "Chhath Puja Mantra",
+    mantraText: "Om Adityaaya Namah",
+    meaning:
+      "Salutations to the radiant Sun God, who nourishes and sustains all life. This mantra is a prayer for strength, health, and well-being.",
+    benefits: [
+      "Brings vitality and good health",
+      "Supports success through hard work and discipline",
+      "Increases gratitude and positivity",
+      "Connects you with the energy of the Sun",
+    ],
+  },
+  "govardhan-mantra": {
+    title: "Govardhan Mantra",
+    bannerImage: "/puja/mantra/slug/Govardhan_Mantra.webp",
+    description:
+      "Govardhan Mantra is chanted in devotion to Lord Krishna and Govardhan Hill, symbolizing divine protection and shelter.",
+    mantraTitle: "Govardhan Mantra",
+    mantraText: "Om Giridhari Govardhan Dhaari Namah",
+    meaning:
+      "We bow to the Lord who lifted Govardhan Hill to protect his devotees. The mantra is a reminder that divine grace always supports sincere hearts.",
+    benefits: [
+      "Invokes protection from difficulties",
+      "Strengthens faith in divine support",
+      "Brings peace during challenging times",
+      "Encourages humility and devotion",
+    ],
+  },
+  "radha-mantra": {
+    title: "Radha Mantra",
+    bannerImage: "/puja/mantra/slug/Radha_Mantra.webp",
+    description:
+      "Radha Mantra connects the devotee with the pure love and devotion of Shri Radha, the eternal consort of Lord Krishna.",
+    mantraTitle: "Radha Mantra",
+    mantraText: "Om Radha Krishnaya Namah",
+    meaning:
+      "Salutations to Radha and Krishna together, the embodiment of divine love and harmony. Chanting brings sweetness and devotion into the heart.",
+    benefits: [
+      "Deepens devotion and bhakti",
+      "Heals emotional hurts and loneliness",
+      "Brings harmony to relationships",
+      "Opens the heart to unconditional love",
+    ],
+  },
+  "narayan-mantra": {
+    title: "Narayan Mantra",
+    bannerImage: "/puja/mantra/slug/Narayan_Mantra.webp",
+    description:
+      "Narayan Mantra invokes Lord Narayan, the all-pervading form of Vishnu who preserves and sustains the universe.",
+    mantraTitle: "Narayan Mantra",
+    mantraText: "Om Namo Narayanaya",
+    meaning:
+      "We bow to Lord Narayan, the supreme protector and source of peace. The mantra calms the mind and reminds us of our divine center.",
+    benefits: [
+      "Brings inner peace and stability",
+      "Protects from negativity and fear",
+      "Supports spiritual discipline and sadhana",
+      "Strengthens faith in divine guidance",
+    ],
+  },
+  "kali-mantra": {
+    title: "Kali Mantra",
+    bannerImage: "/puja/mantra/slug/Kali_Mantra.webp",
+    description:
+      "Kali Mantra is chanted to call upon Maa Kali, who destroys negativity and grants fearlessness.",
+    mantraTitle: "Kali Mantra",
+    mantraText: "Om Kreem Kalikayai Namah",
+    meaning:
+      "We bow to Maa Kali, the fierce form of the Divine Mother who cuts away ignorance, fear, and inner darkness.",
+    benefits: [
+      "Removes deep-seated fears and blockages",
+      "Destroys negative patterns and habits",
+      "Increases courage and inner power",
+      "Supports rapid spiritual transformation",
+    ],
+  },
+  "agni-mantra": {
+    title: "Agni Mantra",
+    bannerImage: "/puja/mantra/slug/Agni_Mantra.webp",
+    description:
+      "Agni Mantra honors the sacred fire, symbol of transformation, purity, and divine witness in every ritual.",
+    mantraTitle: "Agni Mantra",
+    mantraText: "Om Agnaye Namah",
+    meaning:
+      "Salutations to Agni, the fire that purifies and carries our prayers to the divine realms.",
+    benefits: [
+      "Purifies thoughts and intentions",
+      "Supports disciplined spiritual practice",
+      "Strengthens willpower and determination",
+      "Helps burn away past negativity",
+    ],
+  },
+  "maha-rudrabhishek-mantras": {
+    title: "Maha Rudrabhishek Mantras",
+    bannerImage: "/puja/mantra/slug/Maha_Rudrabhishek_Mantra.webp",
+    description:
+      "These mantras are recited during Maha Rudrabhishek to worship Lord Shiva in his Rudra form through abhishek and chanting.",
+    mantraTitle: "Maha Rudra Mantra",
+    mantraText: "Om Namo Bhagavate Rudraya",
+    meaning:
+      "We bow to Lord Rudra, the powerful and compassionate aspect of Shiva who destroys sorrow and grants liberation.",
+    benefits: [
+      "Removes intense karmic blocks",
+      "Brings strength during difficult periods",
+      "Purifies the environment and mind",
+      "Supports deep spiritual austerities",
+    ],
+  },
+  "shakti-mantra": {
+    title: "Shakti Mantra",
+    bannerImage: "/puja/mantra/slug/Shakti_Mantra.webp",
+    description:
+      "Shakti Mantra awakens the divine feminine energy within, bringing dynamism, creativity, and confidence.",
+    mantraTitle: "Shakti Mantra",
+    mantraText: "Om Aim Hreem Kleem Chamundayai Vichche",
+    meaning:
+      "This mantra invokes the combined energy of wisdom, power, and protection of the Divine Mother.",
+    benefits: [
+      "Increases spiritual and physical energy",
+      "Supports courage and self-expression",
+      "Protects from subtle negative influences",
+      "Helps manifest positive change in life",
+    ],
+  },
+  "rudra-mantra": {
+    title: "Rudra Mantra",
+    bannerImage: "/puja/mantra/slug/Rudra_Mantra.webp",
+    description:
+      "Rudra Mantra is dedicated to Lord Shiva in his fierce aspect as Rudra, who destroys suffering and grants fearlessness.",
+    mantraTitle: "Rudra Mantra",
+    mantraText: "Om Rudraya Namah",
+    meaning:
+      "We bow to Lord Rudra, who removes deep-rooted sorrow and purifies the soul.",
+    benefits: [
+      "Helps release anger and restlessness",
+      "Protects during challenging transitions",
+      "Strengthens inner stability and focus",
+      "Supports deep meditation on Shiva",
+    ],
+  },
+  "brihaspati-grah-mantra": {
+    title: "Brihaspati Grah Mantra",
+    bannerImage: "/puja/mantra/slug/Brihaspati_Mantra.webp",
+    description:
+      "Brihaspati Mantra is chanted to strengthen the positive influence of Jupiter, the planet of wisdom, expansion, and blessings.",
+    mantraTitle: "Brihaspati Mantra",
+    mantraText: "Om Brim Brihaspataye Namah",
+    meaning:
+      "Salutations to Brihaspati, the divine teacher and guide who grants knowledge, fortune, and dharma.",
+    benefits: [
+      "Improves judgment and decision-making",
+      "Supports success in education and teaching",
+      "Attracts blessings and good fortune",
+      "Balances Jupiter-related astrological issues",
+    ],
+  },
+  "dhanvantari-mantra": {
+    title: "Dhanvantari Mantra",
+    bannerImage: "/puja/mantra/slug/Dhanvantari_Mantra.webp",
+    description:
+      "Dhanvantari Mantra is dedicated to Lord Dhanvantari, the divine physician and source of Ayurvedic wisdom.",
+    mantraTitle: "Dhanvantari Mantra",
+    mantraText: "Om Namo Bhagavate Dhanvantaraye",
+    meaning:
+      "We bow to Lord Dhanvantari, who grants health, vitality, and freedom from disease.",
+    benefits: [
+      "Supports healing and recovery",
+      "Strengthens immunity and vitality",
+      "Blesses doctors and healers in their work",
+      "Helps remove fear related to illness",
+    ],
+  },
+  "sita-mantra": {
+    title: "Sita Mantra",
+    bannerImage: "/puja/mantra/slug/Sita_Mantra.webp",
+    description:
+      "Sita Mantra invokes the grace of Maa Sita, symbol of purity, devotion, and unwavering strength.",
+    mantraTitle: "Sita Mantra",
+    mantraText: "Om Sita Ramaya Namah",
+    meaning:
+      "We bow to Sita and Ram together, calling in their blessings of dharma, love, and endurance.",
+    benefits: [
+      "Brings patience and emotional strength",
+      "Heals pain related to relationships",
+      "Inspires righteous living and faith",
+      "Creates harmony within family life",
+    ],
+  },
+  "ram-mantra": {
+    title: "Ram Mantra",
+    bannerImage: "/puja/mantra/slug/Ram_Mantra.webp",
+    description:
+      "Ram Mantra is one of the simplest yet most powerful mantras, filling life with courage, clarity, and devotion.",
+    mantraTitle: "Ram Mantra",
+    mantraText: "Shri Ram Jai Ram Jai Jai Ram",
+    meaning:
+      "Glory to Lord Ram, who upholds dharma and shows the path of righteousness and compassion.",
+    benefits: [
+      "Steadies the mind in times of stress",
+      "Brings courage to follow dharma",
+      "Purifies the heart from negativity",
+      "Creates a protective aura of devotion",
+    ],
+  },
+  "tulsi-mantra": {
+    title: "Tulsi Mantra",
+    bannerImage: "/puja/mantra/slug/Tulsi_Mantra.webp",
+    description:
+      "Tulsi Mantra honors the sacred Tulsi plant, bringing purity, protection, and divine grace into the home.",
+    mantraTitle: "Tulsi Mantra",
+    mantraText: "Om Tulasi Devyai Namah",
+    meaning:
+      "We bow to Goddess Tulsi, who purifies the environment and supports devotion to Lord Vishnu.",
+    benefits: [
+      "Purifies the home and surroundings",
+      "Supports health and immunity",
+      "Increases devotion and sattvic qualities",
+      "Brings peace and harmony in family life",
+    ],
+  },
+  "annapurna-mantra": {
+    title: "Annapurna Mantra",
+    bannerImage: "/puja/mantra/slug/Annapurna_Mantra.webp",
+    description:
+      "Annapurna Mantra is chanted to Maa Annapurna, the giver of food, nourishment, and abundance.",
+    mantraTitle: "Annapurna Mantra",
+    mantraText: "Om Annapurnayai Namah",
+    meaning:
+      "We bow to Maa Annapurna, who ensures that her devotees are protected from hunger and scarcity.",
+    benefits: [
+      "Removes fear of lack and scarcity",
+      "Blesses the home with steady nourishment",
+      "Encourages sharing and generosity",
+      "Brings gratitude for everyday blessings",
+    ],
+  },
+  "navagraha-mantras": {
+    title: "Navagraha Mantras",
+    bannerImage: "/puja/mantra/slug/Navagraha_Mantra.webp",
+    description:
+      "Navagraha Mantras are chanted to balance the influences of the nine planets and invite harmony into life.",
+    mantraTitle: "Navagraha Mantra",
+    mantraText: "Om Navagrahaya Namah",
+    meaning:
+      "We bow to all nine planetary energies, seeking their blessings for balance, prosperity, and protection.",
+    benefits: [
+      "Helps ease challenging planetary periods",
+      "Brings balance to different areas of life",
+      "Supports success in important endeavors",
+      "Improves overall peace of mind",
+    ],
+  },
+  "zodiac-mantras": {
+    title: "Mantras of the 12 Zodiac",
+    bannerImage: "/puja/mantra/slug/Zodiac_Mantra.webp",
+    description:
+      "These mantras are connected with the 12 zodiac signs and are chanted to align personal energy with cosmic rhythms.",
+    mantraTitle: "Zodiac Mantra",
+    mantraText: "Om Rashi Devatabhyo Namah",
+    meaning:
+      "We bow to the deities ruling the zodiac signs, inviting support in living in harmony with our true nature.",
+    benefits: [
+      "Supports self-understanding through astrology",
+      "Helps align actions with favorable times",
+      "Reduces stress about destiny and fate",
+      "Encourages conscious, mindful choices",
     ],
   },
 };

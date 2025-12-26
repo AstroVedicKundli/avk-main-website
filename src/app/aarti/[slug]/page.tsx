@@ -16,8 +16,7 @@ interface AartiDetail {
 const aartiData: Record<string, AartiDetail> = {
   "dhanteras-aarti": {
     title: "Dhanteras Aarti",
-    bannerImage:
-      "https://images.unsplash.com/photo-1609941337459-81f1e7dce70e?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/aarti/slug/Dhanteras_Aarti.webp",
     description:
       "Celebrate Diwali with Dhanteras Aarti! Invoke blessings of Dhanvantari & Lakshmi for health, wealth & prosperity. Start your festival with divine grace.",
     lyricsIntro:
@@ -36,8 +35,7 @@ const aartiData: Record<string, AartiDetail> = {
   },
   "ganesh-aarti": {
     title: "Ganesh Aarti",
-    bannerImage:
-      "https://images.unsplash.com/photo-1567591414240-e9c1e6e3c6f3?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/aarti/slug/Ganesh_Aarti.webp",
     description:
       "Invoke the blessings of Lord Ganesha with this beautiful Aarti. Remove obstacles and bring prosperity into your life with divine grace.",
     lyricsIntro:
@@ -56,8 +54,7 @@ const aartiData: Record<string, AartiDetail> = {
   },
   "govardhan-maharaj-aarti": {
     title: "Govardhan Maharaj Aarti",
-    bannerImage:
-      "https://images.unsplash.com/photo-1621275471769-e6aa344546d5?w=1200&h=600&fit=crop&q=80",
+    bannerImage: "/puja/aarti/slug/Govardhan_Aarti.webp",
     description:
       "Sing the divine Govardhan Maharaj Aarti and seek blessings from the sacred mountain lifted by Lord Krishna.",
     lyricsIntro:
@@ -70,6 +67,57 @@ const aartiData: Record<string, AartiDetail> = {
       "Om Jai Shri Govardhan, Girdhari Lal Ki.",
     ],
   },
+  "balaji-aarti": {
+    title: "Balaji Aarti",
+    bannerImage: "/puja/aarti/slug/Balaji_Aarti.webp",
+    description:
+      "Offer your prayers to Lord Balaji with this soulful aarti that invokes his grace for protection, prosperity, and spiritual strength.",
+    lyricsIntro:
+      "Shri Balaji Aarti is a special prayer for Lord Balaji (Lord Venkateshwara). It is very powerful and helps remove all problems from our life. When we sing or listen to this Aarti every day, Lord Balaji gets happy and takes away our troubles. It is especially good to chant the Aarti on Tuesdays and Saturdays. By doing this, we can also be freed from the bad effects of Shani (Saturn). Regularly reciting this Aarti brings blessings, peace, and protection in life. It helps us face difficulties and brings good things into our life.",
+    lyricsTitle: "Balaji Aarti in English",
+    lyrics: [
+      "Om Jai Hanumat Veera, Swami Jai Hanumat Veera, Sankat Mochan Swami, Tum Ho Randheera.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Pawan Putra Anjani Soot, Mahima Ati Bhaari, Dukh Daridra Mitao, Sankat Sab Haari.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Baal Samay Mein Tumne, Ravi Ko Bhaksh Liya, Devan Stuti Kinhi, Turath Hi Chhod Diya.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Kapi Sugreev Ram Sang, Maitri Karwayi, Abhimani Bali Metayo, Kirti Rahi Chhayi.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Jari Lanka Siya-Sudhi Le Aaye, Vanar Harshaaye, Kaaraj Kathin Sudhaare, Raghubar Man Bhaye.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Shakti Lagi Lakshman Ko, Bhaari Soch Bhayo, Laay Sanjeevan Booti, Dukh Sab Door Kiyo.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Ramahi Le Ahiravan, Jab Pataal Gayo, Tahi Maari Prabhu Laaye, Jai Jaikaar Bhayo.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Raajat Mehandipur Mein, Darshan Sukhkaari, Mangal Aur Shanishchar, Mela Hai Jaari.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+      "Shri Balaji Ki Aarti, Jo Koi Nar Gaave, Kahat Indra Harshit, Manvaanchhit Phal Paave.",
+      "॥ Om Jai Hanumat Veera.. ॥",
+    ],
+  },
+};
+
+// Local banner images mapped by slug (firstName_Aarti pattern)
+const aartiBannerImages: Record<string, string> = {
+  "dhanteras-aarti": "/puja/aarti/slug/Dhanteras_Aarti.webp",
+  "ganesh-aarti": "/puja/aarti/slug/Ganesh_Aarti.webp",
+  "govardhan-maharaj-aarti": "/puja/aarti/slug/Govardhan_Aarti.webp",
+  "balaji-aarti": "/puja/aarti/slug/Balaji_Aarti.webp",
+  "dharmaraj-aarti": "/puja/aarti/slug/Dharmaraj_Aarti.webp",
+  "lalita-aarti": "/puja/aarti/slug/Lalita_Aarti.webp",
+  "ramayan-aarti": "/puja/aarti/slug/Ramayan_Aarti.webp",
+  "sankata-aarti": "/puja/aarti/slug/Sankata_Aarti.webp",
+  "ekadashi-aarti": "/puja/aarti/slug/Ekadashi_Aarti.webp",
+  "gorakhnath-aarti": "/puja/aarti/slug/Gorakhnath_Aarti.webp",
+  "siddhivinayak-aarti": "/puja/aarti/slug/Siddhivinayak_Aarti.webp",
+  "vishwakarma-aarti": "/puja/aarti/slug/Vishwakarma_Aarti.webp",
+  "ahoi-aarti": "/puja/aarti/slug/Ahoi_Aarti.webp",
+  "bharat-mata-aarti": "/puja/aarti/slug/Bharat_Mata_Aarti.webp",
+  "kartikeya-aarti": "/puja/aarti/slug/Kartikeya_Aarti.webp",
+  "bhagavad-gita-aarti": "/puja/aarti/slug/Bhagavad_Gita_Aarti.webp",
+  "dattachi-aarti": "/puja/aarti/slug/Dattachi_Aarti.webp",
+  "annapurna-aarti": "/puja/aarti/slug/Annapurna_Aarti.webp",
 };
 
 // Default aarti data for slugs not in the database
@@ -93,14 +141,24 @@ export default function AartiDetailPage() {
   const params = useParams();
   const slug = params.slug as string;
 
-  // Get aarti data or use default
-  const aarti = aartiData[slug] || {
-    ...defaultAarti,
-    title: slug
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" "),
-  };
+  const computedTitle = slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  const bannerImage = aartiBannerImages[slug];
+
+  // Get aarti data or use default, and always prefer local banner image when available
+  const aarti: AartiDetail = aartiData[slug]
+    ? {
+        ...aartiData[slug],
+        bannerImage: bannerImage || aartiData[slug].bannerImage,
+      }
+    : {
+        ...defaultAarti,
+        title: computedTitle,
+        bannerImage: bannerImage || defaultAarti.bannerImage,
+      };
 
   return (
     <div className="min-h-screen bg-white">
