@@ -6,18 +6,33 @@ import Link from "next/link";
 export default function HeroCarousel() {
   return (
     <>
-      <section className="relative w-full h-[75vh] md:h-[70vh] overflow-hidden bg-[#fcf3e4]">
+      <section className="relative w-full h-[75vh] md:h-[55vh] lg:h-[70vh] overflow-hidden bg-[#fcf3e4]">
         <div className="relative w-full h-full">
-          {/* Banner Image */}
-          <Image
-            src="/banner-1.png"
-            alt="Astro Vedic Kundli - Manish Aggarwal"
-            fill
-            priority
-            className="object-contain object-center"
-            sizes="100vw"
-            unoptimized
-          />
+          {/* Mobile Banner Image */}
+          <div className="block md:hidden absolute inset-0">
+            <Image
+              src="/home-banner-mobile.png"
+              alt="Astro Vedic Kundli - Manish Aggarwal"
+              fill
+              priority
+              className="object-contain object-center"
+              sizes="100vw"
+              unoptimized
+            />
+          </div>
+
+          {/* Desktop Banner Image */}
+          <div className="hidden md:block absolute inset-0">
+            <Image
+              src="/banner-1.png"
+              alt="Astro Vedic Kundli - Manish Aggarwal"
+              fill
+              priority
+              className="object-contain object-center"
+              sizes="100vw"
+              unoptimized
+            />
+          </div>
         </div>
       </section>
 
