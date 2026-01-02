@@ -13,6 +13,7 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Horoscope", href: "/horoscope" },
     { name: "Matchmaking", href: "/matchmaking" },
+    { name: "Panchang", href: "/panchang" },
     { name: "Yatra", href: "/yatra" },
     { name: "Puja", href: "/puja" },
   ];
