@@ -7,13 +7,12 @@ import { useState } from "react";
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [predictionsOpen, setPredictionsOpen] = useState(false);
+  const [libraryOpen, setLibraryOpen] = useState(false);
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "Kundli", href: "/kundli" },
     { name: "Horoscope", href: "/horoscope" },
     { name: "Matchmaking", href: "/matchmaking" },
-    { name: "Services", href: "/services" },
     { name: "Yatra", href: "/yatra" },
     { name: "Puja", href: "/puja" },
   ];
@@ -21,6 +20,12 @@ export default function Header() {
   const predictionsDropdown = [
     { name: "Stock Market 2026", href: "/predictions/stock-market-2026" },
     { name: "Commodities 2026", href: "/predictions/commodities-2026" },
+  ];
+
+  const libraryDropdown = [
+    { name: "Aarti", href: "/aarti" },
+    { name: "Chalisa", href: "/chalisa" },
+    { name: "Mantra", href: "/mantra" },
   ];
 
   return (
@@ -56,6 +61,48 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+
+            {/* Library Dropdown */}
+            <div
+              className="relative z-50"
+              onMouseEnter={() => setLibraryOpen(true)}
+              onMouseLeave={() => setLibraryOpen(false)}
+            >
+              <button className="text-sm font-semibold leading-6 text-[#333355] hover:text-[#FF7B60] transition-colors flex items-center gap-1">
+                Library
+                <svg
+                  className={`h-4 w-4 transition-transform ${
+                    libraryOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              {libraryOpen && (
+                <div className="absolute top-full left-0 pt-2">
+                  <div className="w-56 rounded-lg bg-white shadow-xl ring-1 ring-black ring-opacity-5 overflow-hidden">
+                    {libraryDropdown.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block px-4 py-3 text-sm font-semibold text-[#333355] hover:bg-[#333355]/5 hover:text-[#FF7B60] transition-all"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
 
             {/* Predictions Dropdown */}
             <div
@@ -169,12 +216,12 @@ export default function Header() {
               </Link>
             ))}
 
-            {/* Predictions Section in Mobile */}
+            {/* Library Section in Mobile */}
             <div className="pt-2">
               <div className="text-xs font-bold text-[#333355]/60 px-4 py-2">
-                Predictions
+                Library
               </div>
-              {predictionsDropdown.map((item, index) => (
+              {libraryDropdown.map((item, index) => (
                 <Link
                   key={item.name}
                   href={item.href}
@@ -193,6 +240,30 @@ export default function Header() {
               ))}
             </div>
 
+            {/* Predictions Section in Mobile */}
+            <div className="pt-2">
+              <div className="text-xs font-bold text-[#333355]/60 px-4 py-2">
+                Predictions
+              </div>
+              {predictionsDropdown.map((item, index) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block rounded-lg px-4 py-3 pl-8 text-base font-semibold text-[#333355] hover:bg-[#333355]/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    animation: mobileMenuOpen
+                      ? `slideIn 0.3s ease-out ${
+                          (navigation.length + libraryDropdown.length + index) * 0.05
+                        }s both`
+                      : "none",
+                  }}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+
             <div className="pt-4">
               <Link
                 href="/consult-now"
@@ -201,7 +272,7 @@ export default function Header() {
                 style={{
                   animation: mobileMenuOpen
                     ? `slideIn 0.3s ease-out ${
-                        (navigation.length + predictionsDropdown.length) * 0.05
+                        (navigation.length + libraryDropdown.length + predictionsDropdown.length) * 0.05
                       }s both`
                     : "none",
                 }}

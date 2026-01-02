@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 interface AartiItem {
   id: string;
@@ -160,6 +161,13 @@ const aartis: AartiItem[] = [
 ];
 
 export default function AartiPage() {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredAartis = aartis.filter((aarti) =>
+    aarti.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    aarti.label.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="min-h-screen bg-white">
       {/* Breadcrumb */}
@@ -187,20 +195,47 @@ export default function AartiPage() {
         </div>
       </div>
 
-      {/* Page Title */}
+      {/* Page Title and Search Bar */}
       <div className="px-4 md:px-6 lg:px-8 pb-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           <h1 className="text-2xl md:text-3xl font-bold text-[#333355]">
             Aarti
           </h1>
+          <div className="relative w-full max-w-md">
+            <input
+              type="text"
+              placeholder="Search Aarti..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF9800] focus:border-transparent"
+            />
+            <svg
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
         </div>
       </div>
 
       {/* Aarti Grid */}
       <div className="px-4 md:px-6 lg:px-8 pb-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {aartis.map((aarti) => (
+          {filteredAartis.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500 text-lg">No aartis found matching your search.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {filteredAartis.map((aarti) => (
               <Link
                 key={aarti.id}
                 href={`/aarti/${aarti.slug}`}
@@ -233,8 +268,9 @@ export default function AartiPage() {
                   </p>
                 </div>
               </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
