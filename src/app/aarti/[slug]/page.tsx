@@ -294,25 +294,35 @@ export default function AartiDetailPage() {
           </p>
 
           {/* Lyrics Section */}
-          <h2 className="text-xl md:text-2xl font-bold text-[#333355] mb-4">
+          <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#FF7B60] to-[#FFB59F] bg-clip-text text-transparent mb-6">
             {aarti.title} Lyrics
           </h2>
 
-          <p className="text-gray-600 leading-relaxed mb-8">
-            {aarti.lyricsIntro}
-          </p>
+          <div className="bg-gradient-to-br from-[#FFF8F5] to-white rounded-2xl p-6 md:p-8 mb-8 border border-[#FFB59F]/20 shadow-lg">
+            <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+              {aarti.lyricsIntro}
+            </p>
+          </div>
 
           {/* Aarti in English */}
-          <h3 className="text-lg md:text-xl font-bold text-[#333355] mb-4">
+          <h3 className="text-lg md:text-xl font-bold text-[#333355] mb-6 flex items-center gap-3">
+            <span className="w-1 h-6 bg-gradient-to-b from-[#FF7B60] to-[#FFB59F] rounded-full"></span>
             {aarti.lyricsTitle}
           </h3>
 
-          <div className="space-y-4">
-            {aarti.lyrics.map((line, index) => (
-              <p key={index} className="text-gray-700 leading-relaxed italic">
-                {line}
-              </p>
-            ))}
+          <div className="bg-gradient-to-br from-white via-[#FFF8F5] to-white rounded-2xl p-6 md:p-8 border border-[#FFB59F]/30 shadow-lg">
+            <div className="space-y-6">
+              {aarti.lyrics.map((line, index) => (
+                <div key={index} className="flex items-start gap-4 group">
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-[#FF7B60] to-[#FFB59F] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white text-xs font-bold">{index + 1}</span>
+                  </div>
+                  <p className="text-gray-800 leading-relaxed text-base md:text-lg italic flex-1 pt-1">
+                    {line}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
