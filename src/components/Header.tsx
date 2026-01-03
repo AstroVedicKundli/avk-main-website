@@ -27,6 +27,7 @@ export default function Header() {
     { name: "Aarti", href: "/aarti" },
     { name: "Chalisa", href: "/chalisa" },
     { name: "Mantra", href: "/mantra" },
+    { name: "Stotra", href: "/stotra" },
   ];
 
   return (
