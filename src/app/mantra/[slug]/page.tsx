@@ -12,6 +12,7 @@ interface MantraDetail {
   mantraText: string;
   meaning: string;
   benefits: string[];
+  rituals?: { day: string; title: string; description: string }[];
 }
 
 const mantraData: Record<string, MantraDetail> = {
@@ -123,16 +124,49 @@ const mantraData: Record<string, MantraDetail> = {
     title: "Chhath Puja Mantra",
     bannerImage: "/puja/mantra/slug/Chhath_Mantra.webp",
     description:
-      "Chhath Puja mantras are dedicated to Surya Dev and Chhathi Maiya. They are chanted to express gratitude for life, health, and prosperity.",
-    mantraTitle: "Chhath Puja Mantra",
-    mantraText: "Om Adityaaya Namah",
+      "Explore the full Chhath Puja Mantra. This sacred chant is dedicated to the Sun God and is recited to invoke divine blessings, gratitude, and positive energy.",
+    mantraTitle: "Chhath Puja Mantra Lyrics",
+    mantraText: `Om Ehi Surya Dev Sahastransho Tejo Rashi Jagatpate, Anukampaya Maam Bhaktya Grihanardhya Divakarah.
+
+Om Suryaaya Namah.
+
+Om Aadityaya Namah
+
+Om Namo Bhaskaraaya Namah
+
+Om Ghrinim Suryah Aadityah
+
+Om Hreem Hreem Suryaaya Sahasrakiranaya Manovanchhit Phalam Dehi Dehi Swaha`,
     meaning:
-      "Salutations to the radiant Sun God, who nourishes and sustains all life. This mantra is a prayer for strength, health, and well-being.",
+      "Chhath Puja is an important festival celebrated in the eastern parts of India, especially in Bihar, Jharkhand, and Uttar Pradesh. This festival lasts for four days, during which people worship the Sun God and Chhathi Maiya. It is believed that observing Chhath Puja brings blessings of happiness, prosperity, good health, and children. Offering Arghya to the Sun God is very important during Chhath Puja. While chanting these mantras during the offering, the Sun God is believed to become pleased quickly.",
     benefits: [
-      "Brings vitality and good health",
-      "Supports success through hard work and discipline",
-      "Increases gratitude and positivity",
-      "Connects you with the energy of the Sun",
+      "Brings blessings of happiness and prosperity",
+      "Grants good health and longevity",
+      "Invokes divine blessings for children",
+      "Strengthens connection with the Sun God",
+      "Brings positive energy and vitality",
+    ],
+    rituals: [
+      {
+        day: "Day 1",
+        title: "Bath and Eat (Nahay Khay)",
+        description: "The first day of Chhath Puja is called Nahay Khay. On this day, people clean their houses and take a bath in a river or pond. They bring some water home to cook food. Devotees eat only one meal, which includes split chickpeas and rice."
+      },
+      {
+        day: "Day 2",
+        title: "Fasting and Special Meal (Kharna)",
+        description: "The second day is called Kharna. Devotees do not eat or drink anything the whole day. In the evening, after sunset, they eat kheer (a sweet dish made with jaggery and sugarcane juice)."
+      },
+      {
+        day: "Day 3",
+        title: "Evening Offering to the Sun (Sandhya Arghya)",
+        description: "The third day is called Sandhya Arghya. On this day, devotees prepare special prasad like Thekua (a sweet wheat snack) and Kachvaniya (rice laddoo). Male family members take a bamboo basket filled with coconut, fruits, and other puja items to the riverbank. In the evening, they offer water to the setting sun and pray."
+      },
+      {
+        day: "Day 4",
+        title: "Morning Offering to the Sun (Usha Arghya)",
+        description: "The fourth and last day is called Usha Arghya. Devotees wake up early in the morning and go to the riverbank before sunrise. They offer water to the rising sun and pray. After the prayer, they share prasad with family and friends."
+      }
     ],
   },
   "govardhan-mantra": {
@@ -574,23 +608,26 @@ export default function MantraDetailPage() {
       <div className="px-4 md:px-6 lg:px-8 pb-16">
         <div className="max-w-4xl mx-auto">
           {/* Title */}
-          <h1 className="text-2xl md:text-3xl font-bold text-[#333355] mb-4">
+          <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-[#FF7B60] via-[#FF9F87] to-[#FFB59F] bg-clip-text text-transparent mb-6">
             {mantra.title}
           </h1>
 
           {/* Description */}
-          <p className="text-gray-600 leading-relaxed mb-8">
-            {mantra.description}
-          </p>
+          <div className="bg-gradient-to-br from-[#FFF8F5] to-white rounded-2xl p-6 md:p-8 mb-8 border border-[#FFB59F]/20 shadow-lg">
+            <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+              {mantra.description}
+            </p>
+          </div>
 
           {/* Mantra Section */}
-          <h2 className="text-xl md:text-2xl font-bold text-[#333355] mb-4">
+          <h2 className="text-xl md:text-2xl font-bold text-[#333355] mb-6 flex items-center gap-3">
+            <span className="w-1 h-6 bg-gradient-to-b from-[#FF7B60] to-[#FFB59F] rounded-full"></span>
             {mantra.mantraTitle}
           </h2>
 
           {/* Mantra Box */}
-          <div className="relative bg-gray-50 rounded-xl p-6 mb-8 border border-gray-100">
-            <p className="text-lg text-gray-800 italic leading-relaxed pr-8">
+          <div className="relative bg-gradient-to-br from-[#FFF8F5] via-white to-[#FFF8F5] rounded-2xl p-8 md:p-10 mb-10 border-2 border-[#FFB59F]/30 shadow-xl">
+            <p className="text-lg text-gray-800 italic leading-relaxed pr-8 whitespace-pre-line">
               &ldquo;{mantra.mantraText}&rdquo;
             </p>
             {/* Copy Button */}
@@ -616,25 +653,67 @@ export default function MantraDetailPage() {
           </div>
 
           {/* Meaning Section */}
-          <h2 className="text-xl md:text-2xl font-bold text-[#333355] mb-4">
+          <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#FF7B60] to-[#FFB59F] bg-clip-text text-transparent mb-6">
             Meaning:
           </h2>
 
-          <p className="text-gray-600 leading-relaxed mb-8">{mantra.meaning}</p>
+          <div className="bg-gradient-to-br from-[#FFF8F5] to-white rounded-2xl p-6 md:p-8 mb-10 border border-[#FFB59F]/20 shadow-lg">
+            <p className="text-gray-700 leading-relaxed text-base md:text-lg">{mantra.meaning}</p>
+          </div>
 
           {/* Benefits Section */}
-          <h2 className="text-xl md:text-2xl font-bold text-[#333355] mb-4">
+          <h2 className="text-xl md:text-2xl font-bold bg-gradient-to-r from-[#FF7B60] to-[#FFB59F] bg-clip-text text-transparent mb-6">
             Benefits:
           </h2>
 
-          <ul className="space-y-3">
-            {mantra.benefits.map((benefit, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-[#FF9800] rounded-full mt-2 flex-shrink-0"></span>
-                <span className="text-gray-600 leading-relaxed">{benefit}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="bg-gradient-to-br from-white via-[#FFF8F5] to-white rounded-2xl p-6 md:p-8 mb-8 border border-[#FFB59F]/30 shadow-lg">
+            <ul className="space-y-4">
+              {mantra.benefits.map((benefit, index) => (
+                <li key={index} className="flex items-start gap-4 group">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-[#FF7B60] to-[#FFB59F] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300 mt-0.5">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-700 leading-relaxed text-base md:text-lg flex-1">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Rituals Section (if available) */}
+          {mantra.rituals && mantra.rituals.length > 0 && (
+            <>
+              <h2 className="text-xl md:text-2xl font-bold text-[#333355] mb-6">
+                Chhath Puja Rituals
+              </h2>
+
+              <div className="space-y-6">
+                {mantra.rituals.map((ritual, index) => (
+                  <div key={index} className="bg-gradient-to-r from-[#FFF8F5] to-white rounded-xl p-6 border border-[#FFB59F]/20 hover:shadow-lg transition-all duration-300">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#FF7B60] to-[#FFB59F] flex items-center justify-center shadow-lg">
+                        <span className="text-white font-bold text-sm">{index + 1}</span>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="text-xs font-bold text-[#FF7B60] bg-[#FF7B60]/10 px-3 py-1 rounded-full">
+                            {ritual.day}
+                          </span>
+                          <h3 className="text-lg font-bold text-[#333355]">
+                            {ritual.title}
+                          </h3>
+                        </div>
+                        <p className="text-gray-600 leading-relaxed">
+                          {ritual.description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
