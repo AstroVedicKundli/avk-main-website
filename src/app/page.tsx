@@ -25,7 +25,7 @@ export default function Home() {
         <LearningSection />
 
         {/* Yatra Section */}
-        <YatraSection />
+        {/* <YatraSection /> */}
 
         {/* Testimonials Section */}
         <TestimonialsSection />

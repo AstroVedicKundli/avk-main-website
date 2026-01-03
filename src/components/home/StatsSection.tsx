@@ -1,27 +1,27 @@
 export default function StatsSection() {
   const stats = [
     {
-      number: "200k",
-      label: "Kundli\nServed",
+      number: "75",
+      label: "Attached\nWith\nGuru Kul",
     },
     {
-      number: "50+",
-      label: "Years Of\nLegacy",
+      number: "1Lac+",
+      label: "Puja\nAnusthan\nDone",
     },
     {
-      number: "50k+",
+      number: "5k+",
       label: "Students\nEnrolled",
     },
     {
-      number: "100k+",
+      number: "50k+",
       label: "Consultations\nGiven",
     },
     {
-      number: "5+",
-      label: "Languages\nFor\nReports",
+      number: "50+",
+      label: "Mantra\nSpecialized\nAttached\nTemple",
     },
     {
-      number: "20+",
+      number: "25+",
       label: "Awards in\nthe field\nof Occult",
     },
   ];
