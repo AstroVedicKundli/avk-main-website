@@ -6,29 +6,23 @@ export default function Footer() {
 
   const footerLinks = {
     services: [
-      { name: "Birth Chart", href: "/kundli" },
-      { name: "Daily Horoscope", href: "/horoscope" },
+      { name: "Horoscope", href: "/horoscope" },
       { name: "Matchmaking", href: "/matchmaking" },
-      { name: "Gemstone Consultation", href: "/gemstones" },
-      { name: "Numerology", href: "/numerology" },
+      { name: "Panchang", href: "/panchang" },
+      { name: "Puja", href: "https://pooja.astrovedickundli.com/", external: true },
+      { name: "Yatra", href: "/yatra" },
     ],
     resources: [
-      { name: "Blog", href: "/blog" },
-      { name: "Zodiac Signs", href: "/zodiac" },
-      { name: "Planetary Transit", href: "/transit" },
-      { name: "Vedic Astrology", href: "/vedic" },
-      { name: "FAQs", href: "/faq" },
+      { name: "Aarti", href: "/aarti" },
+      { name: "Chalisa", href: "/chalisa" },
+      { name: "Mantra", href: "/mantra" },
+      { name: "Stotra", href: "/stotra" },
     ],
     company: [
       { name: "About Us", href: "/about" },
       { name: "Our Astrologers", href: "/astrologers" },
       { name: "Testimonials", href: "/testimonials" },
       { name: "Contact Us", href: "/contact" },
-    ],
-    legal: [
-      { name: "Privacy Policy", href: "/privacy" },
-      { name: "Terms of Service", href: "/terms" },
-      { name: "Disclaimer", href: "/disclaimer" },
     ],
   };
 
@@ -194,12 +188,23 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.services.map((item) => (
                 <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
-                  >
-                    {item.name}
-                  </Link>
+                  {"external" in item && item.external ? (
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
+                    >
+                      {item.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -224,26 +229,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company & Legal Links */}
+          {/* Company Links */}
           <div>
             <h3 className="text-sm font-semibold text-[#B91C2E] mb-4">
               Company
             </h3>
-            <ul className="space-y-3 mb-6">
-              {footerLinks.company.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <h3 className="text-sm font-semibold text-[#B91C2E] mb-4">Legal</h3>
             <ul className="space-y-3">
-              {footerLinks.legal.map((item) => (
+              {footerLinks.company.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
@@ -260,8 +252,7 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="mt-12 border-t border-black/10 pt-8">
           <p className="text-sm text-black/60 text-center">
-            &copy; {currentYear} Astro Vedic Kundli. All rights reserved. Made
-            with ❤️ for cosmic souls.
+            &copy; {currentYear} Astro Vedic Kundli. All rights reserved.
           </p>
         </div>
       </div>

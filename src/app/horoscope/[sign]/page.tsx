@@ -313,47 +313,47 @@ export default function ZodiacSignPage({
   ] as const;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f5f3f7] to-[#ebe9ed] pb-16">
+    <div className="min-h-screen bg-[#FCF3E4] pb-16">
       {/* Dark Header Banner */}
-      <div className="bg-gradient-to-b from-[#3a2f52] via-[#4a3565] to-[#2d2440] pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Starry Background Effect */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-1 h-1 bg-orange-400 rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-20 w-1 h-1 bg-pink-400 rounded-full animate-pulse"></div>
-          <div className="absolute top-60 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse"></div>
-          <div className="absolute top-32 right-1/3 w-1 h-1 bg-purple-400 rounded-full animate-pulse"></div>
-          <div className="absolute top-24 right-1/2 w-1 h-1 bg-yellow-400 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-8 left-20 w-1 h-1 bg-red-400 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-16 right-40 w-1 h-1 bg-green-400 rounded-full animate-pulse"></div>
+      <div className="bg-[#F5E6D8] pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Decorative dots */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-1 h-1 bg-[#B91C2E] rounded-full animate-pulse"></div>
+          <div className="absolute top-40 right-20 w-1 h-1 bg-[#B91C2E] rounded-full animate-pulse"></div>
+          <div className="absolute top-60 left-1/4 w-1 h-1 bg-[#333355] rounded-full animate-pulse"></div>
+          <div className="absolute top-32 right-1/3 w-1 h-1 bg-[#333355] rounded-full animate-pulse"></div>
+          <div className="absolute top-24 right-1/2 w-1 h-1 bg-[#B91C2E] rounded-full animate-pulse"></div>
+          <div className="absolute bottom-8 left-20 w-1 h-1 bg-[#333355] rounded-full animate-pulse"></div>
+          <div className="absolute bottom-16 right-40 w-1 h-1 bg-[#B91C2E] rounded-full animate-pulse"></div>
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10">
           {/* Header Section */}
           <div className="text-center mb-6">
-            <p className="text-sm text-white/60 uppercase tracking-wider mb-4">
+            <p className="text-sm text-[#B91C2E] font-bold uppercase tracking-wider mb-4">
               DAILY
             </p>
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#333355]">
                 {signData.name} Horoscope
               </h1>
               {/* Change Sign Dropdown */}
               <div className="flex justify-center">
                 <select
-                  className="bg-transparent border border-white/30 text-white px-6 py-3 rounded-lg text-sm cursor-pointer hover:border-white/50 transition-colors appearance-none pr-10 bg-[url('data:image/svg+xml;charset=UTF-8,%3csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%227%22%20viewBox%3D%220%200%2012%207%22%3E%3cpath%20fill%3D%22%23ffffff%22%20d%3D%22M1%200l5%205%205-5z%22%2F%3E%3c%2Fsvg%3E')] bg-no-repeat bg-right bg-origin-content"
+                  className="bg-white border border-[#333355]/20 text-[#333355] px-6 py-3 rounded-lg text-sm cursor-pointer hover:border-[#B91C2E] transition-colors appearance-none pr-10"
                   value={sign}
                   onChange={(e) =>
                     (window.location.href = `/horoscope/${e.target.value}`)
                   }
                 >
-                  <option value="" disabled className="bg-[#3a2f52] text-white">
+                  <option value="" disabled className="bg-white text-[#333355]">
                     Change sign
                   </option>
                   {Object.keys(zodiacData).map((zodiacSign) => (
                     <option
                       key={zodiacSign}
                       value={zodiacSign}
-                      className="bg-[#3a2f52] text-white"
+                      className="bg-white text-[#333355]"
                     >
                       {zodiacData[zodiacSign].name}
                     </option>
@@ -366,9 +366,9 @@ export default function ZodiacSignPage({
       </div>
 
       {/* Content Section */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-[60]">
         {/* Tabs Navigation for Time-based Horoscope */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-t-2xl border-b border-gray-200 shadow-sm">
+        <div className="bg-[#f9f1ea] rounded-t-2xl border-b border-black/10 shadow-sm">
           <div className="flex flex-wrap justify-center gap-2 p-4">
             {tabs.map((tab) => (
               <button
@@ -403,7 +403,7 @@ export default function ZodiacSignPage({
         </div>
 
         {/* Content Area */}
-        <div className="bg-white rounded-b-2xl shadow-2xl p-8 md:p-12">
+        <div className="bg-[#FCF3E4] rounded-b-2xl shadow-2xl p-8 md:p-12">
           {/* Date Display for daily horoscopes */}
           {(activeTab === "yesterday" ||
             activeTab === "today" ||
@@ -433,21 +433,12 @@ export default function ZodiacSignPage({
                   <button
                     key={category.id}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`px-6 py-3 text-xs font-bold uppercase tracking-wide transition-all rounded-lg flex items-center gap-2 ${
+                    className={`px-6 py-3 text-xs font-bold uppercase tracking-wide transition-all rounded-lg ${
                       activeCategory === category.id
-                        ? "bg-gradient-to-r " +
-                          (category.id === "love"
-                            ? "from-pink-500 to-rose-500"
-                            : category.id === "career"
-                            ? "from-blue-500 to-indigo-500"
-                            : category.id === "money"
-                            ? "from-green-500 to-emerald-500"
-                            : "from-orange-500 to-amber-500") +
-                          " text-white shadow-lg"
+                        ? "bg-[#B91C2E] text-white shadow-lg"
                         : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                     }`}
                   >
-                    <span>{category.icon}</span>
                     {category.label}
                   </button>
                 ))}
@@ -456,9 +447,7 @@ export default function ZodiacSignPage({
             {/* Category Content - Expanded inline */}
             {activeCategory !== "daily" && (
               <div className="mt-8">
-                <div
-                  className={`bg-gradient-to-r ${categoryContent[activeCategory].color} rounded-2xl p-8 md:p-10 mb-6`}
-                >
+                <div className="bg-[#B91C2E] rounded-2xl p-8 md:p-10 mb-6">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 text-white">
                       {categoryContent[activeCategory].icon}
@@ -489,7 +478,6 @@ export default function ZodiacSignPage({
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-5 border border-gray-200">
                     <div className="text-center">
-                      <div className="text-3xl mb-2">⭐</div>
                       <p className="text-sm font-semibold text-[#333355]">
                         Lucky Number
                       </p>
@@ -500,7 +488,6 @@ export default function ZodiacSignPage({
                   </div>
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-5 border border-gray-200">
                     <div className="text-center">
-                      <div className="text-3xl mb-2">🎨</div>
                       <p className="text-sm font-semibold text-[#333355]">
                         Lucky Color
                       </p>
@@ -511,7 +498,6 @@ export default function ZodiacSignPage({
                   </div>
                   <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-5 border border-gray-200">
                     <div className="text-center">
-                      <div className="text-3xl mb-2">⏰</div>
                       <p className="text-sm font-semibold text-[#333355]">
                         Best Time
                       </p>
