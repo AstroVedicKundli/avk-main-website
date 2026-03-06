@@ -169,7 +169,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-16 px-6 md:px-8 lg:px-12 bg-white">
+    <section className="py-16 px-6 md:px-8 lg:px-12 bg-[#FCF3E4]">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <div className="mb-8 md:mb-10">
@@ -209,8 +209,8 @@ export default function TestimonialsSection() {
                 key={testimonial.id}
                 className={`rounded-2xl p-6 md:p-8 shadow-xl min-h-[240px] md:min-h-[280px] flex flex-col justify-between flex-shrink-0 ${
                   index === 0
-                    ? "bg-gradient-to-br from-[#2B2D42] to-[#1a1b2e] text-white"
-                    : "bg-[#F5F5F5] text-[#333355]"
+                    ? "bg-gradient-to-br from-[#B91C2E] to-[#7f1220] text-white"
+                    : "bg-white text-[#333355] shadow-md"
                 }`}
                 style={{
                   width: `calc((100% - ${
@@ -226,7 +226,7 @@ export default function TestimonialsSection() {
                 {/* Client Info */}
                 <div className="flex items-center gap-3 md:gap-4">
                   {/* Avatar */}
-                  <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[#FF7B60] to-[#ff6a4d] rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg shadow-lg">
+                  <div className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center text-white font-bold text-base md:text-lg shadow-lg ${index === 0 ? "bg-white/20" : "bg-[#333355]"}`}>
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
@@ -257,18 +257,18 @@ export default function TestimonialsSection() {
                 {currentIndex > 0 && (
                   <button
                     onClick={() => goToSlide(currentIndex - 1)}
-                    className="w-2 h-2 rounded-full bg-[#8B4513]/30 hover:bg-[#8B4513]/50 transition-all flex-shrink-0"
+                    className="w-2 h-2 rounded-full bg-[#333355]/30 hover:bg-[#333355]/50 transition-all flex-shrink-0"
                     aria-label={`Go to slide ${currentIndex}`}
                   />
                 )}
                 <button
-                  className="w-8 h-2 rounded-full bg-[#8B4513] transition-all flex-shrink-0"
+                  className="w-8 h-2 rounded-full bg-[#333355] transition-all flex-shrink-0"
                   aria-label={`Current slide ${currentIndex + 1}`}
                 />
                 {currentIndex < maxIndex && (
                   <button
                     onClick={() => goToSlide(currentIndex + 1)}
-                    className="w-2 h-2 rounded-full bg-[#8B4513]/30 hover:bg-[#8B4513]/50 transition-all flex-shrink-0"
+                    className="w-2 h-2 rounded-full bg-[#333355]/30 hover:bg-[#333355]/50 transition-all flex-shrink-0"
                     aria-label={`Go to slide ${currentIndex + 2}`}
                   />
                 )}
@@ -277,7 +277,7 @@ export default function TestimonialsSection() {
               // Tablet/Desktop: Show progress bar
               <div className="flex-1 max-w-xs h-1 bg-[#333355]/20 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-[#8B4513] rounded-full transition-all duration-300"
+                  className="h-full bg-[#333355] rounded-full transition-all duration-300"
                   style={{
                     width: `${((currentIndex + 1) / (maxIndex + 1)) * 100}%`,
                   }}
@@ -290,7 +290,7 @@ export default function TestimonialsSection() {
           <div className="flex gap-2">
             <button
               onClick={prevSlide}
-              className="w-9 h-9 md:w-10 md:h-10 bg-[#8B4513] text-white rounded-lg hover:bg-[#723A0F] transition-all flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-9 h-9 md:w-10 md:h-10 bg-[#333355] text-white rounded-lg hover:bg-[#1a1b2e] transition-all flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Previous testimonials"
             >
               <svg
@@ -309,7 +309,7 @@ export default function TestimonialsSection() {
             </button>
             <button
               onClick={nextSlide}
-              className="w-9 h-9 md:w-10 md:h-10 bg-[#8B4513] text-white rounded-lg hover:bg-[#723A0F] transition-all flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-9 h-9 md:w-10 md:h-10 bg-[#333355] text-white rounded-lg hover:bg-[#1a1b2e] transition-all flex items-center justify-center shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Next testimonials"
             >
               <svg

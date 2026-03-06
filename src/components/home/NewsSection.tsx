@@ -57,7 +57,7 @@ export default function NewsSection() {
   const sideStories = newsItems.filter((item) => !item.featured);
 
   return (
-    <section className="py-16 px-6 md:px-8 lg:px-12 bg-[#F5F5F5]">
+    <section className="py-16 px-6 md:px-8 lg:px-12 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Heading */}
         <div className="flex justify-between items-center mb-8">

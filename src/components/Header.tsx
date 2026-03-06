@@ -15,7 +15,7 @@ export default function Header() {
     { name: "Matchmaking", href: "/matchmaking" },
     { name: "Panchang", href: "/panchang" },
     { name: "Yatra", href: "/yatra" },
-    { name: "Puja", href: "/puja" },
+    { name: "Puja", href: "https://pooja.astrovedickundli.com/", external: true },
   ];
 
   const predictionsDropdown = [
@@ -41,11 +41,11 @@ export default function Header() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <Image
-                src="/logo_transparent.png"
+                src="/avk-logo.webp"
                 alt="Astro Vedic Kundli"
-                width={120}
-                height={32}
-                className="h-8 w-auto object-contain"
+                width={160}
+                height={42}
+                className="h-10 w-auto object-contain"
                 priority
                 unoptimized
               />
@@ -54,15 +54,27 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:gap-x-8 lg:items-center">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-sm font-semibold leading-6 text-[#333355] hover:text-[#FF7B60] transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) =>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold leading-6 text-[#333355] hover:text-[#FF7B60] transition-colors"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm font-semibold leading-6 text-[#333355] hover:text-[#FF7B60] transition-colors"
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
 
             {/* Library Dropdown */}
             <div
@@ -153,7 +165,7 @@ export default function Header() {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link
               href="/consult-now"
-              className="rounded-full bg-[#333355] px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#2a2a45] transition-all"
+              className="rounded-full bg-[#B91C2E] px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#7f1220] transition-all"
             >
               Consult Now
             </Link>
@@ -202,21 +214,39 @@ export default function Header() {
           }`}
         >
           <div className="px-4 pb-6 pt-2 space-y-1 border-t border-[#333355]/10">
-            {navigation.map((item, index) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block rounded-lg px-4 py-3 text-base font-semibold text-[#333355] hover:bg-[#333355]/5 transition-all"
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  animation: mobileMenuOpen
-                    ? `slideIn 0.3s ease-out ${index * 0.05}s both`
-                    : "none",
-                }}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item, index) =>
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block rounded-lg px-4 py-3 text-base font-semibold text-[#333355] hover:bg-[#333355]/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    animation: mobileMenuOpen
+                      ? `slideIn 0.3s ease-out ${index * 0.05}s both`
+                      : "none",
+                  }}
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block rounded-lg px-4 py-3 text-base font-semibold text-[#333355] hover:bg-[#333355]/5 transition-all"
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    animation: mobileMenuOpen
+                      ? `slideIn 0.3s ease-out ${index * 0.05}s both`
+                      : "none",
+                  }}
+                >
+                  {item.name}
+                </Link>
+              )
+            )}
 
             {/* Library Section in Mobile */}
             <div className="pt-2">
@@ -269,7 +299,7 @@ export default function Header() {
             <div className="pt-4">
               <Link
                 href="/consult-now"
-                className="block w-full rounded-full px-4 py-3 text-center text-base font-bold text-white bg-[#333355] hover:bg-[#2a2a45] transition-all shadow-md"
+                className="block w-full rounded-full px-4 py-3 text-center text-base font-bold text-white bg-[#B91C2E] hover:bg-[#7f1220] transition-all shadow-md"
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
                   animation: mobileMenuOpen

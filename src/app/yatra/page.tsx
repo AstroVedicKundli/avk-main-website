@@ -9,19 +9,35 @@ export default function YatraPage() {
   return (
     <div className="min-h-screen bg-[#fcf3e4]">
       {/* Hero Banner Section */}
-      <div className="pt-20 w-full">
-        <div className="relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh]">
-          <Image
-            src="/yatra/yatra_tours_banner.png"
-            alt="Spiritual Yatra Tours"
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="100vw"
-            unoptimized
-          />
+      <section className="relative w-full h-[75vh] md:h-[55vh] lg:h-[70vh] overflow-hidden bg-[#fcf3e4] pt-20">
+        <div className="relative w-full h-full">
+          {/* Mobile Banner */}
+          <div className="block md:hidden absolute inset-0">
+            <Image
+              src="/yatra/yatra_tours_banner_mobile.png"
+              alt="Spiritual Yatra Tours"
+              fill
+              priority
+              className="object-contain object-center"
+              sizes="100vw"
+              unoptimized
+            />
+          </div>
+
+          {/* Desktop Banner */}
+          <div className="hidden md:block absolute inset-0">
+            <Image
+              src="/yatra/yatra_tours_banner.png"
+              alt="Spiritual Yatra Tours"
+              fill
+              priority
+              className="object-contain object-center"
+              sizes="100vw"
+              unoptimized
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Trending Destinations Section */}
       <TrendingDestinations />

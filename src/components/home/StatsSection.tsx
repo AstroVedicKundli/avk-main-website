@@ -2,11 +2,11 @@ export default function StatsSection() {
   const stats = [
     {
       number: "75",
-      label: "Attached\nWith\nGuru Kul",
+      label: "Attached to\nGuru Kul",
     },
     {
       number: "1Lac+",
-      label: "Puja\nAnusthan\nDone",
+      label: "Puja Anusthan\nDone",
     },
     {
       number: "5k+",
@@ -18,16 +18,16 @@ export default function StatsSection() {
     },
     {
       number: "50+",
-      label: "Mantra\nSpecialized\nAttached\nTemple",
+      label: "Specialized\nTemples",
     },
     {
       number: "25+",
-      label: "Awards in\nthe field\nof Occult",
+      label: "Occult\nAwards",
     },
   ];
 
   return (
-    <section className="py-8 px-6 md:px-8 lg:px-12 bg-[#F5F5F5]">
+    <section className="py-8 px-6 md:px-8 lg:px-12 bg-[#FCF3E4]">
       <div className="max-w-7xl mx-auto">
         <div className="bg-[#333355] rounded-3xl p-8 md:p-12 lg:p-16 shadow-2xl">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">

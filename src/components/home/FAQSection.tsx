@@ -31,14 +31,14 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="py-16 px-6 md:px-8 lg:px-12 bg-white">
+    <section className="py-16 px-6 md:px-8 lg:px-12 bg-[#FCF3E4]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left Column - Heading */}
           <div className="lg:sticky lg:top-32">
             <div className="inline-flex items-center gap-2 mb-4">
               <svg
-                className="w-5 h-5 text-[#8B4414]"
+                className="w-5 h-5 text-[#B91C2E]"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -48,13 +48,13 @@ export default function FAQSection() {
                   clipRule="evenodd"
                 />
               </svg>
-              <span className="text-sm font-semibold text-[#8B4414] uppercase tracking-wide">
+              <span className="text-sm font-semibold text-[#B91C2E] uppercase tracking-wide">
                 Frequently asked questions
               </span>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#333355] mb-4">
               Frequently asked{" "}
-              <span className="text-[#8B4414]">questions</span>
+              <span className="text-[#B91C2E]">questions</span>
             </h2>
             <p className="text-base text-[#333355]/70 leading-relaxed">
               Get answers to common questions about our astrology services,
@@ -79,7 +79,7 @@ export default function FAQSection() {
                     {faq.question}
                   </span>
                   <div
-                    className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#8B4414] flex items-center justify-center transition-transform duration-300 ${
+                    className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#B91C2E] flex items-center justify-center transition-transform duration-300 ${
                       openIndex === index ? "rotate-180" : ""
                     }`}
                   >

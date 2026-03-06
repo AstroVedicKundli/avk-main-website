@@ -6,7 +6,7 @@ export default function AboutSection() {
       <div className="max-w-5xl mx-auto">
         <div className="space-y-6 text-center">
           {/* Small Heading */}
-          <p className="text-sm font-bold text-[#8B4414] uppercase tracking-wide">
+          <p className="text-sm font-bold text-[#B91C2E] uppercase tracking-wide">
             About Manish Aggarwal
           </p>
 
@@ -16,9 +16,9 @@ export default function AboutSection() {
           </h2>
 
           {/* Experience Badge */}
-          <div className="inline-flex items-center gap-2 px-6 py-2 bg-[#8B4414]/10 rounded-full">
-            <div className="w-2 h-2 bg-[#8B4414] rounded-full"></div>
-            <p className="text-xs font-bold text-[#8B4414] tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-6 py-2 bg-[#B91C2E]/10 rounded-full">
+            <div className="w-2 h-2 bg-[#B91C2E] rounded-full"></div>
+            <p className="text-xs font-bold text-[#B91C2E] tracking-widest uppercase">
               Since 2007 - 18 Years of Experience
             </p>
           </div>
@@ -46,7 +46,7 @@ export default function AboutSection() {
           <div className="pt-6">
             <Link
               href="/consultation"
-              className="inline-flex items-center gap-2 bg-[#8B4414] text-white px-8 py-3 rounded-lg font-bold text-sm hover:bg-[#723A0F] transition-all shadow-md hover:shadow-lg transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-[#B91C2E] text-white px-8 py-3 rounded-lg font-bold text-sm hover:bg-[#7f1220] transition-all shadow-md hover:shadow-lg transform hover:scale-105"
             >
               ENQUIRY NOW
               <svg

@@ -72,22 +72,22 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#333355] border-t border-[#333355]">
+    <footer className="bg-[#F5E6D8] border-t border-black/10">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 lg:py-16">
         <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           {/* Brand Section */}
           <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="mb-4 inline-block">
               <Image
-                src="/logo_transparent.png"
+                src="/avk-logo.webp"
                 alt="Astro Vedic Kundli"
-                width={150}
-                height={40}
-                className="h-10 w-auto object-contain"
+                width={180}
+                height={48}
+                className="h-12 w-auto object-contain"
                 unoptimized
               />
             </Link>
-            <p className="text-sm text-[#FCF3E4]/70 mb-6">
+            <p className="text-sm text-black/70 mb-6">
               Discover your cosmic destiny through ancient Vedic wisdom and
               personalized astrological insights.
             </p>
@@ -97,7 +97,7 @@ export default function Footer() {
               {/* Address */}
               <div className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-[#FF7B60] flex-shrink-0 mt-0.5"
+                  className="w-5 h-5 text-[#B91C2E] flex-shrink-0 mt-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -115,7 +115,7 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <p className="text-sm text-[#FCF3E4]/70">
+                <p className="text-sm text-black/70">
                   PACEPRO co-works F-4 sec-8
                   <br />
                   Noida-201301
@@ -125,7 +125,7 @@ export default function Footer() {
               {/* Phone */}
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-5 h-5 text-[#FF7B60] flex-shrink-0"
+                  className="w-5 h-5 text-[#B91C2E] flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -139,7 +139,7 @@ export default function Footer() {
                 </svg>
                 <a
                   href="tel:+919711595019"
-                  className="text-sm text-[#FCF3E4]/70 hover:text-[#FF7B60] transition-colors"
+                  className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
                 >
                   +91 97115 95019
                 </a>
@@ -148,7 +148,7 @@ export default function Footer() {
               {/* Email */}
               <div className="flex items-center gap-3">
                 <svg
-                  className="w-5 h-5 text-[#FF7B60] flex-shrink-0"
+                  className="w-5 h-5 text-[#B91C2E] flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -162,7 +162,7 @@ export default function Footer() {
                 </svg>
                 <a
                   href="mailto:info@astrovedickundli.com"
-                  className="text-sm text-[#FCF3E4]/70 hover:text-[#FF7B60] transition-colors"
+                  className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
                 >
                   info@astrovedickundli.com
                 </a>
@@ -177,7 +177,7 @@ export default function Footer() {
                   href={item.href}
                   target={item.href !== "#" ? "_blank" : undefined}
                   rel={item.href !== "#" ? "noopener noreferrer" : undefined}
-                  className="text-[#FCF3E4]/60 hover:text-[#FF7B60] transition-colors"
+                  className="text-black/50 hover:text-[#B91C2E] transition-colors"
                 >
                   <span className="sr-only">{item.name}</span>
                   {item.icon}
@@ -188,7 +188,7 @@ export default function Footer() {
 
           {/* Services Links */}
           <div>
-            <h3 className="text-sm font-semibold text-[#FCF3E4] mb-4">
+            <h3 className="text-sm font-semibold text-[#B91C2E] mb-4">
               Our Services
             </h3>
             <ul className="space-y-3">
@@ -196,7 +196,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-[#FCF3E4]/70 hover:text-[#FF7B60] transition-colors"
+                    className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -207,7 +207,7 @@ export default function Footer() {
 
           {/* Resources Links */}
           <div>
-            <h3 className="text-sm font-semibold text-[#FCF3E4] mb-4">
+            <h3 className="text-sm font-semibold text-[#B91C2E] mb-4">
               Resources
             </h3>
             <ul className="space-y-3">
@@ -215,7 +215,7 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-[#FCF3E4]/70 hover:text-[#FF7B60] transition-colors"
+                    className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -226,7 +226,7 @@ export default function Footer() {
 
           {/* Company & Legal Links */}
           <div>
-            <h3 className="text-sm font-semibold text-[#FCF3E4] mb-4">
+            <h3 className="text-sm font-semibold text-[#B91C2E] mb-4">
               Company
             </h3>
             <ul className="space-y-3 mb-6">
@@ -234,20 +234,20 @@ export default function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-[#FCF3E4]/70 hover:text-[#FF7B60] transition-colors"
+                    className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
                   >
                     {item.name}
                   </Link>
                 </li>
               ))}
             </ul>
-            <h3 className="text-sm font-semibold text-[#FCF3E4] mb-4">Legal</h3>
+            <h3 className="text-sm font-semibold text-[#B91C2E] mb-4">Legal</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-[#FCF3E4]/70 hover:text-[#FF7B60] transition-colors"
+                    className="text-sm text-black/70 hover:text-[#B91C2E] transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -258,8 +258,8 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 border-t border-[#FCF3E4]/20 pt-8">
-          <p className="text-sm text-[#FCF3E4]/60 text-center">
+        <div className="mt-12 border-t border-black/10 pt-8">
+          <p className="text-sm text-black/60 text-center">
             &copy; {currentYear} Astro Vedic Kundli. All rights reserved. Made
             with ❤️ for cosmic souls.
           </p>
