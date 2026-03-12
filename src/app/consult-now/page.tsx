@@ -1,479 +1,654 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
-import type { Expertise } from "@/data/astrologers";
-import { astrologers, expertiseOptions } from "@/data/astrologers";
+import Script from "next/script";
+import { useEffect, useMemo, useState } from "react";
 
-const ratingOptions = [
-	{ value: "All", label: "All Ratings" },
-	{ value: "4.5", label: "4.5+" },
-	{ value: "4.7", label: "4.7+" },
-	{ value: "4.8", label: "4.8+" },
-	{ value: "4.9", label: "4.9+" },
-];
+import {
+  getConsultationAmountInr,
+  validateStepOneDetails,
+} from "@/lib/consultNow/pricing";
+import type {
+  BookingContactDetails,
+  PaymentVerificationPayload,
+  SlotOption,
+} from "@/lib/consultNow/types";
 
-const experienceOptions = [
-	{ value: "All", label: "All Experience" },
-	{ value: "5", label: "5+ yrs" },
-	{ value: "10", label: "10+ yrs" },
-	{ value: "15", label: "15+ yrs" },
-	{ value: "20", label: "20+ yrs" },
-];
+declare global {
+  interface Window {
+    Razorpay?: new (options: Record<string, unknown>) => {
+      open: () => void;
+    };
+  }
+}
 
-const priceOptions = [
-	{ value: "All", label: "All Prices" },
-	{ value: "30", label: "Up to ₹30" },
-	{ value: "35", label: "Up to ₹35" },
-	{ value: "40", label: "Up to ₹40" },
-	{ value: "45", label: "Up to ₹45" },
-];
+type ConfirmationPayload = {
+  bookingId: string;
+  amountInr: number;
+  selectedDate: string;
+  selectedSlot: { label: string };
+  calendar?: { meetLink?: string; created?: boolean; reason?: string };
+  whatsapp?: { sent?: boolean; reason?: string };
+};
+
+const stepLabels = ["Details", "Slot", "Payment"];
+
+const defaultDetails: BookingContactDetails = {
+  fullName: "",
+  phoneNumber: "",
+  email: "",
+  whatsappNumber: "",
+  consultationMode: "online",
+  nationality: "indian",
+};
+
+function getTodayYmd(): string {
+  return new Date().toISOString().slice(0, 10);
+}
 
 export default function ConsultationPage() {
-	const [expertiseFilter, setExpertiseFilter] = useState<Expertise[]>([]);
-	const [languageFilter, setLanguageFilter] = useState<string[]>([]);
-	const [minRating, setMinRating] = useState<string>("All");
-	const [minExperience, setMinExperience] = useState<string>("All");
-	const [maxPrice, setMaxPrice] = useState<string>("All");
-	const [expertiseOpen, setExpertiseOpen] = useState(false);
-	const [languageOpen, setLanguageOpen] = useState(false);
-	const [ratingOpen, setRatingOpen] = useState(false);
-	const [experienceOpen, setExperienceOpen] = useState(false);
-	const [priceOpen, setPriceOpen] = useState(false);
-	const expertiseRef = useRef<HTMLDivElement | null>(null);
-	const languageRef = useRef<HTMLDivElement | null>(null);
-	const ratingRef = useRef<HTMLDivElement | null>(null);
-	const experienceRef = useRef<HTMLDivElement | null>(null);
-	const priceRef = useRef<HTMLDivElement | null>(null);
+  const isRazorpayEnabled = process.env.NEXT_PUBLIC_ENABLE_RAZORPAY !== "false";
+  const [step, setStep] = useState(1);
+  const [details, setDetails] = useState<BookingContactDetails>(defaultDetails);
+  const [sameAsPhone, setSameAsPhone] = useState(true);
+  const [fieldErrors, setFieldErrors] = useState<
+    Partial<Record<keyof BookingContactDetails, string>>
+  >({});
+  const [selectedDate, setSelectedDate] = useState(getTodayYmd());
+  const [slots, setSlots] = useState<SlotOption[]>([]);
+  const [slotsLoading, setSlotsLoading] = useState(false);
+  const [selectedSlotId, setSelectedSlotId] = useState("");
+  const [paymentMessage, setPaymentMessage] = useState("");
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [scriptReady, setScriptReady] = useState(false);
+  const [confirmation, setConfirmation] = useState<ConfirmationPayload | null>(
+    null
+  );
 
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-			const target = event.target as Node;
-			const isInsideFilter =
-				(expertiseRef.current && expertiseRef.current.contains(target)) ||
-				(languageRef.current && languageRef.current.contains(target)) ||
-				(ratingRef.current && ratingRef.current.contains(target)) ||
-				(experienceRef.current && experienceRef.current.contains(target)) ||
-				(priceRef.current && priceRef.current.contains(target));
+  const amountInr = useMemo(
+    () => getConsultationAmountInr(details.nationality),
+    [details.nationality]
+  );
 
-			if (!isInsideFilter) {
-				setExpertiseOpen(false);
-				setLanguageOpen(false);
-				setRatingOpen(false);
-				setExperienceOpen(false);
-				setPriceOpen(false);
-			}
-		};
+  const selectedSlot = useMemo(
+    () => slots.find((slot) => slot.id === selectedSlotId),
+    [slots, selectedSlotId]
+  );
 
-		document.addEventListener("mousedown", handleClickOutside);
-		document.addEventListener("touchstart", handleClickOutside);
+  useEffect(() => {
+    if (!sameAsPhone) {
+      return;
+    }
+    setDetails((prev) => ({ ...prev, whatsappNumber: prev.phoneNumber }));
+  }, [sameAsPhone, details.phoneNumber]);
 
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-			document.removeEventListener("touchstart", handleClickOutside);
-		};
-	}, []);
+  useEffect(() => {
+    if (step !== 2) {
+      return;
+    }
 
-	const languages = useMemo(
-		() =>
-			Array.from(new Set(astrologers.flatMap((a) => a.languages))).sort(),
-		[]
-	);
+    let ignore = false;
+    const fetchSlots = async () => {
+      setSlotsLoading(true);
+      try {
+        const response = await fetch(`/api/consult-now/slots?date=${selectedDate}`);
+        const data = (await response.json()) as { slots?: SlotOption[] };
+        if (!ignore) {
+          const nextSlots = data.slots || [];
+          setSlots(nextSlots);
+          setSelectedSlotId((prevSelectedSlotId) =>
+            nextSlots.some((slot) => slot.id === prevSelectedSlotId)
+              ? prevSelectedSlotId
+              : ""
+          );
+        }
+      } catch {
+        if (!ignore) {
+          setSlots([]);
+          setSelectedSlotId("");
+        }
+      } finally {
+        if (!ignore) {
+          setSlotsLoading(false);
+        }
+      }
+    };
 
-	const filteredAstrologers = useMemo(() => {
-		return astrologers.filter((astro) => {
-			if (
-				expertiseFilter.length > 0 &&
-				!expertiseFilter.includes(astro.expertise)
-			)
-				return false;
-			if (
-				languageFilter.length > 0 &&
-				!astro.languages.some((lang) => languageFilter.includes(lang))
-			)
-				return false;
-			if (minRating !== "All" && astro.rating < parseFloat(minRating))
-				return false;
-			if (
-				minExperience !== "All" &&
-				astro.experience < parseInt(minExperience, 10)
-			)
-				return false;
-			if (maxPrice !== "All" && astro.pricePerMin > parseInt(maxPrice, 10))
-				return false;
-			return true;
-		});
-	}, [expertiseFilter, languageFilter, minRating, minExperience, maxPrice]);
+    void fetchSlots();
+    return () => {
+      ignore = true;
+    };
+  }, [selectedDate, step]);
 
-	return (
-		<div className="min-h-screen bg-gradient-to-b from-[#fefbf6] to-white">
-			{/* Spacer for fixed header */}
-			<div className="h-24" />
+  const onDetailsNext = () => {
+    const validation = validateStepOneDetails(details);
+    setFieldErrors(validation.errors);
+    if (!validation.isValid) {
+      return;
+    }
+    setStep(2);
+  };
 
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-				{/* Heading & Intro */}
-				<div className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-					<div>
-						<h1 className="text-3xl sm:text-4xl font-bold text-[#333355] mb-2">
-							Consult with Expert Astrologers
-						</h1>
-						<p className="text-sm sm:text-base text-[#333355]/75 max-w-2xl">
-							Choose from verified Vedic astrologers with years of experience.
-							Check their ratings, expertise, languages and per-minute charges, then
-							start a chat or call instantly.
-						</p>
-					</div>
-					<div className="flex items-center gap-2 text-xs sm:text-sm text-[#333355]/70 bg-white/80 border border-[#333355]/10 rounded-2xl px-4 py-2 shadow-sm">
-						<span className="h-2 w-2 rounded-full bg-[#00C853]" />
-						<span>24x7 Live Consultations</span>
-					</div>
-				</div>
+  const onSlotNext = () => {
+    if (!selectedSlot) {
+      setPaymentMessage("Please select an available slot to continue.");
+      return;
+    }
+    setPaymentMessage("");
+    setStep(3);
+  };
 
-				{/* Filters */}
-				<div className="mb-8 rounded-3xl bg-gradient-to-br from-white via-[#fefbf6] to-[#FFF1EA] border-2 border-[#FFB59F]/30 shadow-lg p-5 sm:p-6 flex flex-col gap-5 relative">
-					{/* Decorative elements */}
-					<div className="absolute -top-20 -left-20 w-40 h-40 bg-gradient-to-br from-[#FFE1D5]/20 to-transparent rounded-full blur-3xl pointer-events-none" />
-					<div className="absolute -bottom-20 -right-20 w-40 h-40 bg-gradient-to-br from-[#E4E7FF]/20 to-transparent rounded-full blur-3xl pointer-events-none" />
-					
-					<div className="flex flex-wrap items-center justify-between gap-3 relative z-10">
-						<div>
-							<p className="text-sm sm:text-base font-bold text-[#333355] mb-1">
-								🔍 Filter Astrologers
-							</p>
-							<p className="text-xs text-[#333355]/60">
-								Expertise, Language, Rating, Experience & Price
-							</p>
-						</div>
-						<div className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#FFE1D5] to-[#FFF1EA] px-4 py-2 shadow-md">
-							<span className="text-xs sm:text-sm font-bold text-[#FF7B60]">
-								{filteredAstrologers.length}
-							</span>
-							<span className="text-xs text-[#333355]/70">
-								of {astrologers.length} astrologers
-							</span>
-						</div>
-					</div>
-					<div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-5 relative z-10">
-						<div ref={expertiseRef} className="relative flex flex-col gap-1.5">
-							<label className="text-[11px] sm:text-xs font-bold text-[#333355] uppercase tracking-wide">
-								Expertise
-							</label>
-							<button
-								type="button"
-								className="flex items-center justify-between rounded-2xl border-2 border-[#FFB59F]/30 bg-white hover:bg-gradient-to-r hover:from-[#FFF1EA] hover:to-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#333355] focus:outline-none focus:ring-2 focus:ring-[#FF7B60] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
-								onClick={() => setExpertiseOpen((prev) => !prev)}
-							>
-								<span className="truncate">
-									{expertiseFilter.length === 0
-											? "All Expertise"
-											: `${expertiseFilter.length} selected`}
-								</span>
-								<span className="ml-2 text-xs font-bold text-[#FF7B60]">
-									{expertiseOpen ? "▲" : "▼"}
-								</span>
-							</button>
-							{expertiseOpen && (
-								<div className="absolute z-20 mt-20 w-60 max-h-64 overflow-auto rounded-2xl bg-white border-2 border-[#FFB59F]/30 shadow-2xl p-3 space-y-1">
-									<button
-										type="button"
-										className="w-full rounded-xl px-3 py-2 text-left text-xs sm:text-sm font-semibold text-[#333355] hover:bg-gradient-to-r hover:from-[#FFE1D5] hover:to-[#FFF1EA] transition-all"
-										onClick={() => setExpertiseFilter([])}
-									>
-										All Expertise
-									</button>
-									<div className="h-0.5 bg-gradient-to-r from-transparent via-[#FFB59F]/30 to-transparent my-2" />
-									{expertiseOptions.map((option) => {
-										const checked = expertiseFilter.includes(option);
-										return (
-											<label
-												key={option}
-												className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs sm:text-sm font-medium text-[#333355] hover:bg-gradient-to-r hover:from-[#FCF3E4] hover:to-[#FFF1EA] cursor-pointer transition-all hover:scale-[1.02]"
-											>
-												<input
-													type="checkbox"
-													checked={checked}
-													onChange={() => {
-														setExpertiseFilter((prev) =>
-															prev.includes(option)
-																? prev.filter((v) => v !== option)
-																: [...prev, option]
-														);
-													}}
-													className="h-4 w-4 rounded border-2 border-[#FF7B60]/50 text-[#FF7B60] focus:ring-2 focus:ring-[#FF7B60]/30"
-												/>
-												<span>{option}</span>
-											</label>
-										);
-									})}
-								</div>
-							)}
-						</div>
-						<div ref={languageRef} className="relative flex flex-col gap-1.5">
-							<label className="text-[11px] sm:text-xs font-bold text-[#333355] uppercase tracking-wide">
-								Language
-							</label>
-							<button
-								type="button"
-								className="flex items-center justify-between rounded-2xl border-2 border-[#FFB59F]/30 bg-white hover:bg-gradient-to-r hover:from-[#FFF1EA] hover:to-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#333355] focus:outline-none focus:ring-2 focus:ring-[#FF7B60] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
-								onClick={() => setLanguageOpen((prev) => !prev)}
-							>
-								<span className="truncate">
-									{languageFilter.length === 0
-											? "All Languages"
-											: `${languageFilter.length} selected`}
-								</span>
-								<span className="ml-2 text-xs font-bold text-[#FF7B60]">
-									{languageOpen ? "▲" : "▼"}
-								</span>
-							</button>
-							{languageOpen && (
-								<div className="absolute z-20 mt-20 w-52 max-h-64 overflow-auto rounded-2xl bg-white border-2 border-[#FFB59F]/30 shadow-2xl p-3 space-y-1">
-									<button
-										type="button"
-										className="w-full rounded-xl px-3 py-2 text-left text-xs sm:text-sm font-semibold text-[#333355] hover:bg-gradient-to-r hover:from-[#FFE1D5] hover:to-[#FFF1EA] transition-all"
-										onClick={() => setLanguageFilter([])}
-									>
-										All Languages
-									</button>
-									<div className="h-0.5 bg-gradient-to-r from-transparent via-[#FFB59F]/30 to-transparent my-2" />
-									{languages.map((lang) => {
-										const checked = languageFilter.includes(lang);
-										return (
-											<label
-												key={lang}
-												className="flex items-center gap-3 rounded-xl px-3 py-2 text-xs sm:text-sm font-medium text-[#333355] hover:bg-gradient-to-r hover:from-[#FCF3E4] hover:to-[#FFF1EA] cursor-pointer transition-all hover:scale-[1.02]"
-											>
-												<input
-													type="checkbox"
-													checked={checked}
-													onChange={() => {
-														setLanguageFilter((prev) =>
-															prev.includes(lang)
-																? prev.filter((v) => v !== lang)
-																: [...prev, lang]
-														);
-													}}
-													className="h-4 w-4 rounded border-2 border-[#FF7B60]/50 text-[#FF7B60] focus:ring-2 focus:ring-[#FF7B60]/30"
-												/>
-												<span>{lang}</span>
-											</label>
-										);
-									})}
-								</div>
-							)}
-						</div>
-						<div ref={ratingRef} className="relative flex flex-col gap-1.5">
-							<label className="text-[11px] sm:text-xs font-bold text-[#333355] uppercase tracking-wide">
-								Min Rating
-							</label>
-							<button
-								type="button"
-								className="flex items-center justify-between rounded-2xl border-2 border-[#FFB59F]/30 bg-white hover:bg-gradient-to-r hover:from-[#FFF1EA] hover:to-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#333355] focus:outline-none focus:ring-2 focus:ring-[#FF7B60] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
-								onClick={() => setRatingOpen((prev) => !prev)}
-							>
-								<span className="truncate">
-									{ratingOptions.find((o) => o.value === minRating)?.label ??
-											"All Ratings"}
-								</span>
-								<span className="ml-2 text-xs font-bold text-[#FF7B60]">
-									{ratingOpen ? "▲" : "▼"}
-								</span>
-							</button>
-							{ratingOpen && (
-								<div className="absolute z-20 mt-20 w-44 max-h-64 overflow-auto rounded-2xl bg-white border-2 border-[#FFB59F]/30 shadow-2xl p-3 space-y-1">
-									{ratingOptions.map((option) => (
-										<button
-											key={option.value}
-											type="button"
-											className={`w-full rounded-xl px-3 py-2 text-left text-xs sm:text-sm font-semibold transition-all hover:scale-[1.02] ${
-												minRating === option.value
-														? "bg-gradient-to-r from-[#FFE1D5] to-[#FFF1EA] text-[#FF7B60] shadow-sm"
-														: "text-[#333355] hover:bg-gradient-to-r hover:from-[#FCF3E4] hover:to-[#FFF1EA]"
-											}`}
-											onClick={() => {
-												setMinRating(option.value);
-												setRatingOpen(false);
-											}}
-										>
-											{option.label}
-										</button>
-									))}
-								</div>
-							)}
-						</div>
-						<div ref={experienceRef} className="relative flex flex-col gap-1.5">
-							<label className="text-[11px] sm:text-xs font-bold text-[#333355] uppercase tracking-wide">
-								Min Experience
-							</label>
-							<button
-								type="button"
-								className="flex items-center justify-between rounded-2xl border-2 border-[#FFB59F]/30 bg-white hover:bg-gradient-to-r hover:from-[#FFF1EA] hover:to-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#333355] focus:outline-none focus:ring-2 focus:ring-[#FF7B60] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
-								onClick={() => setExperienceOpen((prev) => !prev)}
-							>
-								<span className="truncate">
-									{experienceOptions.find((o) => o.value === minExperience)?.label ??
-											"All Experience"}
-								</span>
-								<span className="ml-2 text-xs font-bold text-[#FF7B60]">
-									{experienceOpen ? "▲" : "▼"}
-								</span>
-							</button>
-							{experienceOpen && (
-								<div className="absolute z-20 mt-20 w-44 max-h-64 overflow-auto rounded-2xl bg-white border-2 border-[#FFB59F]/30 shadow-2xl p-3 space-y-1">
-									{experienceOptions.map((option) => (
-										<button
-											key={option.value}
-											type="button"
-											className={`w-full rounded-xl px-3 py-2 text-left text-xs sm:text-sm font-semibold transition-all hover:scale-[1.02] ${
-												minExperience === option.value
-														? "bg-gradient-to-r from-[#FFE1D5] to-[#FFF1EA] text-[#FF7B60] shadow-sm"
-														: "text-[#333355] hover:bg-gradient-to-r hover:from-[#FCF3E4] hover:to-[#FFF1EA]"
-											}`}
-											onClick={() => {
-												setMinExperience(option.value);
-												setExperienceOpen(false);
-											}}
-										>
-											{option.label}
-										</button>
-									))}
-								</div>
-							)}
-						</div>
-						<div ref={priceRef} className="relative flex flex-col gap-1.5">
-							<label className="text-[11px] sm:text-xs font-bold text-[#333355] uppercase tracking-wide">
-								Max Price / min
-							</label>
-							<button
-								type="button"
-								className="flex items-center justify-between rounded-2xl border-2 border-[#FFB59F]/30 bg-white hover:bg-gradient-to-r hover:from-[#FFF1EA] hover:to-white px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#333355] focus:outline-none focus:ring-2 focus:ring-[#FF7B60] shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02]"
-								onClick={() => setPriceOpen((prev) => !prev)}
-							>
-								<span className="truncate">
-									{priceOptions.find((o) => o.value === maxPrice)?.label ??
-											"All Prices"}
-								</span>
-								<span className="ml-2 text-xs font-bold text-[#FF7B60]">
-									{priceOpen ? "▲" : "▼"}
-								</span>
-							</button>
-							{priceOpen && (
-								<div className="absolute z-20 mt-20 w-44 max-h-64 overflow-auto rounded-2xl bg-white border-2 border-[#FFB59F]/30 shadow-2xl p-3 space-y-1">
-									{priceOptions.map((option) => (
-										<button
-											key={option.value}
-											type="button"
-											className={`w-full rounded-xl px-3 py-2 text-left text-xs sm:text-sm font-semibold transition-all hover:scale-[1.02] ${
-												maxPrice === option.value
-														? "bg-gradient-to-r from-[#FFE1D5] to-[#FFF1EA] text-[#FF7B60] shadow-sm"
-														: "text-[#333355] hover:bg-gradient-to-r hover:from-[#FCF3E4] hover:to-[#FFF1EA]"
-											}`}
-											onClick={() => {
-												setMaxPrice(option.value);
-												setPriceOpen(false);
-											}}
-										>
-											{option.label}
-										</button>
-									))}
-								</div>
-							)}
-						</div>
-					</div>
-				</div>
+  const onPayNow = async () => {
+    if (!selectedSlot) {
+      setPaymentMessage("Please select a slot before payment.");
+      return;
+    }
+    if (!isRazorpayEnabled) {
+      setPaymentLoading(true);
+      setPaymentMessage("");
 
-				{/* Astrologer Cards Grid */}
-				<div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{filteredAstrologers.map((astro) => (
-						<Link
-							key={astro.slug}
-							href={`/consult-now/${astro.slug}`}
-							className="group relative block rounded-3xl bg-gradient-to-br from-[#FFE1D5] via-white to-[#E4E7FF] p-[1px] shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF7B60]/70"
-						>
-							<div className="flex h-full flex-col rounded-[1.4rem] bg-white/95 backdrop-blur-sm p-5 sm:p-6 relative overflow-hidden">
-								{/* Decorative gradient blob */}
-								<div className="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-br from-[#FFE1D5]/30 to-[#E4E7FF]/30 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500" />
-								
-								<div className="relative z-10">
-									<div className="flex items-center gap-4 mb-4">
-										<div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full bg-gradient-to-br from-[#FFB59F] to-[#FF7B60] p-[2px] group-hover:scale-110 transition-transform duration-300">
-											<div className="h-full w-full rounded-full bg-white p-[2px]">
-												<div className="relative h-full w-full rounded-full overflow-hidden">
-													<Image
-														src={astro.avatar}
-														alt={astro.name}
-														fill
-														className="object-cover rounded-full"
-														sizes="80px"
-													/>
-												</div>
-											</div>
-											{/* Online indicator */}
-											<div className="absolute bottom-0 right-0 w-4 h-4 bg-[#00C853] rounded-full border-2 border-white shadow-md" />
-										</div>
-										<div className="flex-1 min-w-0">
-											<p className="inline-flex items-center rounded-full bg-gradient-to-r from-[#FFF1EA] to-[#FFE1D5] px-3 py-1.5 text-[10px] sm:text-[11px] font-bold text-[#FF7B60] uppercase tracking-wider mb-2 max-w-full truncate shadow-sm">
-												{astro.expertise}
-											</p>
-											<h2 className="text-base sm:text-lg font-bold text-[#333355] truncate group-hover:text-[#FF7B60] transition-colors">
-												{astro.name}
-											</h2>
-											<div className="mt-2 flex flex-wrap items-center gap-2 text-[11px] sm:text-xs">
-												<span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#FFF7D6] to-[#FFEFB0] px-2.5 py-1 text-[#9C7A00] shadow-sm">
-													<span className="text-yellow-500">★</span>
-													<span className="font-bold">{astro.rating.toFixed(1)}</span>
-												</span>
-												<span className="inline-flex items-center rounded-full bg-gradient-to-r from-[#EEF0FF] to-[#E4E7FF] px-2.5 py-1 text-[#333355] shadow-sm">
-													<span className="font-bold">{astro.experience}+ yrs</span>
-												</span>
-											</div>
-										</div>
-									</div>
+      try {
+        const confirmResponse = await fetch("/api/consult-now/confirm", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            details,
+            selectedDate,
+            selectedSlot,
+            payment: {
+              razorpayOrderId: "TEST_ORDER_BYPASS",
+              razorpayPaymentId: "TEST_PAYMENT_BYPASS",
+            },
+          }),
+        });
 
-									<div className="mb-4 rounded-2xl bg-gradient-to-br from-[#FDF7F3] to-[#FFF1EA] px-4 py-4 flex items-center justify-between gap-3 text-xs sm:text-sm text-[#333355]/85 border border-[#FFB59F]/20 shadow-sm group-hover:shadow-md transition-shadow">
-										<div>
-											<p className="text-[11px] sm:text-xs text-[#333355]/60 mb-1 font-medium">
-												Consultation Charges
-											</p>
-											<p className="text-lg sm:text-xl font-bold text-[#FF7B60] flex items-baseline gap-1">
-												₹{astro.pricePerMin}
-												<span className="text-xs text-[#333355]/60 font-normal">/min</span>
-											</p>
-										</div>
-										<div className="text-right max-w-[50%]">
-											<p className="text-[11px] sm:text-xs text-[#333355]/60 mb-1 font-medium">Speaks</p>
-											<p className="text-xs sm:text-sm font-semibold text-[#333355] truncate">
-												{astro.languages.join(", ")}
-											</p>
-										</div>
-									</div>
+        const confirmData = (await confirmResponse.json()) as ConfirmationPayload & {
+          error?: string;
+        };
+        if (!confirmResponse.ok) {
+          throw new Error(confirmData.error || "Booking confirmation failed.");
+        }
 
-									<div className="mt-auto flex gap-3">
-										<button
-											type="button"
-											className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#FF7B60] to-[#FF6A48] px-4 py-2.5 text-xs sm:text-sm font-bold text-white shadow-md hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 relative overflow-hidden group/btn"
-											onClick={(e) => e.preventDefault()}
-										>
-											<span className="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300" />
-											<span className="relative">💬</span>
-											<span className="relative">Chat</span>
-										</button>
-										<button
-											type="button"
-											className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#333355]/30 bg-white px-4 py-2.5 text-xs sm:text-sm font-bold text-[#333355] shadow-md hover:bg-[#333355] hover:text-white hover:border-[#333355] hover:scale-105 active:scale-95 transition-all duration-200"
-											onClick={(e) => e.preventDefault()}
-										>
-											<span>📞</span>
-											<span>Call</span>
-										</button>
-									</div>
-								</div>
-							</div>
-						</Link>
-					))}
-				</div>
-			</div>
-		</div>
-	);
+        setConfirmation(confirmData);
+        setPaymentMessage(
+          "Test mode enabled: payment skipped and booking is confirmed."
+        );
+      } catch (error) {
+        setPaymentMessage(
+          error instanceof Error
+            ? error.message
+            : "Test-mode booking confirmation failed."
+        );
+      } finally {
+        setPaymentLoading(false);
+      }
+      return;
+    }
+
+    if (!scriptReady || !window.Razorpay) {
+      setPaymentMessage("Payment gateway is loading. Please try again.");
+      return;
+    }
+
+    setPaymentLoading(true);
+    setPaymentMessage("");
+
+    try {
+      const orderResponse = await fetch("/api/consult-now/payment/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nationality: details.nationality }),
+      });
+
+      const orderData = (await orderResponse.json()) as {
+        order?: { id: string; amount: number; currency: string };
+        razorpayKeyId?: string;
+        error?: string;
+      };
+
+      if (!orderResponse.ok || !orderData.order || !orderData.razorpayKeyId) {
+        throw new Error(orderData.error || "Unable to create payment order.");
+      }
+
+      const options: Record<string, unknown> = {
+        key: orderData.razorpayKeyId,
+        amount: orderData.order.amount,
+        currency: orderData.order.currency,
+        name: "Astro Vedic Kundli",
+        description: "One-on-one consultation with Astrologer Manish Aggarwal",
+        order_id: orderData.order.id,
+        prefill: {
+          name: details.fullName,
+          email: details.email,
+          contact: details.phoneNumber,
+        },
+        theme: { color: "#7C1A1E" },
+        handler: async (response: PaymentVerificationPayload) => {
+          const verifyResponse = await fetch("/api/consult-now/payment/verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(response),
+          });
+
+          const verifyData = (await verifyResponse.json()) as {
+            verified?: boolean;
+            error?: string;
+          };
+          if (!verifyResponse.ok || !verifyData.verified) {
+            throw new Error(verifyData.error || "Payment verification failed.");
+          }
+
+          const confirmResponse = await fetch("/api/consult-now/confirm", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              details,
+              selectedDate,
+              selectedSlot,
+              payment: {
+                razorpayOrderId: response.razorpay_order_id,
+                razorpayPaymentId: response.razorpay_payment_id,
+              },
+            }),
+          });
+
+          const confirmData = (await confirmResponse.json()) as ConfirmationPayload & {
+            error?: string;
+          };
+          if (!confirmResponse.ok) {
+            throw new Error(
+              confirmData.error || "Booking confirmation failed after payment."
+            );
+          }
+
+          setConfirmation(confirmData);
+          setPaymentMessage("Payment successful and booking is confirmed.");
+        },
+        modal: {
+          ondismiss: () => setPaymentMessage("Payment was cancelled."),
+        },
+      };
+
+      new window.Razorpay(options).open();
+    } catch (error) {
+      setPaymentMessage(
+        error instanceof Error ? error.message : "Payment failed, please retry."
+      );
+    } finally {
+      setPaymentLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-[#FCF3E4]">
+      {isRazorpayEnabled && (
+        <Script
+          src="https://checkout.razorpay.com/v1/checkout.js"
+          onLoad={() => setScriptReady(true)}
+        />
+      )}
+
+      <div className="h-24" />
+      <section className="mx-auto w-full max-w-4xl px-4 pb-16 pt-8 sm:px-6 lg:px-8">
+        <div className="rounded-3xl border border-[#7C1A1E]/20 bg-[#FFF9EF] p-6 shadow-lg sm:p-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#7C1A1E]/80">
+            Consult Now
+          </p>
+          <h1 className="mt-2 text-3xl font-extrabold text-[#7C1A1E] sm:text-4xl">
+            Book a 1:1 Consultation with Astrologer Manish Aggarwal
+          </h1>
+          <p className="mt-3 text-sm text-[#3D2A2B]/80 sm:text-base">
+            Fill your details, select a slot, complete payment, and receive WhatsApp
+            confirmation for your consultation.
+          </p>
+
+          <div className="mt-6 grid grid-cols-3 gap-2 rounded-2xl bg-[#F8ECDD] p-2">
+            {stepLabels.map((label, index) => {
+              const currentStep = index + 1;
+              const isActive = step === currentStep;
+              const isComplete = step > currentStep;
+
+              return (
+                <div
+                  key={label}
+                  className={`rounded-xl px-3 py-2 text-center text-xs font-semibold sm:text-sm ${
+                    isActive
+                      ? "bg-[#7C1A1E] text-white"
+                      : isComplete
+                        ? "bg-[#D9BFA6] text-[#4D2D2F]"
+                        : "bg-transparent text-[#7C1A1E]/70"
+                  }`}
+                >
+                  {currentStep}. {label}
+                </div>
+              );
+            })}
+          </div>
+
+          {step === 1 && (
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              <label className="flex flex-col gap-2 sm:col-span-2">
+                <span className="text-sm font-semibold text-[#572629]">
+                  Full name *
+                </span>
+                <input
+                  value={details.fullName}
+                  onChange={(event) =>
+                    setDetails((prev) => ({ ...prev, fullName: event.target.value }))
+                  }
+                  className="rounded-xl border border-[#7C1A1E]/20 bg-white px-4 py-3 text-sm outline-none focus:border-[#7C1A1E] focus:ring-2 focus:ring-[#7C1A1E]/10"
+                  placeholder="Enter full name"
+                />
+                {fieldErrors.fullName && (
+                  <span className="text-xs text-[#A0122A]">{fieldErrors.fullName}</span>
+                )}
+              </label>
+
+              <label className="flex flex-col gap-2">
+                <span className="text-sm font-semibold text-[#572629]">
+                  Phone number *
+                </span>
+                <input
+                  value={details.phoneNumber}
+                  onChange={(event) =>
+                    setDetails((prev) => ({ ...prev, phoneNumber: event.target.value }))
+                  }
+                  className="rounded-xl border border-[#7C1A1E]/20 bg-white px-4 py-3 text-sm outline-none focus:border-[#7C1A1E] focus:ring-2 focus:ring-[#7C1A1E]/10"
+                  placeholder="Enter phone number"
+                />
+                {fieldErrors.phoneNumber && (
+                  <span className="text-xs text-[#A0122A]">{fieldErrors.phoneNumber}</span>
+                )}
+              </label>
+
+              <label className="flex flex-col gap-2">
+                <span className="text-sm font-semibold text-[#572629]">
+                  WhatsApp number *
+                </span>
+                <input
+                  value={details.whatsappNumber}
+                  onChange={(event) =>
+                    setDetails((prev) => ({
+                      ...prev,
+                      whatsappNumber: event.target.value,
+                    }))
+                  }
+                  disabled={sameAsPhone}
+                  className="rounded-xl border border-[#7C1A1E]/20 bg-white px-4 py-3 text-sm outline-none disabled:bg-[#F5E9DA] focus:border-[#7C1A1E] focus:ring-2 focus:ring-[#7C1A1E]/10"
+                  placeholder="Enter WhatsApp number"
+                />
+                <label className="mt-1 inline-flex items-center gap-2 text-xs text-[#572629]">
+                  <input
+                    type="checkbox"
+                    checked={sameAsPhone}
+                    onChange={(event) => setSameAsPhone(event.target.checked)}
+                  />
+                  Same as phone number
+                </label>
+                {fieldErrors.whatsappNumber && (
+                  <span className="text-xs text-[#A0122A]">
+                    {fieldErrors.whatsappNumber}
+                  </span>
+                )}
+              </label>
+
+              <label className="flex flex-col gap-2">
+                <span className="text-sm font-semibold text-[#572629]">
+                  Consultation mode *
+                </span>
+                <select
+                  value={details.consultationMode}
+                  onChange={(event) =>
+                    setDetails((prev) => ({
+                      ...prev,
+                      consultationMode: event.target.value as BookingContactDetails["consultationMode"],
+                    }))
+                  }
+                  className="rounded-xl border border-[#7C1A1E]/20 bg-white px-4 py-3 text-sm outline-none focus:border-[#7C1A1E] focus:ring-2 focus:ring-[#7C1A1E]/10"
+                >
+                  <option value="online">Online</option>
+                  <option value="inPerson">In-person</option>
+                </select>
+              </label>
+
+              <label className="flex flex-col gap-2">
+                <span className="text-sm font-semibold text-[#572629]">Nationality *</span>
+                <select
+                  value={details.nationality}
+                  onChange={(event) =>
+                    setDetails((prev) => ({
+                      ...prev,
+                      nationality: event.target.value as BookingContactDetails["nationality"],
+                    }))
+                  }
+                  className="rounded-xl border border-[#7C1A1E]/20 bg-white px-4 py-3 text-sm outline-none focus:border-[#7C1A1E] focus:ring-2 focus:ring-[#7C1A1E]/10"
+                >
+                  <option value="indian">Indian</option>
+                  <option value="overseas">Overseas</option>
+                </select>
+              </label>
+
+              <label className="flex flex-col gap-2">
+                <span className="text-sm font-semibold text-[#572629]">
+                  Email {details.consultationMode === "online" ? "*" : "(optional)"}
+                </span>
+                <input
+                  value={details.email}
+                  onChange={(event) =>
+                    setDetails((prev) => ({ ...prev, email: event.target.value }))
+                  }
+                  className="rounded-xl border border-[#7C1A1E]/20 bg-white px-4 py-3 text-sm outline-none focus:border-[#7C1A1E] focus:ring-2 focus:ring-[#7C1A1E]/10"
+                  placeholder="Enter email address"
+                />
+                {fieldErrors.email && (
+                  <span className="text-xs text-[#A0122A]">{fieldErrors.email}</span>
+                )}
+              </label>
+
+              <div className="rounded-2xl border border-[#7C1A1E]/20 bg-[#F8ECDD] p-4 sm:col-span-2">
+                <p className="text-xs uppercase tracking-wide text-[#7C1A1E]/70">
+                  Consultation Price
+                </p>
+                <p className="mt-1 text-2xl font-bold text-[#7C1A1E]">Rs. {amountInr}</p>
+              </div>
+
+              <div className="sm:col-span-2 flex justify-end">
+                <button
+                  type="button"
+                  onClick={onDetailsNext}
+                  className="rounded-full bg-[#7C1A1E] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#651316]"
+                >
+                  Continue to Slot Booking
+                </button>
+              </div>
+            </div>
+          )}
+
+          {step === 2 && (
+            <div className="mt-8 space-y-5">
+              <div className="grid gap-4 sm:grid-cols-[280px_1fr]">
+                <label className="flex flex-col gap-2">
+                  <span className="text-sm font-semibold text-[#572629]">
+                    Select consultation date
+                  </span>
+                  <input
+                    type="date"
+                    min={getTodayYmd()}
+                    value={selectedDate}
+                    onChange={(event) => setSelectedDate(event.target.value)}
+                    className="rounded-xl border border-[#7C1A1E]/20 bg-white px-4 py-3 text-sm outline-none focus:border-[#7C1A1E] focus:ring-2 focus:ring-[#7C1A1E]/10"
+                  />
+                </label>
+
+                <div className="rounded-2xl border border-[#7C1A1E]/20 bg-white p-4">
+                  <p className="text-sm font-semibold text-[#572629]">Available slots</p>
+                  {slotsLoading ? (
+                    <p className="mt-3 text-sm text-[#572629]/70">Loading slots...</p>
+                  ) : slots.length === 0 ? (
+                    <p className="mt-3 text-sm text-[#572629]/70">
+                      No slots available for this date. Please choose another day.
+                    </p>
+                  ) : (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {slots.map((slot) => (
+                        <button
+                          key={slot.id}
+                          type="button"
+                          disabled={!slot.available}
+                          onClick={() => setSelectedSlotId(slot.id)}
+                          className={`rounded-full border px-4 py-2 text-xs font-semibold sm:text-sm transition ${
+                            !slot.available
+                              ? "cursor-not-allowed border-[#A0122A]/30 bg-[#F9E1E5] text-[#A0122A]/80 line-through opacity-90"
+                              : selectedSlotId === slot.id
+                                ? "border-[#7C1A1E] bg-[#7C1A1E] text-white"
+                                : "border-[#7C1A1E]/30 bg-[#FFF9EF] text-[#572629] hover:border-[#7C1A1E]/70 hover:bg-[#F8ECDD]"
+                          }`}
+                          title={slot.available ? "Available" : "Booked"}
+                        >
+                          {slot.label} {slot.available ? "" : " (Booked)"}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center gap-3 text-xs sm:text-sm">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#7C1A1E]/30 bg-[#FFF9EF] px-3 py-1 text-[#572629]">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#7C1A1E]" />
+                  Available slot
+                </span>
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#A0122A]/30 bg-[#F9E1E5] px-3 py-1 text-[#A0122A]">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#A0122A]" />
+                  Booked slot (not selectable)
+                </span>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <button
+                  type="button"
+                  onClick={() => setStep(1)}
+                  className="rounded-full border border-[#7C1A1E]/30 px-5 py-2.5 text-sm font-semibold text-[#7C1A1E]"
+                >
+                  Back
+                </button>
+                <button
+                  type="button"
+                  onClick={onSlotNext}
+                  className="rounded-full bg-[#7C1A1E] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#651316]"
+                >
+                  Continue to Payment
+                </button>
+              </div>
+            </div>
+          )}
+
+          {step === 3 && (
+            <div className="mt-8 space-y-5">
+              <div className="rounded-2xl border border-[#7C1A1E]/20 bg-white p-5">
+                <h2 className="text-lg font-bold text-[#7C1A1E]">Booking summary</h2>
+                <div className="mt-3 grid gap-2 text-sm text-[#572629] sm:grid-cols-2">
+                  <p>
+                    <span className="font-semibold">Name:</span> {details.fullName}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Phone:</span> {details.phoneNumber}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Mode:</span>{" "}
+                    {details.consultationMode === "online" ? "Online" : "In-person"}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Nationality:</span>{" "}
+                    {details.nationality === "indian" ? "Indian" : "Overseas"}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Date:</span> {selectedDate}
+                  </p>
+                  <p>
+                    <span className="font-semibold">Slot:</span>{" "}
+                    {selectedSlot?.label || "Not selected"}
+                  </p>
+                </div>
+                <div className="mt-4 rounded-xl bg-[#F8ECDD] p-4">
+                  <p className="text-xs uppercase tracking-wide text-[#7C1A1E]/70">
+                    Payable amount
+                  </p>
+                  <p className="text-2xl font-bold text-[#7C1A1E]">Rs. {amountInr}</p>
+                </div>
+                {!isRazorpayEnabled && (
+                  <p className="mt-3 text-xs font-semibold text-[#7C1A1E]/80">
+                    Razorpay is currently disabled (test mode). Clicking confirm will
+                    skip payment and run calendar booking flow.
+                  </p>
+                )}
+              </div>
+
+              {confirmation ? (
+                <div className="rounded-2xl border border-green-300 bg-green-50 p-5 text-sm text-green-900">
+                  <p className="text-base font-bold">Booking confirmed</p>
+                  <p className="mt-1">
+                    Booking ID: <span className="font-semibold">{confirmation.bookingId}</span>
+                  </p>
+                  {confirmation.calendar?.meetLink && (
+                    <p className="mt-1 break-all">
+                      Google Meet:{" "}
+                      <a
+                        href={confirmation.calendar.meetLink}
+                        className="font-semibold underline"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {confirmation.calendar.meetLink}
+                      </a>
+                    </p>
+                  )}
+                  <p className="mt-1">
+                    WhatsApp status:{" "}
+                    {confirmation.whatsapp?.sent
+                      ? "Message sent"
+                      : confirmation.whatsapp?.reason || "Not sent"}
+                  </p>
+                </div>
+              ) : (
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setStep(2)}
+                    className="rounded-full border border-[#7C1A1E]/30 px-5 py-2.5 text-sm font-semibold text-[#7C1A1E]"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onPayNow}
+                    disabled={paymentLoading}
+                    className="rounded-full bg-[#7C1A1E] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#651316] disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {paymentLoading
+                      ? isRazorpayEnabled
+                        ? "Preparing payment..."
+                        : "Confirming booking..."
+                      : isRazorpayEnabled
+                        ? "Pay & Confirm Booking"
+                        : "Confirm Booking (Test Mode)"}
+                  </button>
+                </div>
+              )}
+
+              {paymentMessage && (
+                <p
+                  className={`text-sm ${
+                    paymentMessage.toLowerCase().includes("successful")
+                      ? "text-green-700"
+                      : "text-[#A0122A]"
+                  }`}
+                >
+                  {paymentMessage}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  );
 }
