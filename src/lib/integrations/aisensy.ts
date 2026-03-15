@@ -1,7 +1,9 @@
+import type { ConsultationMode } from "@/lib/consultNow/types";
+
 type SendWhatsappMessageInput = {
   fullName: string;
   whatsappNumber: string;
-  consultationMode: "online" | "inPerson";
+  consultationMode: ConsultationMode;
   dateLabel: string;
   slotLabel: string;
   amountInr: number;
@@ -36,7 +38,11 @@ export async function sendAisensyBookingConfirmation(
     templateParams: [
       input.dateLabel,
       input.slotLabel,
-      input.consultationMode === "online" ? "Online" : "In-person",
+      input.consultationMode === "online"
+        ? "Online"
+        : input.consultationMode === "telephonic"
+          ? "Telephonic"
+          : "In-person",
       `${input.amountInr}`,
       input.meetLink || "N/A",
     ],
