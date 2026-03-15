@@ -1,4 +1,4 @@
-export type ConsultationMode = "online" | "inPerson";
+export type ConsultationMode = "online" | "inPerson" | "telephonic";
 
 export type Nationality = "indian" | "overseas";
 

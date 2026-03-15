@@ -1,10 +1,12 @@
 "use client";
 
 import Script from "next/script";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import {
   getConsultationAmountInr,
+  getConsultationPricingBreakup,
   validateStepOneDetails,
 } from "@/lib/consultNow/pricing";
 import type {
@@ -45,7 +47,21 @@ function getTodayYmd(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+function getConsultationModeLabel(mode: BookingContactDetails["consultationMode"]) {
+  switch (mode) {
+    case "online":
+      return "Online";
+    case "inPerson":
+      return "In-person";
+    case "telephonic":
+      return "Telephonic";
+    default:
+      return mode;
+  }
+}
+
 export default function ConsultationPage() {
+  const router = useRouter();
   const isRazorpayEnabled = process.env.NEXT_PUBLIC_ENABLE_RAZORPAY !== "false";
   const [step, setStep] = useState(1);
   const [details, setDetails] = useState<BookingContactDetails>(defaultDetails);
@@ -63,9 +79,14 @@ export default function ConsultationPage() {
   const [confirmation, setConfirmation] = useState<ConfirmationPayload | null>(
     null
   );
+  const [showConfirmationDialog, setShowConfirmationDialog] = useState(false);
 
   const amountInr = useMemo(
     () => getConsultationAmountInr(details.nationality),
+    [details.nationality]
+  );
+  const pricingBreakup = useMemo(
+    () => getConsultationPricingBreakup(details.nationality),
     [details.nationality]
   );
 
@@ -169,6 +190,7 @@ export default function ConsultationPage() {
         }
 
         setConfirmation(confirmData);
+        setShowConfirmationDialog(true);
         setPaymentMessage(
           "Test mode enabled: payment skipped and booking is confirmed."
         );
@@ -261,6 +283,7 @@ export default function ConsultationPage() {
           }
 
           setConfirmation(confirmData);
+          setShowConfirmationDialog(true);
           setPaymentMessage("Payment successful and booking is confirmed.");
         },
         modal: {
@@ -407,6 +430,7 @@ export default function ConsultationPage() {
                 >
                   <option value="online">Online</option>
                   <option value="inPerson">In-person</option>
+                  <option value="telephonic">Telephonic</option>
                 </select>
               </label>
 
@@ -449,6 +473,10 @@ export default function ConsultationPage() {
                   Consultation Price
                 </p>
                 <p className="mt-1 text-2xl font-bold text-[#7C1A1E]">Rs. {amountInr}</p>
+                <p className="mt-1 text-xs sm:text-sm text-[#572629]">
+                  Rs. {pricingBreakup.baseAmountInr} + GST (18%) Rs.{" "}
+                  {pricingBreakup.gstAmountInr}
+                </p>
               </div>
 
               <div className="sm:col-span-2 flex justify-end">
@@ -554,7 +582,7 @@ export default function ConsultationPage() {
                   </p>
                   <p>
                     <span className="font-semibold">Mode:</span>{" "}
-                    {details.consultationMode === "online" ? "Online" : "In-person"}
+                    {getConsultationModeLabel(details.consultationMode)}
                   </p>
                   <p>
                     <span className="font-semibold">Nationality:</span>{" "}
@@ -573,6 +601,10 @@ export default function ConsultationPage() {
                     Payable amount
                   </p>
                   <p className="text-2xl font-bold text-[#7C1A1E]">Rs. {amountInr}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-[#572629]">
+                    Rs. {pricingBreakup.baseAmountInr} + GST (18%) Rs.{" "}
+                    {pricingBreakup.gstAmountInr}
+                  </p>
                 </div>
                 {!isRazorpayEnabled && (
                   <p className="mt-3 text-xs font-semibold text-[#7C1A1E]/80">
@@ -582,33 +614,7 @@ export default function ConsultationPage() {
                 )}
               </div>
 
-              {confirmation ? (
-                <div className="rounded-2xl border border-green-300 bg-green-50 p-5 text-sm text-green-900">
-                  <p className="text-base font-bold">Booking confirmed</p>
-                  <p className="mt-1">
-                    Booking ID: <span className="font-semibold">{confirmation.bookingId}</span>
-                  </p>
-                  {confirmation.calendar?.meetLink && (
-                    <p className="mt-1 break-all">
-                      Google Meet:{" "}
-                      <a
-                        href={confirmation.calendar.meetLink}
-                        className="font-semibold underline"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        {confirmation.calendar.meetLink}
-                      </a>
-                    </p>
-                  )}
-                  <p className="mt-1">
-                    WhatsApp status:{" "}
-                    {confirmation.whatsapp?.sent
-                      ? "Message sent"
-                      : confirmation.whatsapp?.reason || "Not sent"}
-                  </p>
-                </div>
-              ) : (
+              {!confirmation && (
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <button
                     type="button"
@@ -634,7 +640,7 @@ export default function ConsultationPage() {
                 </div>
               )}
 
-              {paymentMessage && (
+              {paymentMessage && !confirmation && (
                 <p
                   className={`text-sm ${
                     paymentMessage.toLowerCase().includes("successful")
@@ -644,6 +650,74 @@ export default function ConsultationPage() {
                 >
                   {paymentMessage}
                 </p>
+              )}
+
+              {confirmation && showConfirmationDialog && (
+                <div className="fixed inset-0 z-[70] flex items-center justify-center bg-[#2A1113]/45 px-4">
+                  <div className="w-full max-w-xl rounded-3xl border border-[#7C1A1E]/20 bg-gradient-to-b from-[#FFF9EF] to-[#F8ECDD] p-6 shadow-2xl sm:p-7">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#7C1A1E]/70">
+                          Booking Confirmed
+                        </p>
+                        <h3 className="mt-1 text-2xl font-extrabold text-[#7C1A1E]">
+                          Thank you for booking.
+                        </h3>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmationDialog(false)}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-[#7C1A1E]/20 bg-white text-lg font-semibold leading-none text-[#7C1A1E]"
+                        aria-label="Close dialog"
+                      >
+                        x
+                      </button>
+                    </div>
+
+                    <p className="mt-3 text-sm leading-6 text-[#572629]">
+                      Astro Manish Aggarwal will connect with you very soon and help
+                      you resolve your concerns.
+                    </p>
+
+                    <div className="mt-5 rounded-2xl border border-[#7C1A1E]/20 bg-white/75 p-4 text-sm text-[#572629]">
+                      <p>
+                        Booking ID:{" "}
+                        <span className="font-bold text-[#7C1A1E]">
+                          {confirmation.bookingId}
+                        </span>
+                      </p>
+                      <p className="mt-1">
+                        Schedule:{" "}
+                        <span className="font-semibold">
+                          {selectedDate}, {selectedSlot?.label || confirmation.selectedSlot.label}
+                        </span>
+                      </p>
+                      {confirmation.calendar?.meetLink && (
+                        <p className="mt-1 break-all">
+                          Meet link:{" "}
+                          <a
+                            href={confirmation.calendar.meetLink}
+                            className="font-semibold text-[#7C1A1E] underline"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Join Google Meet
+                          </a>
+                        </p>
+                      )}
+                    </div>
+
+                    <div className="mt-5 flex justify-end">
+                      <button
+                        type="button"
+                        onClick={() => router.push("/")}
+                        className="rounded-full bg-[#7C1A1E] px-6 py-2.5 text-sm font-semibold text-white hover:bg-[#651316]"
+                      >
+                        Continue
+                      </button>
+                    </div>
+                  </div>
+                </div>
               )}
             </div>
           )}

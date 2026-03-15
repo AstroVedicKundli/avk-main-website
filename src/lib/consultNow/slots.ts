@@ -1,15 +1,15 @@
 import type { SlotOption } from "@/lib/consultNow/types";
 
 const SLOT_LABELS = [
-  { from: "09:00", to: "09:30" },
-  { from: "10:00", to: "10:30" },
-  { from: "11:00", to: "11:30" },
-  { from: "12:00", to: "12:30" },
-  { from: "14:00", to: "14:30" },
-  { from: "15:00", to: "15:30" },
-  { from: "16:00", to: "16:30" },
-  { from: "18:00", to: "18:30" },
-  { from: "19:00", to: "19:30" },
+  { from: "09:00", to: "09:45" },
+  { from: "10:00", to: "10:45" },
+  { from: "11:00", to: "11:45" },
+  { from: "12:00", to: "12:45" },
+  { from: "14:00", to: "14:45" },
+  { from: "15:00", to: "15:45" },
+  { from: "16:00", to: "16:45" },
+  { from: "18:00", to: "18:45" },
+  { from: "19:00", to: "19:45" },
 ];
 
 function getIsoForDateAndTime(dateYmd: string, time: string): string {

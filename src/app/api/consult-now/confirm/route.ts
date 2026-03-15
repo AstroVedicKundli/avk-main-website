@@ -25,12 +25,13 @@ type ConfirmRequest = {
 };
 
 function formatDateLabel(dateYmd: string): string {
-  const date = new Date(`${dateYmd}T00:00:00+05:30`);
+  const date = new Date(`${dateYmd}T12:00:00+05:30`);
   if (Number.isNaN(date.valueOf())) {
     return dateYmd;
   }
 
   return date.toLocaleDateString("en-IN", {
+    timeZone: "Asia/Kolkata",
     weekday: "short",
     day: "numeric",
     month: "short",
