@@ -12,7 +12,7 @@ export default function HeroCarousel() {
           <div className="block md:hidden absolute inset-0">
             <Image
               src="/home-banner-mobile.png"
-              alt="Astro Vedic Kundli - Manish Aggarwal"
+              alt="Astro Vedic Kundli - Jyotish Acharya Manish Aggarwal"
               fill
               priority
               className="object-contain object-center"
@@ -25,7 +25,7 @@ export default function HeroCarousel() {
           <div className="hidden md:block absolute inset-0">
             <Image
               src="/banner-1.png"
-              alt="Astro Vedic Kundli - Manish Aggarwal"
+              alt="Astro Vedic Kundli - Jyotish Acharya Manish Aggarwal"
               fill
               priority
               className="object-contain object-center"
@@ -60,7 +60,7 @@ export default function HeroCarousel() {
                 Book your Consultation — Slots are limited. Reserve yours now!!
               </span>
               <Link
-                href="/kundli"
+                href="/consult-now"
                 className="mx-8 px-6 py-2 bg-white text-[#7d1a28] text-base md:text-lg font-bold rounded-lg hover:bg-gray-100 transition-all whitespace-nowrap"
               >
                 Book Now
@@ -69,7 +69,7 @@ export default function HeroCarousel() {
                 Book your Consultation — Slots are limited. Reserve yours now!!
               </span>
               <Link
-                href="/kundli"
+                href="/consult-now"
                 className="mx-8 px-6 py-2 bg-white text-[#7d1a28] text-base md:text-lg font-bold rounded-lg hover:bg-gray-100 transition-all whitespace-nowrap"
               >
                 Book Now

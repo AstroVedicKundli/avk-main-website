@@ -1,4 +1,5 @@
 import HeroCarousel from "@/components/home/HeroCarousel";
+import HomeHashScroll from "@/components/home/HomeHashScroll";
 import AboutSection from "@/components/home/AboutSection";
 import StatsSection from "@/components/home/StatsSection";
 import NewsSection from "@/components/home/NewsSection";
@@ -10,6 +11,7 @@ import FAQSection from "@/components/home/FAQSection";
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#FCF3E4] overflow-hidden">
+      <HomeHashScroll />
       {/* Content with relative positioning to appear above background */}
       <div className="relative z-10">
         {/* Hero Carousel Section */}

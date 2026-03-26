@@ -8,21 +8,21 @@ export default function FAQSection() {
   const faqs = [
     {
       id: 1,
-      question: "How can I book a consultation call with Astro Manish Aggarwal?",
+      question: "How can I book a consultation call with Jyotish Acharya Manish Aggarwal?",
       answer:
-        "You can easily book a consultation call with Astro Manish Aggarwal by visiting our booking page and selecting a convenient time slot. Alternatively, you can contact us directly through WhatsApp or call our support team. We offer both online and in-person consultation options.",
+        "You can easily book a consultation call with Jyotish Acharya Manish Aggarwal by visiting our booking page and selecting a convenient time slot. Alternatively, you can contact us directly through WhatsApp or call our support team. We offer both online and in-person consultation options.",
     },
     {
       id: 2,
-      question: "Does Astro Manish Aggarwal provide astrology courses?",
+      question: "Does Jyotish Acharya Manish Aggarwal provide astrology courses?",
       answer:
-        "Yes, Astro Manish Aggarwal offers comprehensive astrology courses for beginners and advanced learners. Our courses cover Vedic Astrology, Numerology, Palmistry, Lal Kitab, and more. Each course includes live sessions, recorded content, and certification upon completion.",
+        "Yes, Jyotish Acharya Manish Aggarwal offers comprehensive astrology courses for beginners and advanced learners. Our courses cover Vedic Astrology, Numerology, Palmistry, Lal Kitab, and more. Each course includes live sessions, recorded content, and certification upon completion.",
     },
     {
       id: 3,
-      question: 'What is "The Manish Aggarwal Show"?',
+      question: 'What is "The Jyotish Acharya Manish Aggarwal Show"?',
       answer:
-        '"The Manish Aggarwal Show" is a weekly educational program where Astro Manish Aggarwal shares astrological insights, answers viewer questions, and discusses planetary transits and their effects. The show is broadcast live on YouTube every week and covers topics like career predictions, relationship advice, and remedial measures.',
+        '"The Jyotish Acharya Manish Aggarwal Show" is a weekly educational program where Jyotish Acharya Manish Aggarwal shares astrological insights, answers viewer questions, and discusses planetary transits and their effects. The show is broadcast live on YouTube every week and covers topics like career predictions, relationship advice, and remedial measures.',
     },
   ];
 

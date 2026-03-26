@@ -10,7 +10,7 @@ export default function NewsSection() {
       category: "Business",
       title: "Honoured with the Prestigious Global Business Award",
       excerpt:
-        "Manish Aggarwal is recognised for exceptional excellence, credibility, and leadership in astrology, with a strong and growing influence on a global platform.",
+        "Jyotish Acharya Manish Aggarwal is recognised for exceptional excellence, credibility, and leadership in astrology, with a strong and growing influence on a global platform.",
       image: "/gba.png",
       link: "/news/birth-chart-guide",
       featured: true,
@@ -20,7 +20,7 @@ export default function NewsSection() {
       date: "Nov 08, 2024",
       author: "By Admin",
       category: "Podcast",
-      title: "Manish Aggarwal on Sidharth Kannan’s Renowned Podcast",
+      title: "Jyotish Acharya Manish Aggarwal on Sidharth Kannan’s Renowned Podcast",
       excerpt:
         "An insightful conversation exploring astrology, life, and spiritual wisdom with one of India’s most celebrated podcast hosts, Sidharth Kannan.",
       image: "/sid_knn.png",
@@ -32,7 +32,7 @@ export default function NewsSection() {
       date: "Nov 05, 2024",
       author: "By Admin",
       category: "Poscast",
-      title: "Manish Aggarwal in Conversation with Nayandeep Rakshit",
+      title: "Jyotish Acharya Manish Aggarwal in Conversation with Nayandeep Rakshit",
       excerpt:
         "A compelling podcast episode featuring candid insights on astrology, life, and modern spirituality with renowned media personality Nayandeep Rakshit.",
       image: "/podcast-2.png",

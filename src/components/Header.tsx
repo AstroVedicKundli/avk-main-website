@@ -27,7 +27,6 @@ export default function Header() {
     { name: "Aarti", href: "/aarti" },
     { name: "Chalisa", href: "/chalisa" },
     { name: "Mantra", href: "/mantra" },
-    { name: "Stotra", href: "/stotra" },
   ];
 
   return (
@@ -207,10 +206,12 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile menu - Expandable dropdown with animation */}
+        {/* Mobile menu - Expandable dropdown with animation; scroll when content exceeds viewport */}
         <div
-          className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            mobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          className={`lg:hidden transition-all duration-300 ease-in-out ${
+            mobileMenuOpen
+              ? "max-h-[calc(100dvh-6rem)] overflow-y-auto overflow-x-hidden overscroll-contain opacity-100"
+              : "max-h-0 overflow-hidden opacity-0 pointer-events-none"
           }`}
         >
           <div className="px-4 pb-6 pt-2 space-y-1 border-t border-[#333355]/10">
