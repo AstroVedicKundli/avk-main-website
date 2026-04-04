@@ -12,7 +12,7 @@ export default function Header() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "Horoscope", href: "/horoscope" },
-    { name: "Matchmaking", href: "/matchmaking" },
+    { name: "Kundli", href: "/kundli" },
     { name: "Panchang", href: "/panchang" },
     { name: "Yatra", href: "/yatra" },
     { name: "Puja", href: "https://pooja.astrovedickundli.com/", external: true },

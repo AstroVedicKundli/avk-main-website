@@ -75,7 +75,7 @@ export default function ConsultationPage() {
   const [selectedSlotId, setSelectedSlotId] = useState("");
   const [paymentMessage, setPaymentMessage] = useState("");
   const [paymentLoading, setPaymentLoading] = useState(false);
-  const [scriptReady, setScriptReady] = useState(false);
+
   const [confirmation, setConfirmation] = useState<ConfirmationPayload | null>(
     null
   );
@@ -206,7 +206,7 @@ export default function ConsultationPage() {
       return;
     }
 
-    if (!scriptReady || !window.Razorpay) {
+    if (!window.Razorpay) {
       setPaymentMessage("Payment gateway is loading. Please try again.");
       return;
     }
@@ -306,7 +306,7 @@ export default function ConsultationPage() {
       {isRazorpayEnabled && (
         <Script
           src="https://checkout.razorpay.com/v1/checkout.js"
-          onLoad={() => setScriptReady(true)}
+          strategy="afterInteractive"
         />
       )}
 
