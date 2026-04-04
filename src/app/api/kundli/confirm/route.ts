@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 import type { KundliLanguage, KundliPlan } from "@/lib/integrations/aisensy";
 import { sendAisensyKundliConfirmation } from "@/lib/integrations/aisensy";
+import { sendKundliConfirmationEmail } from "@/lib/integrations/email";
 import { DETAILED_KUNDLI_AMOUNT_INR } from "@/lib/kundli/pricing";
 import { verifyRazorpaySignature } from "@/lib/integrations/razorpay";
 
@@ -74,6 +75,8 @@ export async function POST(request: Request) {
       }
     }
 
+    const amountPaid = body.plan === "detailed" ? DETAILED_KUNDLI_AMOUNT_INR : undefined;
+
     // ── WhatsApp confirmation ─────────────────────────────────────────────────
     const isWhatsappEnabled = process.env.ENABLE_AISENSY_WHATSAPP === "true";
 
@@ -83,9 +86,25 @@ export async function POST(request: Request) {
           whatsappNumber: body.phone.trim(),
           plan: body.plan,
           language: body.language,
-          amountPaid: body.plan === "detailed" ? DETAILED_KUNDLI_AMOUNT_INR : undefined,
+          amountPaid,
         })
       : { sent: false, reason: "AiSensy WhatsApp integration is disabled." };
+
+    // ── Email confirmation (only when user provided an email) ─────────────────
+    const emailResult = body.email?.trim()
+      ? await sendKundliConfirmationEmail({
+          toEmail: body.email.trim(),
+          fullName: body.fullName.trim(),
+          plan: body.plan,
+          language: body.language,
+          dob: body.dob,
+          timeOfBirth: body.timeOfBirth,
+          city: body.city.trim(),
+          state: body.state.trim(),
+          country: body.country.trim(),
+          amountPaid,
+        })
+      : { sent: false, reason: "No email provided." };
 
     const requestId = `KN-${crypto.randomUUID().slice(0, 8).toUpperCase()}`;
 
@@ -94,6 +113,7 @@ export async function POST(request: Request) {
       plan: body.plan,
       language: body.language,
       whatsapp: whatsappResult,
+      email: emailResult,
       ...(body.plan === "detailed" && {
         payment: {
           razorpayOrderId: body.payment!.razorpay_order_id,
