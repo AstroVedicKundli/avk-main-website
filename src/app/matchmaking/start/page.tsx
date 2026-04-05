@@ -172,7 +172,7 @@ export default function MatchmakingStartPage() {
 
           <div className="grid gap-5 md:grid-cols-2">
             {/* 1. Varna */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   1
@@ -191,7 +191,7 @@ export default function MatchmakingStartPage() {
             </div>
 
             {/* 2. Vashya */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   2
@@ -210,7 +210,7 @@ export default function MatchmakingStartPage() {
             </div>
 
             {/* 3. Tara */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   3
@@ -229,7 +229,7 @@ export default function MatchmakingStartPage() {
             </div>
 
             {/* 4. Yoni */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   4
@@ -247,7 +247,7 @@ export default function MatchmakingStartPage() {
             </div>
 
             {/* 5. Graha Maitri */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   5
@@ -266,7 +266,7 @@ export default function MatchmakingStartPage() {
             </div>
 
             {/* 6. Gana */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   6
@@ -285,7 +285,7 @@ export default function MatchmakingStartPage() {
             </div>
 
             {/* 7. Bhakoot */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   7
@@ -304,7 +304,7 @@ export default function MatchmakingStartPage() {
             </div>
 
             {/* 8. Nadi */}
-            <div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 sm:p-5">
+            <div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 sm:p-5">
               <div className="flex items-start gap-3 mb-2">
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#FF7B60]/10 text-xs font-semibold text-[#FF7B60]">
                   8
@@ -330,7 +330,7 @@ export default function MatchmakingStartPage() {
           </p>
 
           {/* Koota Points Table */}
-          <div className="overflow-x-auto rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/60">
+          <div className="overflow-x-auto rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/60">
             <table className="min-w-full divide-y divide-[#333355]/10 text-sm">
               <thead className="bg-[#FF7B60]/10">
                 <tr>
@@ -416,7 +416,7 @@ export default function MatchmakingStartPage() {
                       challenging combinations.
                     </td>
                   </tr>
-                  <tr className="bg-[#FCF3E4]/60">
+                  <tr className="bg-[#f7e5c8]/60">
                     <td className="px-4 py-3 text-[#333355]">18 to 24</td>
                     <td className="px-4 py-3 text-[#333355]/80">
                       Acceptable match with average compatibility; extra care and
@@ -429,7 +429,7 @@ export default function MatchmakingStartPage() {
                       Good match with supportive factors for a stable married life.
                     </td>
                   </tr>
-                  <tr className="bg-[#FCF3E4]/60">
+                  <tr className="bg-[#f7e5c8]/60">
                     <td className="px-4 py-3 text-[#333355]">32 to 36</td>
                     <td className="px-4 py-3 text-[#333355]/80">
                       Excellent match; very strong compatibility and harmony

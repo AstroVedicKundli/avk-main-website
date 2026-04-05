@@ -13,8 +13,6 @@ export default function Header() {
     { name: "Home", href: "/" },
     { name: "Horoscope", href: "/horoscope" },
     { name: "Kundli", href: "/kundli" },
-    { name: "Panchang", href: "/panchang" },
-    { name: "Yatra", href: "/yatra" },
     { name: "Puja", href: "https://pooja.astrovedickundli.com/", external: true },
   ];
 

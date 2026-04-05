@@ -109,7 +109,7 @@ const zodiacSigns = [
 
 export default function HoroscopePage() {
   return (
-    <div className="min-h-screen bg-[#FCF3E4] pt-32 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#f7e5c8] pt-32 pb-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ComingSoonPage() {
   return (
-    <div className="min-h-screen bg-[#FCF3E4] flex items-center justify-center px-6 py-20">
+    <div className="min-h-screen bg-[#f7e5c8] flex items-center justify-center px-6 py-20">
       <div className="max-w-2xl w-full text-center">
         <h1 className="text-2xl md:text-3xl font-bold text-[#333355] mb-3">
           Coming Soon

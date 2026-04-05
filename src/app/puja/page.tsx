@@ -8,7 +8,7 @@ import SanatanArticles from "@/components/puja/SanatanArticles";
 
 export default function PujaPage() {
   return (
-    <div className="min-h-screen bg-[#FCF3E4]">
+    <div className="min-h-screen bg-[#f7e5c8]">
       {/* Hero Section with Feature Cards */}
       <PujaHeroSection />
 

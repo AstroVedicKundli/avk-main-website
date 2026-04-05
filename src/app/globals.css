@@ -2,12 +2,12 @@
 
 :root {
   /* Custom Brand Colors */
-  --color-light: #FCF3E4;      /* Main light background */
+  --color-light: #f7e5c8;      /* Main light background */
   --color-dark: #333355;       /* Main dark navy */
   --color-accent: #FF7B60;     /* Coral accent */
   
   /* Derived colors */
-  --background: #FCF3E4;
+  --background: #f7e5c8;
   --foreground: #333355;
 }
 
@@ -17,7 +17,7 @@
   --font-sans: var(--font-montserrat);
   
   /* Custom color utilities */
-  --color-brand-light: #FCF3E4;
+  --color-brand-light: #f7e5c8;
   --color-brand-dark: #333355;
   --color-brand-accent: #FF7B60;
 }

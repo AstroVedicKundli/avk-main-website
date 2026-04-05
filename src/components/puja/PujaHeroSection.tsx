@@ -145,7 +145,7 @@ export default function PujaHeroSection() {
   return (
     <section className="relative w-full">
       {/* Main Hero Content with Beige Background */}
-      <div className="relative min-h-[550px] md:min-h-[650px] bg-[#FCF3E4] pt-28 md:pt-32 pb-32 md:pb-40">
+      <div className="relative min-h-[550px] md:min-h-[650px] bg-[#f7e5c8] pt-28 md:pt-32 pb-32 md:pb-40">
         {/* Navigation Arrows */}
         <button
           onClick={() => handleNavClick("prev")}

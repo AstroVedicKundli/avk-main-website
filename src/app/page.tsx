@@ -11,7 +11,7 @@ import OfferDialog from "@/components/home/OfferDialog";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-[#FCF3E4] overflow-hidden">
+    <div className="relative min-h-screen bg-[#f7e5c8] overflow-hidden">
       <HomeHashScroll />
       <OfferDialog />
       {/* Content with relative positioning to appear above background */}

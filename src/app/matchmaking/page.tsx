@@ -65,7 +65,7 @@ export default function MatchmakingPage() {
 						</div>
 
 						{/* Right: Illustration */}
-						<div className="relative h-64 md:h-full bg-[#FCF3E4]">
+						<div className="relative h-64 md:h-full bg-[#f7e5c8]">
 							<div className="absolute inset-0 flex items-center justify-center p-6 md:p-10">
 								<div className="relative h-full w-full max-w-md rounded-3xl shadow-lg overflow-hidden bg-[#FFF5EC] border border-[#F3C5A5]/70">
 									<div className="relative h-2/3 w-full bg-black/5">
@@ -77,7 +77,7 @@ export default function MatchmakingPage() {
 											sizes="(max-width: 768px) 280px, 360px"
 										/>
 									</div>
-									<div className="h-1/3 w-full bg-[#FCF3E4] border-t border-[#333355]/10 px-3 sm:px-4 py-2.5 sm:py-3.5 flex items-center">
+									<div className="h-1/3 w-full bg-[#f7e5c8] border-t border-[#333355]/10 px-3 sm:px-4 py-2.5 sm:py-3.5 flex items-center">
 										<div className="grid grid-cols-3 gap-2 w-full">
 											{[
 												{ src: "/matchmaking/Kundli.webp", title: "Kundli" },
@@ -142,7 +142,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 							].map((item) => (
 								<div
 									key={item.src}
-									className="flex flex-col rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/40 overflow-hidden shadow-sm"
+									className="flex flex-col rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/40 overflow-hidden shadow-sm"
 								>
 									<div className="relative h-32 sm:h-36 md:h-40 w-full bg-white">
 										<Image
@@ -169,7 +169,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 							What We Check in Matchmaking
 						</h2>
 						<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-							<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/60 p-5">
+							<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/60 p-5">
 								<h3 className="text-lg font-semibold text-[#333355] mb-2">
 									36-Gun Matching (Ashtakoota)
 								</h3>
@@ -179,7 +179,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 								</p>
 							</div>
 
-							<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/60 p-5">
+							<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/60 p-5">
 								<h3 className="text-lg font-semibold text-[#333355] mb-2">
 									Manglik &amp; Dosha Analysis
 								</h3>
@@ -189,7 +189,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 								</p>
 							</div>
 
-							<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/60 p-5">
+							<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/60 p-5">
 								<h3 className="text-lg font-semibold text-[#333355] mb-2">
 									Emotional &amp; Mental Harmony
 								</h3>
@@ -199,7 +199,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 								</p>
 							</div>
 
-							<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/60 p-5">
+							<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/60 p-5">
 								<h3 className="text-lg font-semibold text-[#333355] mb-2">
 									Family &amp; Lifestyle Compatibility
 								</h3>
@@ -219,7 +219,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 								</p>
 							</div>
 
-							<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/60 p-5">
+							<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/60 p-5">
 								<h3 className="text-lg font-semibold text-[#333355] mb-2">
 									Remedies &amp; Guidance
 								</h3>
@@ -308,7 +308,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 							</div>
 
 							<div className="grid gap-4 md:grid-cols-2">
-								<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 flex gap-3">
+								<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 flex gap-3">
 									<div className="mt-1 h-6 w-6 rounded-full bg-[#FF7B60]/10 flex items-center justify-center text-[11px] font-semibold text-[#FF7B60]">
 										1
 									</div>
@@ -324,7 +324,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 									</div>
 								</div>
 
-								<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 flex gap-3">
+								<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 flex gap-3">
 									<div className="mt-1 h-6 w-6 rounded-full bg-[#FF7B60]/10 flex items-center justify-center text-[11px] font-semibold text-[#FF7B60]">
 										2
 									</div>
@@ -340,7 +340,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 									</div>
 								</div>
 
-								<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 flex gap-3">
+								<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 flex gap-3">
 									<div className="mt-1 h-6 w-6 rounded-full bg-[#FF7B60]/10 flex items-center justify-center text-[11px] font-semibold text-[#FF7B60]">
 										3
 									</div>
@@ -356,7 +356,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 									</div>
 								</div>
 
-								<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 flex gap-3">
+								<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 flex gap-3">
 									<div className="mt-1 h-6 w-6 rounded-full bg-[#FF7B60]/10 flex items-center justify-center text-[11px] font-semibold text-[#FF7B60]">
 										4
 									</div>
@@ -372,7 +372,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 									</div>
 								</div>
 
-								<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 flex gap-3">
+								<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 flex gap-3">
 									<div className="mt-1 h-6 w-6 rounded-full bg-[#FF7B60]/10 flex items-center justify-center text-[11px] font-semibold text-[#FF7B60]">
 										5
 									</div>
@@ -388,7 +388,7 @@ This kundali matching by name and date of birth reveals a couple's compatibility
 									</div>
 								</div>
 
-								<div className="rounded-2xl border border-[#333355]/10 bg-[#FCF3E4]/70 p-4 flex gap-3">
+								<div className="rounded-2xl border border-[#333355]/10 bg-[#f7e5c8]/70 p-4 flex gap-3">
 									<div className="mt-1 h-6 w-6 rounded-full bg-[#FF7B60]/10 flex items-center justify-center text-[11px] font-semibold text-[#FF7B60]">
 										6
 									</div>

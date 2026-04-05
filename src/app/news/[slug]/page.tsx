@@ -20,9 +20,9 @@ export default async function BlogDetailPage({
   const relatedPosts = blogPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[#FCF3E4]">
+    <div className="min-h-screen bg-[#f7e5c8]">
       {/* Hero Section */}
-      <div className="relative w-full bg-[#FCF3E4] pt-24 pb-16 px-6">
+      <div className="relative w-full bg-[#f7e5c8] pt-24 pb-16 px-6">
         <div className="max-w-4xl mx-auto">
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-[#333355]/50 text-sm mb-6">
@@ -166,7 +166,7 @@ export default async function BlogDetailPage({
               </p>
               <Link
                 href="/consult-now"
-                className="block w-full text-center bg-white text-[#B91C2E] font-bold py-2.5 rounded-xl text-sm hover:bg-[#FCF3E4] transition-colors"
+                className="block w-full text-center bg-white text-[#B91C2E] font-bold py-2.5 rounded-xl text-sm hover:bg-[#f7e5c8] transition-colors"
               >
                 Consult Now
               </Link>

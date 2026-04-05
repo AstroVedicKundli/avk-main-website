@@ -7,9 +7,9 @@ import TourPackagesGrid from "@/components/yatra/TourPackagesGrid";
 
 export default function YatraPage() {
   return (
-    <div className="min-h-screen bg-[#fcf3e4]">
+    <div className="min-h-screen bg-[#f7e5c8]">
       {/* Hero Banner Section */}
-      <section className="relative w-full h-[75vh] md:h-[55vh] lg:h-[70vh] overflow-hidden bg-[#fcf3e4] pt-20">
+      <section className="relative w-full h-[75vh] md:h-[55vh] lg:h-[70vh] overflow-hidden bg-[#f7e5c8] pt-20">
         <div className="relative w-full h-full">
           {/* Mobile Banner */}
           <div className="block md:hidden absolute inset-0">

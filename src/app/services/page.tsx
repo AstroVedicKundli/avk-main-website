@@ -43,7 +43,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FCF3E4]">
+    <div className="min-h-screen bg-[#f7e5c8]">
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6 md:px-8 lg:px-12 bg-gradient-to-br from-[#333355] to-[#4a4a6a]">
         <div className="max-w-7xl mx-auto text-center">

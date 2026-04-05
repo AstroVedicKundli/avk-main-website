@@ -313,7 +313,7 @@ export default function ZodiacSignPage({
   ] as const;
 
   return (
-    <div className="min-h-screen bg-[#FCF3E4] pb-16">
+    <div className="min-h-screen bg-[#f7e5c8] pb-16">
       {/* Dark Header Banner */}
       <div className="bg-[#F5E6D8] pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         {/* Decorative dots */}
@@ -403,7 +403,7 @@ export default function ZodiacSignPage({
         </div>
 
         {/* Content Area */}
-        <div className="bg-[#FCF3E4] rounded-b-2xl shadow-2xl p-8 md:p-12">
+        <div className="bg-[#f7e5c8] rounded-b-2xl shadow-2xl p-8 md:p-12">
           {/* Date Display for daily horoscopes */}
           {(activeTab === "yesterday" ||
             activeTab === "today" ||

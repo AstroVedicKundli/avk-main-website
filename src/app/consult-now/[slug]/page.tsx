@@ -53,7 +53,7 @@ export default async function AstrologerProfilePage({ params }: PageProps) {
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center relative z-10">
               <div className="relative mx-auto h-32 w-32 flex-shrink-0 rounded-full bg-gradient-to-br from-[#FFB59F] to-[#FF7B60] p-[3px] shadow-xl hover:scale-105 transition-transform duration-300">
                 <div className="h-full w-full rounded-full bg-white p-[3px]">
-                  <div className="relative h-full w-full rounded-full overflow-hidden bg-[#FCF3E4]">
+                  <div className="relative h-full w-full rounded-full overflow-hidden bg-[#f7e5c8]">
                     <Image
                       src={astrologer.avatar}
                       alt={astrologer.name}

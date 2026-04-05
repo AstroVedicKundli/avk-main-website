@@ -26,7 +26,7 @@ const detailedFeatures = [
 
 export default function KundliPage() {
   return (
-    <div className="min-h-screen bg-[#FCF3E4] scroll-smooth">
+    <div className="min-h-screen bg-[#f7e5c8] scroll-smooth">
       <div className="h-24 shrink-0" aria-hidden />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

@@ -302,7 +302,7 @@ export default function ConsultationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCF3E4]">
+    <div className="min-h-screen bg-[#f7e5c8]">
       {isRazorpayEnabled && (
         <Script
           src="https://checkout.razorpay.com/v1/checkout.js"
