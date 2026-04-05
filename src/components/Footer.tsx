@@ -72,7 +72,7 @@ export default function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <Link href="/" className="mb-4 inline-block">
               <Image
-                src="/avk-logo.webp"
+                src="/logo_transsparent.webp"
                 alt="Astro Vedic Kundli"
                 width={180}
                 height={48}

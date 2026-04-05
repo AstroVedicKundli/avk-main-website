@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function HeroCarousel() {
   return (
     <>
-      <section style={{backgroundColor: '#f7e5c8'}} className="relative w-full h-[75vh] md:h-[55vh] lg:h-[70vh] overflow-hidden bg-[#fcf3e4]">
+      <section style={{backgroundColor: '#f4d9ad'}} className="relative w-full h-[75vh] md:h-[55vh] lg:h-[70vh] overflow-hidden bg-[#fcf3e4]">
         <div className="relative w-full h-full">
           {/* Mobile Banner Image */}
           <div className="block md:hidden absolute inset-0">

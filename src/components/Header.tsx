@@ -40,7 +40,7 @@ export default function Header() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <Image
-                src="/avk-logo.webp"
+                src="/logo_transsparent.webp"
                 alt="Astro Vedic Kundli"
                 width={160}
                 height={42}

@@ -28,7 +28,7 @@ export default function AboutSection() {
           <div className="space-y-4 max-w-4xl mx-auto">
             <p className="text-base  leading-relaxed">
               Jyotish Acharya Manish Aggarwal is a highly respected and
-              accomplished Astrologer based in Delhi/NCR, with over 18 years of
+              accomplished Astrologer based in Delhi/NCR, with over 19 years of
               dedicated experience in the fields of Astrology, Numerology, and
               Pooja Path Anushthan. Renowned for his sagacious insights and
               practical guidance, he is an approved astrologer associated with

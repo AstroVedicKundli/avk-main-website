@@ -155,7 +155,8 @@ export default function LearningSection() {
             {/* View All Button - Bottom */}
             <div className="text-center mt-10">
               <Link
-                href="/videos"
+                href="https://www.youtube.com/@astrovedickundli"
+                target="_blank"
                 className="inline-flex items-center gap-2 bg-[#333355] text-white px-8 py-3 rounded-lg font-bold text-sm hover:bg-[#FF7B60] transition-all shadow-md hover:shadow-lg transform hover:scale-105"
               >
                 View All
